@@ -58,6 +58,12 @@ focus_mode = 0
 theme = ExtResource("2_oxxdj")
 text = "  ✏️  "
 
+[node name="NotesButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_oxxdj")
+text = "  🗒️  "
+
 [node name="Cancel" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
@@ -118,6 +124,14 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = "  🗑️  "
+
+[node name="Notes" type="TextEdit" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+placeholder_text = "Notes"
+scroll_fit_content_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -210,6 +224,7 @@ theme = ExtResource("2_oxxdj")
 text = "+10"
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/NotesButton" to="." method="_on_notes_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="item_selected" from="VBoxContainer/PanelContainer/HBoxContainer/ColorButton" to="." method="_on_color_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/minimize" to="." method="_on_minimize_pressed"]

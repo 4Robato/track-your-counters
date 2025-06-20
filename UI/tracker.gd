@@ -24,6 +24,10 @@ extends MarginContainer
 @onready var line_editp_2: SpinBox = $VBoxContainer/HBoxContainer/plus/LineEditp2
 
 @onready var color_button: OptionButton = $VBoxContainer/PanelContainer/HBoxContainer/ColorButton
+@onready var notes_button: Button = $VBoxContainer/PanelContainer/HBoxContainer/NotesButton
+
+@onready var notes: TextEdit = $VBoxContainer/Notes
+
 
 @export var minus_low : int
 @export var minus_high : int
@@ -33,6 +37,8 @@ extends MarginContainer
 var icon_test = preload("res://assets/icon.svg")
 
 var edit_mode : bool = false
+var is_minimized : bool = false
+var notes_mode : bool = false
 
 var style_box = StyleBoxFlat.new()
 var current_color : int = 0
@@ -78,10 +84,31 @@ func _on_close_pressed() -> void:
 	self.queue_free()
 
 func _on_minimize_pressed() -> void:
-	edit.visible = !edit.visible
-	h_box_container.visible = !h_box_container.visible
-	h_box_container.size_flags_vertical = !h_box_container.size_flags_vertical
-	self.size_flags_vertical = !self.size_flags_vertical
+	if !is_minimized:
+		minimize.text = "  ◇  "
+	else:
+		minimize.text = "  —  "
+	
+	if notes_mode and !is_minimized:
+		notes.visible = false
+		is_minimized = true
+		notes_mode = false
+	elif notes_mode and is_minimized:
+		notes.visible = false
+		is_minimized = false
+		notes_mode = false
+		
+		h_box_container.visible = !h_box_container.visible
+		h_box_container.size_flags_vertical = !h_box_container.size_flags_vertical
+		self.size_flags_vertical = !self.size_flags_vertical
+	elif !notes_mode:
+		edit.visible = !edit.visible
+		
+		h_box_container.visible = !h_box_container.visible
+		h_box_container.size_flags_vertical = !h_box_container.size_flags_vertical
+		self.size_flags_vertical = !self.size_flags_vertical
+	
+		is_minimized = !is_minimized
 
 func _on_tracker_value_text_submitted(new_text: String) -> void:
 	tracker_value.text = str(int(new_text))
@@ -99,6 +126,8 @@ func _reverse_visible():
 	close.visible = !close.visible
 	
 	color_button.visible = !color_button.visible
+	
+	notes_button.visible = !notes_button.visible
 	
 	line_editm_1.visible = !line_editm_1.visible
 	line_editm_2.visible = !line_editm_2.visible
@@ -227,3 +256,18 @@ func get_scaled_icon(icon: Texture2D, _size: int) -> Texture2D:
 	var img = icon.get_image()
 	img.resize(_size, _size, Image.INTERPOLATE_LANCZOS)
 	return ImageTexture.create_from_image(img)
+
+func _on_notes_button_pressed() -> void:
+	if notes_mode and !is_minimized:
+		notes.visible = false
+		edit.visible = true
+		h_box_container.visible = true
+	elif notes_mode and is_minimized:
+		notes.visible = false
+	elif !notes_mode:
+		notes.visible = true
+		edit.visible = false
+		h_box_container.visible = false
+	
+	notes_mode = !notes_mode
+	
