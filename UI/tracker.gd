@@ -1,0 +1,229 @@
+class_name Tracker
+extends MarginContainer
+
+@onready var panel_container: PanelContainer = $VBoxContainer/PanelContainer
+@onready var tracker_name: TextEdit = $VBoxContainer/PanelContainer/HBoxContainer/TrackerName
+
+@onready var minus_10: Button = $VBoxContainer/HBoxContainer/minus/minus10
+@onready var minus_1: Button = $VBoxContainer/HBoxContainer/minus/minus1
+@onready var plus_10: Button = $VBoxContainer/HBoxContainer/plus/plus10
+@onready var plus_1: Button = $VBoxContainer/HBoxContainer/plus/plus1
+
+@onready var edit: Button = $VBoxContainer/PanelContainer/HBoxContainer/Edit
+@onready var location: SpinBox = $VBoxContainer/PanelContainer/HBoxContainer/Location
+@onready var cancel: Button = $VBoxContainer/PanelContainer/HBoxContainer/Cancel
+@onready var minimize: Button = $VBoxContainer/PanelContainer/HBoxContainer/minimize
+@onready var close: Button = $VBoxContainer/PanelContainer/HBoxContainer/close
+
+@onready var h_box_container: HBoxContainer = $VBoxContainer/HBoxContainer
+@onready var tracker_value: LineEdit = $VBoxContainer/HBoxContainer/TrackerValue
+
+@onready var line_editm_1: SpinBox = $VBoxContainer/HBoxContainer/minus/LineEditm1
+@onready var line_editm_2: SpinBox = $VBoxContainer/HBoxContainer/minus/LineEditm2
+@onready var line_editp_1: SpinBox = $VBoxContainer/HBoxContainer/plus/LineEditp1
+@onready var line_editp_2: SpinBox = $VBoxContainer/HBoxContainer/plus/LineEditp2
+
+@onready var color_button: OptionButton = $VBoxContainer/PanelContainer/HBoxContainer/ColorButton
+
+@export var minus_low : int
+@export var minus_high : int
+@export var plus_low: int
+@export var plus_high : int
+
+var icon_test = preload("res://assets/icon.svg")
+
+var edit_mode : bool = false
+
+var style_box = StyleBoxFlat.new()
+var current_color : int = 0
+var color_selected : int = 0
+
+func _ready() -> void:
+	_buttons_names()
+	
+	line_editm_1.value = minus_low
+	line_editm_2.value = minus_high
+	line_editp_1.value = plus_low
+	line_editp_2.value = plus_high
+	
+	color_button.select(0)
+
+func _buttons_names():
+	minus_1.text = "-"+str(minus_low)
+	minus_10.text = "-"+str(minus_high)
+	plus_1.text = "+"+str(plus_low)
+	plus_10.text = "+"+str(plus_high)
+
+func _on_minus_1_pressed() -> void:
+	var tracker_value_int : int = int(tracker_value.text)
+	tracker_value_int -= minus_low
+	tracker_value.text = str(tracker_value_int)
+
+func _on_minus_10_pressed() -> void:
+	var tracker_value_int : int = int(tracker_value.text)
+	tracker_value_int -= minus_high
+	tracker_value.text = str(tracker_value_int)
+
+func _on_plus_1_pressed() -> void:
+	var tracker_value_int : int = int(tracker_value.text)
+	tracker_value_int += plus_low
+	tracker_value.text = str(tracker_value_int)
+
+func _on_plus_10_pressed() -> void:
+	var tracker_value_int : int = int(tracker_value.text)
+	tracker_value_int += plus_high
+	tracker_value.text = str(tracker_value_int)
+
+func _on_close_pressed() -> void:
+	self.queue_free()
+
+func _on_minimize_pressed() -> void:
+	edit.visible = !edit.visible
+	h_box_container.visible = !h_box_container.visible
+	h_box_container.size_flags_vertical = !h_box_container.size_flags_vertical
+	self.size_flags_vertical = !self.size_flags_vertical
+
+func _on_tracker_value_text_submitted(new_text: String) -> void:
+	tracker_value.text = str(int(new_text))
+
+func _reverse_visible():
+	edit_mode = !edit_mode
+	if edit.text == "  ✔️  ":
+		edit.text = "  ✏️  "
+	else:
+		edit.text = "  ✔️  "
+	
+	cancel.visible = !cancel.visible
+	location.visible = !location.visible
+	minimize.visible = !minimize.visible
+	close.visible = !close.visible
+	
+	color_button.visible = !color_button.visible
+	
+	line_editm_1.visible = !line_editm_1.visible
+	line_editm_2.visible = !line_editm_2.visible
+	line_editp_1.visible = !line_editp_1.visible
+	line_editp_2.visible = !line_editp_2.visible
+	
+	plus_1.visible = !plus_1.visible
+	plus_10.visible = !plus_10.visible
+	minus_1.visible = !minus_1.visible
+	minus_10.visible = !minus_10.visible
+
+func _on_edit_pressed() -> void:
+	_reverse_visible()
+	
+	if edit_mode:
+		location.value = get_index() + 1
+	
+	# this activates when you exit edit mode and you pressed the button
+	if !edit_mode:
+		minus_high = int(line_editm_2.value)
+		plus_low = int(line_editp_1.value)
+		minus_low = int(line_editm_1.value)
+		plus_high = int(line_editp_2.value)
+		
+		_buttons_names()
+		
+		if location.value != get_index() + 1:
+			if location.value >= get_parent().get_child_count():
+				location.value = get_parent().get_child_count() - 1
+			var parent = get_parent()
+			parent.move_child(self, int(location.value) - 1)
+		
+		current_color = color_selected
+
+func _on_cancel_pressed() -> void:
+	
+	_on_color_button_item_selected(current_color)
+	color_button.select(current_color)
+	
+	_reverse_visible()
+	
+	line_editm_1.value = minus_low
+	line_editm_2.value = minus_high
+	line_editp_1.value = plus_low
+	line_editp_2.value = plus_high
+
+func _on_color_button_item_selected(index: int) -> void:
+	var color_sel : Color
+	color_selected = index
+	match index:
+		0:#black
+			color_sel = Color(0, 0, 0, 0.39)
+		1:#white
+			color_sel = Color(1, 1, 1, 0.39)
+		2:#yellow
+			color_sel = Color(1, 1, 0, 0.39)
+		3:#red
+			color_sel = Color(1, 0, 0, 0.39)
+		4:#blue
+			color_sel = Color(0, 0, 1, 0.39)
+		5:#light blue
+			color_sel = Color(0.678, 0.847, 0.902, 0.39)
+		6:#green
+			color_sel = Color(0, 1, 0, 0.39)
+		7:#brown
+			color_sel = Color(0.647, 0.165, 0.165, 0.39)
+		8:#orange
+			color_sel = Color(1, 0.647, 0, 0.39)
+		_:#default = Black
+			color_sel = Color(0, 0, 0, 0.39)
+	
+	style_box.bg_color = color_sel
+	
+	panel_container.add_theme_stylebox_override("panel", style_box)
+	minus_1.add_theme_stylebox_override("normal", style_box)
+	minus_10.add_theme_stylebox_override("normal", style_box)
+	plus_1.add_theme_stylebox_override("normal", style_box)
+	plus_10.add_theme_stylebox_override("normal", style_box)
+	tracker_value.add_theme_stylebox_override("normal", style_box)
+	#tracker_name.add_theme_stylebox_override("normal", style_box)
+	
+	line_editm_1.add_theme_stylebox_override("field_and_buttons_separator", style_box)
+	line_editm_2.add_theme_stylebox_override("field_and_buttons_separator", style_box)
+	line_editp_1.add_theme_stylebox_override("field_and_buttons_separator", style_box)
+	line_editp_2.add_theme_stylebox_override("field_and_buttons_separator", style_box)
+	
+
+func update_font_size(text_size : int):
+	tracker_name.add_theme_font_size_override("font_size", text_size)
+	tracker_value.add_theme_font_size_override("font_size", text_size)
+	
+	minus_1.add_theme_font_size_override("font_size", text_size)
+	minus_10.add_theme_font_size_override("font_size", text_size)
+	plus_1.add_theme_font_size_override("font_size", text_size)
+	plus_10.add_theme_font_size_override("font_size", text_size)
+	
+	# For SpinBox we target the internal LineEdit:
+	var line_edit : LineEdit = line_editm_1.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", text_size)
+	var line_edit_2 : LineEdit = line_editm_2.get_line_edit()
+	line_edit_2.add_theme_font_size_override("font_size", text_size)
+	var line_edit_3 : LineEdit = line_editp_1.get_line_edit()
+	line_edit_3.add_theme_font_size_override("font_size", text_size)
+	var line_edit_4 : LineEdit = line_editp_2.get_line_edit()
+	line_edit_4.add_theme_font_size_override("font_size", text_size)
+	
+	var location_line_edit : LineEdit = location.get_line_edit()
+	location_line_edit.add_theme_font_size_override("font_size", text_size)
+	
+	# First we change icon shown on the selected item
+	var displayed_icon = color_button.get_item_icon(color_button.get_selected_id())
+	color_button.add_theme_font_size_override("font_size", text_size)
+	color_button.set_item_icon(color_button.get_selected_id(), get_scaled_icon(displayed_icon, text_size))
+	# Now we change the popup items first the text then the icon
+	var popup_color : PopupMenu = color_button.get_popup()
+	popup_color.add_theme_font_size_override("font_size", text_size)
+	for id in color_button.item_count:
+		popup_color.set_item_icon_max_width(id, text_size)
+		var scaled_icon = get_scaled_icon(color_button.get_item_icon(id), text_size)
+		popup_color.set_item_icon(id, scaled_icon)
+
+
+func get_scaled_icon(icon: Texture2D, _size: int) -> Texture2D:
+	if icon == null:
+		return null
+	var img = icon.get_image()
+	img.resize(_size, _size, Image.INTERPOLATE_LANCZOS)
+	return ImageTexture.create_from_image(img)

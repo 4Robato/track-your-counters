@@ -1,0 +1,127 @@
+[gd_scene load_steps=4 format=3 uid="uid://co7rjdayna4x1"]
+
+[ext_resource type="Script" uid="uid://co0d62csk3rkx" path="res://UI/main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bw61xu1tesd0a" path="res://UI/tracker.tscn" id="1_ig7tw"]
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="3_h2yge"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0xm2m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("3_h2yge")
+text = "  ☰  "
+alignment = 0
+item_count = 4
+popup/item_0/text = "⚃ Show dice"
+popup/item_0/id = 0
+popup/item_1/text = "⬆️ Increase UI size"
+popup/item_1/id = 1
+popup/item_2/text = "⬇️ Decrease UI size"
+popup/item_2/id = 2
+popup/item_3/text = "🗑️ Delete all"
+popup/item_3/id = 3
+
+[node name="Roll" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("3_h2yge")
+text = "  Roll  "
+
+[node name="DiceAmount" type="SpinBox" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_h2yge")
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+allow_greater = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="dice_type" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("3_h2yge")
+text = "  D2  "
+
+[node name="result" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("3_h2yge")
+text = "      "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tracker" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ig7tw")]
+layout_mode = 2
+
+[node name="AddButtonMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AddButtonMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+theme = ExtResource("3_h2yge")
+text = "
++
+
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Roll" to="." method="_on_roll_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/dice_type" to="." method="_on_dice_type_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/result" to="." method="_on_result_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AddButtonMargin/AddButton" to="." method="_on_add_button_pressed"]

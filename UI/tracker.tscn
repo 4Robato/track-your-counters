@@ -1,0 +1,221 @@
+[gd_scene load_steps=12 format=3 uid="uid://bw61xu1tesd0a"]
+
+[ext_resource type="Script" uid="uid://8pxcqcw5nato" path="res://UI/tracker.gd" id="1_hcafx"]
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_oxxdj"]
+[ext_resource type="Texture2D" uid="uid://cp2w4oqcjcogn" path="res://assets/black_color.svg" id="3_rsheg"]
+[ext_resource type="Texture2D" uid="uid://dkqxt47dorgh8" path="res://assets/white_color.svg" id="4_dd5s3"]
+[ext_resource type="Texture2D" uid="uid://bdsauclhxr50v" path="res://assets/yellow_color.svg" id="5_kmwt8"]
+[ext_resource type="Texture2D" uid="uid://bboh3xhwmph05" path="res://assets/red_color.svg" id="6_t6to0"]
+[ext_resource type="Texture2D" uid="uid://c723vvmfw3rri" path="res://assets/blue_color.svg" id="7_gludd"]
+[ext_resource type="Texture2D" uid="uid://cnb25xlvn7wo3" path="res://assets/cyan_color.svg" id="8_jmls6"]
+[ext_resource type="Texture2D" uid="uid://hvhuhqjj0j62" path="res://assets/green_color.svg" id="9_l5bkf"]
+[ext_resource type="Texture2D" uid="uid://dnerf08qy2u0u" path="res://assets/brown_color.svg" id="10_r0h07"]
+[ext_resource type="Texture2D" uid="uid://dv7hnufx0pkg1" path="res://assets/orange_color.svg" id="11_gnopk"]
+
+[node name="tracker" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1031.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_oxxdj")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_hcafx")
+minus_low = 1
+minus_high = 10
+plus_low = 1
+plus_high = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="TrackerName" type="TextEdit" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+placeholder_text = "Tracker name"
+scroll_fit_content_height = true
+
+[node name="Edit" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+theme = ExtResource("2_oxxdj")
+text = "  ✏️  "
+
+[node name="Cancel" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+theme = ExtResource("2_oxxdj")
+text = "  X  "
+
+[node name="ColorButton" type="OptionButton" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+item_count = 9
+popup/item_0/icon = ExtResource("3_rsheg")
+popup/item_0/id = 0
+popup/item_1/icon = ExtResource("4_dd5s3")
+popup/item_1/id = 1
+popup/item_2/icon = ExtResource("5_kmwt8")
+popup/item_2/id = 2
+popup/item_3/icon = ExtResource("6_t6to0")
+popup/item_3/id = 3
+popup/item_4/icon = ExtResource("7_gludd")
+popup/item_4/id = 4
+popup/item_5/icon = ExtResource("8_jmls6")
+popup/item_5/id = 5
+popup/item_6/icon = ExtResource("9_l5bkf")
+popup/item_6/id = 6
+popup/item_7/icon = ExtResource("10_r0h07")
+popup/item_7/id = 7
+popup/item_8/icon = ExtResource("11_gnopk")
+popup/item_8/id = 8
+
+[node name="Location" type="SpinBox" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_oxxdj")
+min_value = 1.0
+max_value = 9.0
+value = 1.0
+rounded = true
+allow_greater = true
+prefix = "↕"
+select_all_on_focus = true
+
+[node name="minimize" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "  —  "
+
+[node name="close" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "  🗑️  "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="minus" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditm1" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_oxxdj")
+rounded = true
+select_all_on_focus = true
+
+[node name="LineEditm2" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_oxxdj")
+rounded = true
+select_all_on_focus = true
+
+[node name="minus1" type="Button" parent="VBoxContainer/HBoxContainer/minus"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "-1"
+
+[node name="minus10" type="Button" parent="VBoxContainer/HBoxContainer/minus"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "-10
+"
+
+[node name="TrackerValue" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "50"
+placeholder_text = "value"
+alignment = 1
+emoji_menu_enabled = false
+select_all_on_focus = true
+
+[node name="plus" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEditp1" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_oxxdj")
+rounded = true
+select_all_on_focus = true
+
+[node name="LineEditp2" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_oxxdj")
+rounded = true
+select_all_on_focus = true
+
+[node name="plus1" type="Button" parent="VBoxContainer/HBoxContainer/plus"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "+1"
+
+[node name="plus10" type="Button" parent="VBoxContainer/HBoxContainer/plus"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "+10"
+
+[connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="item_selected" from="VBoxContainer/PanelContainer/HBoxContainer/ColorButton" to="." method="_on_color_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/minimize" to="." method="_on_minimize_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus1" to="." method="_on_minus_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus10" to="." method="_on_minus_10_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/TrackerValue" to="." method="_on_tracker_value_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus1" to="." method="_on_plus_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus10" to="." method="_on_plus_10_pressed"]
