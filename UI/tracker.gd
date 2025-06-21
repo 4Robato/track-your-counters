@@ -66,34 +66,62 @@ func _ready() -> void:
 
 func _on_minus_1_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
-	if minus_1.type == minus_1.BUTTON_TYPE.MINUS:
-		tracker_value_int -= minus_1.value
-	else:
-		tracker_value_int += minus_1.value
+	match minus_1.type:
+		minus_1.BUTTON_TYPE.MINUS:
+			tracker_value_int -= minus_1.value
+		minus_1.BUTTON_TYPE.PLUS:
+			tracker_value_int += minus_1.value
+		minus_1.BUTTON_TYPE.MULTIPLY:
+			tracker_value_int *= minus_1.value
+		minus_1.BUTTON_TYPE.DIVIDE:
+			tracker_value_int /= minus_1.value
+		_:
+			pass
 	tracker_value.text = str(tracker_value_int)
 
 func _on_minus_2_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
-	if minus_2.type == minus_2.BUTTON_TYPE.MINUS:
-		tracker_value_int -= minus_2.value
-	else:
-		tracker_value_int += minus_2.value
+	match minus_2.type:
+		minus_2.BUTTON_TYPE.MINUS:
+			tracker_value_int -= minus_2.value
+		minus_2.BUTTON_TYPE.PLUS:
+			tracker_value_int += minus_2.value
+		minus_2.BUTTON_TYPE.MULTIPLY:
+			tracker_value_int *= minus_2.value
+		minus_2.BUTTON_TYPE.DIVIDE:
+			tracker_value_int /= minus_2.value
+		_:
+			pass
 	tracker_value.text = str(tracker_value_int)
 
 func _on_plus_1_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
-	if plus_1.type == plus_1.BUTTON_TYPE.MINUS:
-		tracker_value_int -= plus_1.value
-	else:
-		tracker_value_int += plus_1.value
+	match plus_1.type:
+		plus_1.BUTTON_TYPE.MINUS:
+			tracker_value_int -= plus_1.value
+		plus_1.BUTTON_TYPE.PLUS:
+			tracker_value_int += plus_1.value
+		plus_1.BUTTON_TYPE.MULTIPLY:
+			tracker_value_int *= plus_1.value
+		plus_1.BUTTON_TYPE.DIVIDE:
+			tracker_value_int /= plus_1.value
+		_:
+			pass
 	tracker_value.text = str(tracker_value_int)
 
 func _on_plus_2_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
-	if plus_2.type == plus_2.BUTTON_TYPE.MINUS:
-		tracker_value_int -= plus_2.value
-	else:
-		tracker_value_int += plus_2.value
+	match plus_2.type:
+		plus_2.BUTTON_TYPE.MINUS:
+			tracker_value_int -= plus_2.value
+		plus_2.BUTTON_TYPE.PLUS:
+			tracker_value_int += plus_2.value
+		plus_2.BUTTON_TYPE.MULTIPLY:
+			tracker_value_int *= plus_2.value
+		plus_2.BUTTON_TYPE.DIVIDE:
+			tracker_value_int /= plus_2.value
+		_:
+			pass
 	tracker_value.text = str(tracker_value_int)
 
 func _on_close_pressed() -> void:
@@ -111,6 +139,7 @@ func _on_minimize_pressed() -> void:
 		notes_mode = false
 	elif notes_mode and is_minimized:
 		notes.visible = false
+		edit.visible = true
 		is_minimized = false
 		notes_mode = false
 		
@@ -204,6 +233,10 @@ func _on_cancel_pressed() -> void:
 			button_line_editm_1.text = "  +  "
 		minus_1.BUTTON_TYPE.MINUS:
 			button_line_editm_1.text = "  -  "
+		minus_1.BUTTON_TYPE.MULTIPLY:
+			button_line_editm_1.text = "  x  "
+		minus_1.BUTTON_TYPE.DIVIDE:
+			button_line_editm_1.text = "  ÷  "
 		_:
 			button_line_editm_1.text = "  +  "
 	match minus_2.type:
@@ -211,6 +244,10 @@ func _on_cancel_pressed() -> void:
 			button_line_editm_2.text = "  +  "
 		minus_2.BUTTON_TYPE.MINUS:
 			button_line_editm_2.text = "  -  "
+		minus_2.BUTTON_TYPE.MULTIPLY:
+			button_line_editm_2.text = "  x  "
+		minus_2.BUTTON_TYPE.DIVIDE:
+			button_line_editm_2.text = "  ÷  "
 		_:
 			button_line_editm_2.text = "  +  "
 	match plus_1.type:
@@ -218,6 +255,10 @@ func _on_cancel_pressed() -> void:
 			button_line_editp_1.text = "  +  "
 		plus_1.BUTTON_TYPE.MINUS:
 			button_line_editp_1.text = "  -  "
+		plus_1.BUTTON_TYPE.MULTIPLY:
+			button_line_editp_1.text = "  x  "
+		plus_1.BUTTON_TYPE.DIVIDE:
+			button_line_editp_1.text = "  ÷  "
 		_:
 			button_line_editp_1.text = "  +  "
 	match plus_2.type:
@@ -225,6 +266,10 @@ func _on_cancel_pressed() -> void:
 			button_line_editp_2.text = "  +  "
 		plus_2.BUTTON_TYPE.MINUS:
 			button_line_editp_2.text = "  -  "
+		plus_2.BUTTON_TYPE.MULTIPLY:
+			button_line_editp_2.text = "  x  "
+		plus_2.BUTTON_TYPE.DIVIDE:
+			button_line_editp_2.text = "  ÷  "
 		_:
 			button_line_editp_2.text = "  +  "
 	
@@ -333,6 +378,12 @@ func _on_button_line_editm_1_pressed() -> void:
 			button_line_editm_1.text = "  +  "
 			minus_1.type_edit = minus_1.BUTTON_TYPE.PLUS
 		"  +  ":
+			button_line_editm_1.text = "  x  "
+			minus_1.type_edit = minus_1.BUTTON_TYPE.MULTIPLY
+		"  x  ":
+			button_line_editm_1.text = "  ÷  "
+			minus_1.type_edit = minus_1.BUTTON_TYPE.DIVIDE
+		"  ÷  ":
 			button_line_editm_1.text = "  -  "
 			minus_1.type_edit = minus_1.BUTTON_TYPE.MINUS
 		_:
@@ -345,6 +396,12 @@ func _on_button_line_editm_2_pressed() -> void:
 			button_line_editm_2.text = "  +  "
 			minus_2.type_edit = minus_2.BUTTON_TYPE.PLUS
 		"  +  ":
+			button_line_editm_2.text = "  x  "
+			minus_2.type_edit = minus_2.BUTTON_TYPE.MULTIPLY
+		"  x  ":
+			button_line_editm_2.text = "  ÷  "
+			minus_2.type_edit = minus_2.BUTTON_TYPE.DIVIDE
+		"  ÷  ":
 			button_line_editm_2.text = "  -  "
 			minus_2.type_edit = minus_2.BUTTON_TYPE.MINUS
 		_:
@@ -357,6 +414,12 @@ func _on_button_line_editp_1_pressed() -> void:
 			button_line_editp_1.text = "  +  "
 			plus_1.type_edit = plus_1.BUTTON_TYPE.PLUS
 		"  +  ":
+			button_line_editp_1.text = "  x  "
+			plus_1.type_edit = plus_1.BUTTON_TYPE.MULTIPLY
+		"  x  ":
+			button_line_editp_1.text = "  ÷  "
+			plus_1.type_edit = plus_1.BUTTON_TYPE.DIVIDE
+		"  ÷  ":
 			button_line_editp_1.text = "  -  "
 			plus_1.type_edit = plus_1.BUTTON_TYPE.MINUS
 		_:
@@ -369,6 +432,12 @@ func _on_button_line_editp_2_pressed() -> void:
 			button_line_editp_2.text = "  +  "
 			plus_2.type_edit = plus_2.BUTTON_TYPE.PLUS
 		"  +  ":
+			button_line_editp_2.text = "  x  "
+			plus_2.type_edit = plus_2.BUTTON_TYPE.MULTIPLY
+		"  x  ":
+			button_line_editp_2.text = "  ÷  "
+			plus_2.type_edit = plus_2.BUTTON_TYPE.DIVIDE
+		"  ÷  ":
 			button_line_editp_2.text = "  -  "
 			plus_2.type_edit = plus_2.BUTTON_TYPE.MINUS
 		_:

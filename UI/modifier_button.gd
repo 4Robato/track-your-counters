@@ -21,7 +21,9 @@ var type_edit : BUTTON_TYPE
 
 enum BUTTON_TYPE {
 	PLUS,
-	MINUS
+	MINUS,
+	MULTIPLY,
+	DIVIDE
 }
 
 func _ready() -> void:
@@ -35,6 +37,10 @@ func _change_text():
 			text = "+ "
 		BUTTON_TYPE.MINUS:
 			text = "- "
+		BUTTON_TYPE.MULTIPLY:
+			text = "x "
+		BUTTON_TYPE.DIVIDE:
+			text = "÷ "
 		_:
 			text = "+ "
 	text += str(value)
