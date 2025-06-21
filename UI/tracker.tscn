@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw61xu1tesd0a"]
+[gd_scene load_steps=13 format=3 uid="uid://bw61xu1tesd0a"]
 
 [ext_resource type="Script" uid="uid://8pxcqcw5nato" path="res://UI/tracker.gd" id="1_hcafx"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_oxxdj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://hvhuhqjj0j62" path="res://assets/green_color.svg" id="9_l5bkf"]
 [ext_resource type="Texture2D" uid="uid://dnerf08qy2u0u" path="res://assets/brown_color.svg" id="10_r0h07"]
 [ext_resource type="Texture2D" uid="uid://dv7hnufx0pkg1" path="res://assets/orange_color.svg" id="11_gnopk"]
+[ext_resource type="PackedScene" uid="uid://e2x30fu47nye" path="res://UI/modifier_button.tscn" id="12_kmwt8"]
 
 [node name="tracker" type="MarginContainer"]
 anchors_preset = 15
@@ -142,38 +143,53 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEditm1" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus"]
+[node name="HBoxLineEditm1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus"]
 visible = false
 layout_mode = 2
+alignment = 1
+
+[node name="ButtonLineEditm1" type="Button" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "  -  "
+
+[node name="LineEditm1" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 select_all_on_focus = true
 
-[node name="LineEditm2" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus"]
+[node name="HBoxLineEditm2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus"]
 visible = false
 layout_mode = 2
+alignment = 1
+
+[node name="ButtonLineEditm2" type="Button" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_oxxdj")
+text = "  -  "
+
+[node name="LineEditm2" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 select_all_on_focus = true
 
-[node name="minus1" type="Button" parent="VBoxContainer/HBoxContainer/minus"]
+[node name="minus1" parent="VBoxContainer/HBoxContainer/minus" instance=ExtResource("12_kmwt8")]
 layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("2_oxxdj")
-text = "-1"
+value = 1
+type = 1
 
-[node name="minus10" type="Button" parent="VBoxContainer/HBoxContainer/minus"]
+[node name="minus2" parent="VBoxContainer/HBoxContainer/minus" instance=ExtResource("12_kmwt8")]
 layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("2_oxxdj")
-text = "-10
-"
+value = 10
+type = 1
 
 [node name="TrackerValue" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -191,37 +207,45 @@ select_all_on_focus = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEditp1" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus"]
+[node name="HBoxLineEditp1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus"]
 visible = false
 layout_mode = 2
+
+[node name="ButtonLineEditp1" type="Button" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1"]
+layout_mode = 2
+text = "  +  "
+
+[node name="LineEditp1" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 select_all_on_focus = true
 
-[node name="LineEditp2" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus"]
+[node name="HBoxLineEditp2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus"]
 visible = false
 layout_mode = 2
+
+[node name="ButtonLineEditp2" type="Button" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2"]
+layout_mode = 2
+text = "  +  "
+
+[node name="LineEditp2" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 select_all_on_focus = true
 
-[node name="plus1" type="Button" parent="VBoxContainer/HBoxContainer/plus"]
+[node name="plus1" parent="VBoxContainer/HBoxContainer/plus" instance=ExtResource("12_kmwt8")]
 layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("2_oxxdj")
-text = "+1"
+value = 1
 
-[node name="plus10" type="Button" parent="VBoxContainer/HBoxContainer/plus"]
+[node name="plus2" parent="VBoxContainer/HBoxContainer/plus" instance=ExtResource("12_kmwt8")]
 layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("2_oxxdj")
-text = "+10"
+value = 10
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/NotesButton" to="." method="_on_notes_button_pressed"]
@@ -229,8 +253,12 @@ text = "+10"
 [connection signal="item_selected" from="VBoxContainer/PanelContainer/HBoxContainer/ColorButton" to="." method="_on_color_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/minimize" to="." method="_on_minimize_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1/ButtonLineEditm1" to="." method="_on_button_line_editm_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2/ButtonLineEditm2" to="." method="_on_button_line_editm_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus1" to="." method="_on_minus_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus10" to="." method="_on_minus_10_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus2" to="." method="_on_minus_2_pressed"]
 [connection signal="text_submitted" from="VBoxContainer/HBoxContainer/TrackerValue" to="." method="_on_tracker_value_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1/ButtonLineEditp1" to="." method="_on_button_line_editp_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2/ButtonLineEditp2" to="." method="_on_button_line_editp_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus1" to="." method="_on_plus_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus10" to="." method="_on_plus_10_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus2" to="." method="_on_plus_2_pressed"]
