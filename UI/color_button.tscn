@@ -1,0 +1,33 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg6tns8ttve4i"]
+
+[ext_resource type="Texture2D" uid="uid://cp2w4oqcjcogn" path="res://assets/black_color.svg" id="1_u8pds"]
+[ext_resource type="Texture2D" uid="uid://dkqxt47dorgh8" path="res://assets/white_color.svg" id="2_qmgqq"]
+[ext_resource type="Texture2D" uid="uid://bdsauclhxr50v" path="res://assets/yellow_color.svg" id="3_0djsn"]
+[ext_resource type="Texture2D" uid="uid://bboh3xhwmph05" path="res://assets/red_color.svg" id="4_tyrkb"]
+[ext_resource type="Texture2D" uid="uid://c723vvmfw3rri" path="res://assets/blue_color.svg" id="5_2i3uc"]
+[ext_resource type="Texture2D" uid="uid://cnb25xlvn7wo3" path="res://assets/cyan_color.svg" id="6_71u4y"]
+[ext_resource type="Texture2D" uid="uid://hvhuhqjj0j62" path="res://assets/green_color.svg" id="7_ulvdo"]
+[ext_resource type="Texture2D" uid="uid://dnerf08qy2u0u" path="res://assets/brown_color.svg" id="8_15ctl"]
+[ext_resource type="Texture2D" uid="uid://dv7hnufx0pkg1" path="res://assets/orange_color.svg" id="9_mp72j"]
+
+[node name="ColorButton" type="OptionButton"]
+selected = 0
+item_count = 9
+popup/item_0/icon = ExtResource("1_u8pds")
+popup/item_0/id = 0
+popup/item_1/icon = ExtResource("2_qmgqq")
+popup/item_1/id = 1
+popup/item_2/icon = ExtResource("3_0djsn")
+popup/item_2/id = 2
+popup/item_3/icon = ExtResource("4_tyrkb")
+popup/item_3/id = 3
+popup/item_4/icon = ExtResource("5_2i3uc")
+popup/item_4/id = 4
+popup/item_5/icon = ExtResource("6_71u4y")
+popup/item_5/id = 5
+popup/item_6/icon = ExtResource("7_ulvdo")
+popup/item_6/id = 6
+popup/item_7/icon = ExtResource("8_15ctl")
+popup/item_7/id = 7
+popup/item_8/icon = ExtResource("9_mp72j")
+popup/item_8/id = 8

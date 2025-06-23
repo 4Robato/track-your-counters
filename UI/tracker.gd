@@ -44,7 +44,7 @@ extends MarginContainer
 @export var plus_low: int
 @export var plus_high : int
 
-var icon_test = preload("res://assets/icon.svg")
+var t_info : TrackerInfo
 
 var edit_mode : bool = false
 var is_minimized : bool = false
@@ -55,25 +55,24 @@ var current_color : int = 0
 var color_selected : int = 0
 
 func _ready() -> void:
-	#_buttons_names()
+	t_info = Global.default_tracker
+	_set_tracker_info(t_info)
 	
 	line_editm_1.value = minus_1.value
 	line_editm_2.value = minus_2.value
 	line_editp_1.value = plus_1.value
 	line_editp_2.value = plus_2.value
-	
-	color_button.select(0)
 
 func _on_minus_1_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
 	match minus_1.type:
-		minus_1.BUTTON_TYPE.MINUS:
+		Global.BUTTON_TYPE.MINUS:
 			tracker_value_int -= minus_1.value
-		minus_1.BUTTON_TYPE.PLUS:
+		Global.BUTTON_TYPE.PLUS:
 			tracker_value_int += minus_1.value
-		minus_1.BUTTON_TYPE.MULTIPLY:
+		Global.BUTTON_TYPE.MULTIPLY:
 			tracker_value_int *= minus_1.value
-		minus_1.BUTTON_TYPE.DIVIDE:
+		Global.BUTTON_TYPE.DIVIDE:
 			tracker_value_int /= minus_1.value
 		_:
 			pass
@@ -82,13 +81,13 @@ func _on_minus_1_pressed() -> void:
 func _on_minus_2_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
 	match minus_2.type:
-		minus_2.BUTTON_TYPE.MINUS:
+		Global.BUTTON_TYPE.MINUS:
 			tracker_value_int -= minus_2.value
-		minus_2.BUTTON_TYPE.PLUS:
+		Global.BUTTON_TYPE.PLUS:
 			tracker_value_int += minus_2.value
-		minus_2.BUTTON_TYPE.MULTIPLY:
+		Global.BUTTON_TYPE.MULTIPLY:
 			tracker_value_int *= minus_2.value
-		minus_2.BUTTON_TYPE.DIVIDE:
+		Global.BUTTON_TYPE.DIVIDE:
 			tracker_value_int /= minus_2.value
 		_:
 			pass
@@ -97,13 +96,13 @@ func _on_minus_2_pressed() -> void:
 func _on_plus_1_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
 	match plus_1.type:
-		plus_1.BUTTON_TYPE.MINUS:
+		Global.BUTTON_TYPE.MINUS:
 			tracker_value_int -= plus_1.value
-		plus_1.BUTTON_TYPE.PLUS:
+		Global.BUTTON_TYPE.PLUS:
 			tracker_value_int += plus_1.value
-		plus_1.BUTTON_TYPE.MULTIPLY:
+		Global.BUTTON_TYPE.MULTIPLY:
 			tracker_value_int *= plus_1.value
-		plus_1.BUTTON_TYPE.DIVIDE:
+		Global.BUTTON_TYPE.DIVIDE:
 			tracker_value_int /= plus_1.value
 		_:
 			pass
@@ -112,13 +111,13 @@ func _on_plus_1_pressed() -> void:
 func _on_plus_2_pressed() -> void:
 	var tracker_value_int : int = int(tracker_value.text)
 	match plus_2.type:
-		plus_2.BUTTON_TYPE.MINUS:
+		Global.BUTTON_TYPE.MINUS:
 			tracker_value_int -= plus_2.value
-		plus_2.BUTTON_TYPE.PLUS:
+		Global.BUTTON_TYPE.PLUS:
 			tracker_value_int += plus_2.value
-		plus_2.BUTTON_TYPE.MULTIPLY:
+		Global.BUTTON_TYPE.MULTIPLY:
 			tracker_value_int *= plus_2.value
-		plus_2.BUTTON_TYPE.DIVIDE:
+		Global.BUTTON_TYPE.DIVIDE:
 			tracker_value_int /= plus_2.value
 		_:
 			pass
@@ -191,7 +190,7 @@ func _on_edit_pressed() -> void:
 	if edit_mode:
 		location.value = get_index() + 1
 	
-	# this activates when you exit edit mode and you pressed the button
+	# This activates when you exit edit mode and you pressed the button
 	if !edit_mode:
 		# (when accept edit)
 		minus_1.value = int(line_editm_1.value)
@@ -223,56 +222,10 @@ func _on_cancel_pressed() -> void:
 	line_editp_1.value = plus_1.value
 	line_editp_2.value = plus_2.value
 	
-	#minus_1.type_edit = minus_1.type
-	#minus_2.type_edit = minus_2.type
-	#plus_1.type_edit = plus_1.type
-	#plus_2.type_edit = plus_2.type
-	
-	match minus_1.type:
-		minus_1.BUTTON_TYPE.PLUS:
-			button_line_editm_1.text = "  +  "
-		minus_1.BUTTON_TYPE.MINUS:
-			button_line_editm_1.text = "  -  "
-		minus_1.BUTTON_TYPE.MULTIPLY:
-			button_line_editm_1.text = "  x  "
-		minus_1.BUTTON_TYPE.DIVIDE:
-			button_line_editm_1.text = "  ÷  "
-		_:
-			button_line_editm_1.text = "  +  "
-	match minus_2.type:
-		minus_2.BUTTON_TYPE.PLUS:
-			button_line_editm_2.text = "  +  "
-		minus_2.BUTTON_TYPE.MINUS:
-			button_line_editm_2.text = "  -  "
-		minus_2.BUTTON_TYPE.MULTIPLY:
-			button_line_editm_2.text = "  x  "
-		minus_2.BUTTON_TYPE.DIVIDE:
-			button_line_editm_2.text = "  ÷  "
-		_:
-			button_line_editm_2.text = "  +  "
-	match plus_1.type:
-		plus_1.BUTTON_TYPE.PLUS:
-			button_line_editp_1.text = "  +  "
-		plus_1.BUTTON_TYPE.MINUS:
-			button_line_editp_1.text = "  -  "
-		plus_1.BUTTON_TYPE.MULTIPLY:
-			button_line_editp_1.text = "  x  "
-		plus_1.BUTTON_TYPE.DIVIDE:
-			button_line_editp_1.text = "  ÷  "
-		_:
-			button_line_editp_1.text = "  +  "
-	match plus_2.type:
-		plus_2.BUTTON_TYPE.PLUS:
-			button_line_editp_2.text = "  +  "
-		plus_2.BUTTON_TYPE.MINUS:
-			button_line_editp_2.text = "  -  "
-		plus_2.BUTTON_TYPE.MULTIPLY:
-			button_line_editp_2.text = "  x  "
-		plus_2.BUTTON_TYPE.DIVIDE:
-			button_line_editp_2.text = "  ÷  "
-		_:
-			button_line_editp_2.text = "  +  "
-	
+	button_line_editm_1.text = Global._get_button_text(minus_1.type)
+	button_line_editm_2.text = Global._get_button_text(minus_2.type)
+	button_line_editp_1.text = Global._get_button_text(plus_1.type)
+	button_line_editp_2.text = Global._get_button_text(plus_2.type)
 
 func _on_color_button_item_selected(index: int) -> void:
 	var color_sel : Color
@@ -342,21 +295,18 @@ func update_font_size(text_size : int):
 	# First we change icon shown on the selected item
 	var displayed_icon = color_button.get_item_icon(color_button.get_selected_id())
 	color_button.add_theme_font_size_override("font_size", text_size)
-	color_button.set_item_icon(color_button.get_selected_id(), get_scaled_icon(displayed_icon, text_size))
+	color_button.set_item_icon(
+		color_button.get_selected_id(),
+		Global.get_scaled_icon(displayed_icon, text_size)
+		)
 	# Now we change the popup items first the text then the icon
 	var popup_color : PopupMenu = color_button.get_popup()
 	popup_color.add_theme_font_size_override("font_size", text_size)
 	for id in color_button.item_count:
 		popup_color.set_item_icon_max_width(id, text_size)
-		var scaled_icon = get_scaled_icon(color_button.get_item_icon(id), text_size)
+		var scaled_icon = Global.get_scaled_icon(color_button.get_item_icon(id), text_size)
 		popup_color.set_item_icon(id, scaled_icon)
 
-func get_scaled_icon(icon: Texture2D, _size: int) -> Texture2D:
-	if icon == null:
-		return null
-	var img = icon.get_image()
-	img.resize(_size, _size, Image.INTERPOLATE_LANCZOS)
-	return ImageTexture.create_from_image(img)
 
 func _on_notes_button_pressed() -> void:
 	if notes_mode and !is_minimized:
@@ -373,73 +323,106 @@ func _on_notes_button_pressed() -> void:
 	notes_mode = !notes_mode
 
 func _on_button_line_editm_1_pressed() -> void:
-	match button_line_editm_1.text:
-		"  -  ":
-			button_line_editm_1.text = "  +  "
-			minus_1.type_edit = minus_1.BUTTON_TYPE.PLUS
-		"  +  ":
-			button_line_editm_1.text = "  x  "
-			minus_1.type_edit = minus_1.BUTTON_TYPE.MULTIPLY
-		"  x  ":
-			button_line_editm_1.text = "  ÷  "
-			minus_1.type_edit = minus_1.BUTTON_TYPE.DIVIDE
-		"  ÷  ":
-			button_line_editm_1.text = "  -  "
-			minus_1.type_edit = minus_1.BUTTON_TYPE.MINUS
+	match Global._get_button_type(button_line_editm_1):
+		Global.BUTTON_TYPE.MINUS:
+			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			minus_1.type_edit = Global.BUTTON_TYPE.PLUS
+		Global.BUTTON_TYPE.PLUS:
+			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			minus_1.type_edit = Global.BUTTON_TYPE.MULTIPLY
+		Global.BUTTON_TYPE.MULTIPLY:
+			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			minus_1.type_edit = Global.BUTTON_TYPE.DIVIDE
+		Global.BUTTON_TYPE.DIVIDE:
+			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			minus_1.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editm_1.text = "  +  "
-			minus_1.type_edit = minus_1.BUTTON_TYPE.PLUS
+			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			minus_1.type_edit = Global.BUTTON_TYPE.PLUS
 
 func _on_button_line_editm_2_pressed() -> void:
-	match button_line_editm_2.text:
-		"  -  ":
-			button_line_editm_2.text = "  +  "
-			minus_2.type_edit = minus_2.BUTTON_TYPE.PLUS
-		"  +  ":
-			button_line_editm_2.text = "  x  "
-			minus_2.type_edit = minus_2.BUTTON_TYPE.MULTIPLY
-		"  x  ":
-			button_line_editm_2.text = "  ÷  "
-			minus_2.type_edit = minus_2.BUTTON_TYPE.DIVIDE
-		"  ÷  ":
-			button_line_editm_2.text = "  -  "
-			minus_2.type_edit = minus_2.BUTTON_TYPE.MINUS
+	match Global._get_button_type(button_line_editm_2):
+		Global.BUTTON_TYPE.MINUS:
+			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			minus_2.type_edit = Global.BUTTON_TYPE.PLUS
+		Global.BUTTON_TYPE.PLUS:
+			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			minus_2.type_edit = Global.BUTTON_TYPE.MULTIPLY
+		Global.BUTTON_TYPE.MULTIPLY:
+			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			minus_2.type_edit = Global.BUTTON_TYPE.DIVIDE
+		Global.BUTTON_TYPE.DIVIDE:
+			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			minus_2.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editm_2.text = "  +  "
-			minus_2.type_edit = minus_2.BUTTON_TYPE.PLUS
+			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			minus_2.type_edit = Global.BUTTON_TYPE.PLUS
 
 func _on_button_line_editp_1_pressed() -> void:
-	match button_line_editp_1.text:
-		"  -  ":
-			button_line_editp_1.text = "  +  "
-			plus_1.type_edit = plus_1.BUTTON_TYPE.PLUS
-		"  +  ":
-			button_line_editp_1.text = "  x  "
-			plus_1.type_edit = plus_1.BUTTON_TYPE.MULTIPLY
-		"  x  ":
-			button_line_editp_1.text = "  ÷  "
-			plus_1.type_edit = plus_1.BUTTON_TYPE.DIVIDE
-		"  ÷  ":
-			button_line_editp_1.text = "  -  "
-			plus_1.type_edit = plus_1.BUTTON_TYPE.MINUS
+	match Global._get_button_type(button_line_editp_1):
+		Global.BUTTON_TYPE.MINUS:
+			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			plus_1.type_edit = Global.BUTTON_TYPE.PLUS
+		Global.BUTTON_TYPE.PLUS:
+			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			plus_1.type_edit = Global.BUTTON_TYPE.MULTIPLY
+		Global.BUTTON_TYPE.MULTIPLY:
+			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			plus_1.type_edit = Global.BUTTON_TYPE.DIVIDE
+		Global.BUTTON_TYPE.DIVIDE:
+			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			plus_1.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editp_1.text = "  +  "
-			plus_1.type_edit = plus_1.BUTTON_TYPE.PLUS
+			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			plus_1.type_edit = Global.BUTTON_TYPE.PLUS
 
 func _on_button_line_editp_2_pressed() -> void:
-	match button_line_editp_2.text:
-		"  -  ":
-			button_line_editp_2.text = "  +  "
-			plus_2.type_edit = plus_2.BUTTON_TYPE.PLUS
-		"  +  ":
-			button_line_editp_2.text = "  x  "
-			plus_2.type_edit = plus_2.BUTTON_TYPE.MULTIPLY
-		"  x  ":
-			button_line_editp_2.text = "  ÷  "
-			plus_2.type_edit = plus_2.BUTTON_TYPE.DIVIDE
-		"  ÷  ":
-			button_line_editp_2.text = "  -  "
-			plus_2.type_edit = plus_2.BUTTON_TYPE.MINUS
+	match Global._get_button_type(button_line_editp_2):
+		Global.BUTTON_TYPE.MINUS:
+			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			plus_2.type_edit = Global.BUTTON_TYPE.PLUS
+		Global.BUTTON_TYPE.PLUS:
+			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			plus_2.type_edit = Global.BUTTON_TYPE.MULTIPLY
+		Global.BUTTON_TYPE.MULTIPLY:
+			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			plus_2.type_edit = Global.BUTTON_TYPE.DIVIDE
+		Global.BUTTON_TYPE.DIVIDE:
+			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			plus_2.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editp_2.text = "  +  "
-			plus_2.type_edit = plus_2.BUTTON_TYPE.PLUS
+			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			plus_2.type_edit = Global.BUTTON_TYPE.PLUS
+
+func get_tracker_info() -> TrackerInfo:
+	var info : TrackerInfo = TrackerInfo.new(
+		minus_1.value,
+		minus_1.type,
+		minus_2.value,
+		minus_2.type,
+		plus_1.value,
+		plus_1.type,
+		plus_2.value,
+		plus_2.type,
+		tracker_name.text,
+		int(tracker_value.text),
+		current_color,
+		notes.text
+	)
+	return info
+
+func _set_tracker_info(info : TrackerInfo) -> void:
+	minus_1.value = info.button_m1
+	minus_1.type = info.button_m1_type
+	minus_2.value = info.button_m2
+	minus_2.type = info.button_m2_type
+	plus_1.value = info.button_p1
+	plus_1.type = info.button_p1_type
+	plus_2.value = info.button_p2
+	plus_2.type = info.button_p2_type
+	tracker_name.text = info.tracker_name
+	tracker_value.text = str(info.tracker_value)
+	current_color = info.tracker_color# this is so when we cancel the selected is known
+	color_button.select(info.tracker_color)# change the selection on the dropdown
+	_on_color_button_item_selected(info.tracker_color)# change the actual color
+	notes.text = info.tracker_notes

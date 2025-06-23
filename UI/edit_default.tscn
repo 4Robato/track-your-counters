@@ -1,0 +1,160 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0grwnfu5eswx"]
+
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="1_fy0k7"]
+[ext_resource type="Script" uid="uid://b1agb7qm60g8w" path="res://UI/edit_default.gd" id="1_o8ew8"]
+[ext_resource type="PackedScene" uid="uid://dg6tns8ttve4i" path="res://UI/color_button.tscn" id="3_fo2c7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy0k7"]
+bg_color = Color(0.298039, 0.298039, 0.298039, 1)
+
+[node name="EditDefaultPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fy0k7")
+script = ExtResource("1_o8ew8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_fy0k7")
+text = "Default Tracker"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tittle" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TrackerName" type="TextEdit" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+placeholder_text = "Tracker name"
+scroll_fit_content_height = true
+
+[node name="TrackerColor" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle" instance=ExtResource("3_fo2c7")]
+layout_mode = 2
+
+[node name="Accept" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle"]
+layout_mode = 2
+theme = ExtResource("1_fy0k7")
+text = "  ✔️  "
+
+[node name="Cancel" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle"]
+layout_mode = 2
+theme = ExtResource("1_fy0k7")
+text = "  X  "
+
+[node name="Body" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonM1" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fy0k7")
+text = "  +  "
+
+[node name="m1" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fy0k7")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonM2" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_fy0k7")
+text = "  +  "
+
+[node name="m2" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fy0k7")
+
+[node name="TrackerValue" type="LineEdit" parent="MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 1
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "50"
+placeholder_text = "value"
+alignment = 1
+emoji_menu_enabled = false
+select_all_on_focus = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ButtonP1" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fy0k7")
+text = "  +  "
+
+[node name="p1" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fy0k7")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ButtonP2" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_fy0k7")
+text = "  +  "
+
+[node name="p2" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fy0k7")
+
+[node name="Notes" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+placeholder_text = "Notes"
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor" to="." method="_on_tracker_color_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1" to="." method="_on_button_m_1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2" to="." method="_on_button_m_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1" to="." method="_on_button_p_1_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2" to="." method="_on_button_p_2_pressed"]

@@ -5,7 +5,7 @@ extends Control
 
 @onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
 
-const TRACKER = preload("res://UI/tracker.tscn")
+var TRACKER = preload("res://UI/tracker.tscn")
 
 # roll buttons
 @onready var roll: Button = $MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Roll
@@ -15,12 +15,13 @@ const TRACKER = preload("res://UI/tracker.tscn")
 
 @onready var menu_button: MenuButton = $MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MenuButton
 
+# edit
+@onready var edit_default_panel: EditPanel = $EditDefaultPanel
+
 const TEXT_THEME = preload("res://themes/text.tres")
-var current_font_size : int
 
 func _ready():
 	menu_button.get_popup().id_pressed.connect(_on_menu_item_selected)
-	current_font_size = TEXT_THEME.get_font_size("font_size", "Text")
 	update_font_size(0)
 
 func _on_menu_item_selected(id: int) -> void:
@@ -28,7 +29,7 @@ func _on_menu_item_selected(id: int) -> void:
 	popup.get_item_text(id)
 
 	match id:
-		0:#show dice
+		0:# show dice
 			roll.visible = !roll.visible
 			dice_amount.visible = !dice_amount.visible
 			dice_type.visible = !dice_type.visible
@@ -39,32 +40,40 @@ func _on_menu_item_selected(id: int) -> void:
 				popup.set_item_text(id, "⚃ Hide dice")
 			else:
 				popup.set_item_text(id, "⚃ Show dice")
-		1:#increase font size
+		1:# increase font size
 			update_font_size(15)
-		2:#decrease font size
+		2:# decrease font size
 			update_font_size(-15)
-		3:#delete trackers
+		3:# delete trackers
 			_delete_all_trackers()
+		4:# save
+			pass
+		5:# load
+			pass
+		6:# edit
+			edit_default_panel.visible = true
 		_:
 			pass
 
 func update_font_size(amount : int):
-	current_font_size += amount
-	TEXT_THEME.set_font_size("font_size", "Button",  current_font_size)
+	Global.current_UI_size += amount
+	TEXT_THEME.set_font_size("font_size", "Button",  Global.current_UI_size)
 	
-	menu_button.add_theme_font_size_override("font_size", current_font_size)
+	menu_button.add_theme_font_size_override("font_size", Global.current_UI_size)
 	
 	var menu_items : PopupMenu = menu_button.get_popup()
-	menu_items.add_theme_font_size_override("font_size", current_font_size)
+	menu_items.add_theme_font_size_override("font_size", Global.current_UI_size)
 	
 	for track in v_box_container.get_children():
 		if track is Tracker:
-			track.update_font_size(current_font_size)
+			track.update_font_size(Global.current_UI_size)
 	
 	# for spinbox we edit the internal linedit
 	var dice_line_edit : LineEdit = dice_amount.get_line_edit()
-	dice_line_edit.add_theme_font_size_override("font_size", current_font_size)
-
+	dice_line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
+	
+	# update edit screen
+	edit_default_panel.update_color_size()
 
 func _delete_all_trackers() -> void:
 	for item in v_box_container.get_children():
@@ -73,8 +82,9 @@ func _delete_all_trackers() -> void:
 
 func _on_add_button_pressed() -> void:
 	var tracker : Tracker = TRACKER.instantiate()
+	
 	v_box_container.add_child(tracker)
-	tracker.update_font_size(current_font_size)
+	tracker.update_font_size(Global.current_UI_size)
 	
 	add_button_margin.reparent(self)
 	add_button_margin.reparent(v_box_container)

@@ -9,7 +9,7 @@ extends Button
 		value = val
 		_change_text()
 		
-@export var type : BUTTON_TYPE :
+@export var type : Global.BUTTON_TYPE :
 	get:
 		return type
 	set(val):
@@ -17,14 +17,7 @@ extends Button
 		_ready()
 
 # used when editing so if you cancel it doesn't populate the true value
-var type_edit : BUTTON_TYPE
-
-enum BUTTON_TYPE {
-	PLUS,
-	MINUS,
-	MULTIPLY,
-	DIVIDE
-}
+var type_edit : Global.BUTTON_TYPE
 
 func _ready() -> void:
 	_change_text()
@@ -33,13 +26,13 @@ func _ready() -> void:
 
 func _change_text():
 	match type:
-		BUTTON_TYPE.PLUS:
+		Global.BUTTON_TYPE.PLUS:
 			text = "+ "
-		BUTTON_TYPE.MINUS:
+		Global.BUTTON_TYPE.MINUS:
 			text = "- "
-		BUTTON_TYPE.MULTIPLY:
+		Global.BUTTON_TYPE.MULTIPLY:
 			text = "x "
-		BUTTON_TYPE.DIVIDE:
+		Global.BUTTON_TYPE.DIVIDE:
 			text = "÷ "
 		_:
 			text = "+ "
