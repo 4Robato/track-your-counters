@@ -55,7 +55,8 @@ var current_color : int = 0
 var color_selected : int = 0
 
 func _ready() -> void:
-	t_info = Global.default_tracker
+	if t_info == null:
+		t_info = Global.default_tracker
 	_set_tracker_info(t_info)
 	
 	line_editm_1.value = minus_1.value
@@ -407,7 +408,9 @@ func get_tracker_info() -> TrackerInfo:
 		tracker_name.text,
 		int(tracker_value.text),
 		current_color,
-		notes.text
+		notes.text,
+		is_minimized,
+		notes_mode
 	)
 	return info
 

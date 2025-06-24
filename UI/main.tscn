@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://co7rjdayna4x1"]
+[gd_scene load_steps=7 format=3 uid="uid://co7rjdayna4x1"]
 
 [ext_resource type="Script" uid="uid://co0d62csk3rkx" path="res://UI/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bw61xu1tesd0a" path="res://UI/tracker.tscn" id="1_ig7tw"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b0grwnfu5eswx" path="res://UI/edit_default.tscn" id="4_dyfb5"]
+[ext_resource type="PackedScene" uid="uid://dqcvyjs7cm0ag" path="res://UI/load.tscn" id="5_deq60"]
+[ext_resource type="PackedScene" uid="uid://saxa07e7imcq" path="res://UI/save.tscn" id="6_6sydh"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -129,6 +131,14 @@ text = "
 "
 
 [node name="EditDefaultPanel" parent="." instance=ExtResource("4_dyfb5")]
+visible = false
+layout_mode = 1
+
+[node name="LoadPanel" parent="." instance=ExtResource("5_deq60")]
+visible = false
+layout_mode = 1
+
+[node name="SavePanel" parent="." instance=ExtResource("6_6sydh")]
 visible = false
 layout_mode = 1
 

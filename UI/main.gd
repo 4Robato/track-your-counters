@@ -1,4 +1,5 @@
 extends Control
+class_name MainMenu
 
 @onready var add_button_margin: MarginContainer = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AddButtonMargin
 @onready var add_button: Button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AddButtonMargin/AddButton
@@ -17,14 +18,18 @@ var TRACKER = preload("res://UI/tracker.tscn")
 
 # edit
 @onready var edit_default_panel: EditPanel = $EditDefaultPanel
+@onready var load_panel: LoadPanel = $LoadPanel
+@onready var save_panel: SavePanel = $SavePanel
 
 const TEXT_THEME = preload("res://themes/text.tres")
 
 func _ready():
-	menu_button.get_popup().id_pressed.connect(_on_menu_item_selected)
+	Global.saver_loader.load_settings()
+	
+	menu_button.get_popup().id_pressed.connect(on_menu_item_selected)
 	update_font_size(0)
 
-func _on_menu_item_selected(id: int) -> void:
+func on_menu_item_selected(id: int) -> void:
 	var popup = menu_button.get_popup()
 	popup.get_item_text(id)
 
@@ -47,13 +52,28 @@ func _on_menu_item_selected(id: int) -> void:
 		3:# delete trackers
 			_delete_all_trackers()
 		4:# save
-			pass
+			save_panel.visible = true
 		5:# load
-			pass
+			load_panel.visible = true
+			load_panel.load_files()
 		6:# edit
 			edit_default_panel.visible = true
+			edit_default_panel.set_values(Global.default_tracker)
 		_:
 			pass
+
+func add_tracker(tracker_info : TrackerInfo) -> void:
+	var new_tracker : Tracker = tracker_info.get_tracker()
+	v_box_container.add_child(new_tracker)
+	new_tracker.update_font_size(Global.current_UI_size)
+	
+	if tracker_info.is_minimized:
+		new_tracker._on_minimize_pressed()
+	if tracker_info.is_show_note:
+		new_tracker._on_notes_button_pressed()
+	
+	add_button_margin.reparent(self)
+	add_button_margin.reparent(v_box_container)
 
 func update_font_size(amount : int):
 	Global.current_UI_size += amount

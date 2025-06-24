@@ -1,10 +1,31 @@
 extends Node
 
+const PATH_SAVE_DIRECTORY : String = "user://Saves/"
+const PATH_SETTINGS : String = "user://"
+
+var load_tracker : TrackerInfo = TrackerInfo.new()
+var load_UI_size : int = 45
+
+@onready var saver_loader : SaverLoader = SaverLoader.new()
+var main_menu : MainMenu
+
 enum BUTTON_TYPE {
 	PLUS,
 	MINUS,
 	MULTIPLY,
 	DIVIDE
+}
+
+enum COLORS {
+	BLACK,
+	WHITE,
+	YELLOW,
+	RED,
+	BLUE,
+	CYAN,
+	GREEN,
+	BROWN,
+	ORANGE
 }
 
 # Current defaults:
@@ -15,6 +36,11 @@ var current_UI_size : int
 
 func _ready() -> void:
 	Global.current_UI_size = saved_UI_size
+	
+	for node in self.get_parent().get_children():
+		print("node", node)
+		if node is MainMenu:
+			main_menu = node
 
 func _get_button_type(button : Button) -> Global.BUTTON_TYPE:
 	match button.text:

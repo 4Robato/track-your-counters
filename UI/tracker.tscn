@@ -134,6 +134,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
+allow_greater = true
 select_all_on_focus = true
 
 [node name="HBoxLineEditm2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus"]
@@ -153,6 +154,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
+allow_greater = true
 select_all_on_focus = true
 
 [node name="minus1" parent="VBoxContainer/HBoxContainer/minus" instance=ExtResource("12_kmwt8")]
@@ -195,6 +197,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
+allow_greater = true
 select_all_on_focus = true
 
 [node name="HBoxLineEditp2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus"]
@@ -211,6 +214,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
+allow_greater = true
 select_all_on_focus = true
 
 [node name="plus1" parent="VBoxContainer/HBoxContainer/plus" instance=ExtResource("12_kmwt8")]

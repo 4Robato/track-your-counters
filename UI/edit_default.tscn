@@ -1,11 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0grwnfu5eswx"]
 
+[ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_7oygb"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="1_fy0k7"]
 [ext_resource type="Script" uid="uid://b1agb7qm60g8w" path="res://UI/edit_default.gd" id="1_o8ew8"]
 [ext_resource type="PackedScene" uid="uid://dg6tns8ttve4i" path="res://UI/color_button.tscn" id="3_fo2c7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy0k7"]
-bg_color = Color(0.298039, 0.298039, 0.298039, 1)
 
 [node name="EditDefaultPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -13,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fy0k7")
+theme_override_styles/panel = ExtResource("1_7oygb")
 script = ExtResource("1_o8ew8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

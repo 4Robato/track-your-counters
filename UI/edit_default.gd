@@ -26,6 +26,8 @@ var p2_type : Global.BUTTON_TYPE
 
 func _ready() -> void:
 	set_values(Global.default_tracker)
+	
+	update_color_size()
 
 func set_values(info : TrackerInfo) -> void:
 	m_1.value = info.button_m1
@@ -45,8 +47,8 @@ func set_values(info : TrackerInfo) -> void:
 	button_m_2.text = Global._get_button_text(m2_type)
 	button_p_1.text = Global._get_button_text(p1_type)
 	button_p_2.text = Global._get_button_text(p2_type)
-	update_color_size()
 	
+
 func update_color_size():
 		# First we change icon shown on the selected item
 	var displayed_icon = tracker_color.get_item_icon(tracker_color.get_selected_id())
@@ -62,8 +64,6 @@ func update_color_size():
 		popup_color.set_item_icon_max_width(id, Global.current_UI_size)
 		var scaled_icon = Global.get_scaled_icon(tracker_color.get_item_icon(id), Global.current_UI_size)
 		popup_color.set_item_icon(id, scaled_icon)
-	
-
 
 func _on_cancel_pressed() -> void:
 	self.visible = false
