@@ -8,6 +8,9 @@ const LOAD_BUTTON = preload("res://UI/load_button.tscn")
 @onready var load_container: VBoxContainer = $MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/LoadContainer
 const TEXT = preload("res://themes/text.tres")
 
+@onready var load_title: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer/LoadTitle
+@onready var presets_title: RichTextLabel = $MarginContainer/VBoxContainer/PresetsTitle
+
 func load_files() -> void:
 	var saves_names : Array[String] = []
 	

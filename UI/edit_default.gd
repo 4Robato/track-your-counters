@@ -1,6 +1,8 @@
 extends PanelContainer
 class_name EditPanel
 
+@onready var default_title: RichTextLabel = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/DefaultTitle
+
 @onready var m_1: SpinBox = $MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/m1
 @onready var m_2: SpinBox = $MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/m2
 @onready var p_1: SpinBox = $MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/p1

@@ -46,9 +46,9 @@ func on_menu_item_selected(id: int) -> void:
 			else:
 				popup.set_item_text(id, "⚃ Show dice")
 		1:# increase font size
-			update_font_size(15)
+			update_font_size(10)
 		2:# decrease font size
-			update_font_size(-15)
+			update_font_size(-10)
 		3:# delete trackers
 			_delete_all_trackers()
 		4:# save
@@ -94,6 +94,32 @@ func update_font_size(amount : int):
 	
 	# update edit screen
 	edit_default_panel.update_color_size()
+	
+	# save menu
+	save_panel.title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	save_panel.line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
+	save_panel.actual_save_name.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	save_panel.space.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	
+	# load menu
+	load_panel.load_title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	load_panel.presets_title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	
+	# edit default
+	edit_default_panel.default_title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	edit_default_panel.tracker_name.add_theme_font_size_override("font_size", Global.current_UI_size)
+	edit_default_panel.tracker_value.add_theme_font_size_override("font_size", Global.current_UI_size)
+	edit_default_panel.notes.add_theme_font_size_override("font_size", Global.current_UI_size)
+	# For SpinBox we target the internal LineEdit:
+	var line_edit : LineEdit = edit_default_panel.m_1.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
+	line_edit = edit_default_panel.m_2.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
+	line_edit = edit_default_panel.p_1.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
+	line_edit = edit_default_panel.p_2.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
+	
 
 func _delete_all_trackers() -> void:
 	for item in v_box_container.get_children():

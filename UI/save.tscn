@@ -31,7 +31,7 @@ size_flags_horizontal = 8
 theme = ExtResource("2_de0hj")
 text = "  X  "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="space" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_de0hj")
 text = "
@@ -66,7 +66,7 @@ layout_mode = 2
 theme = ExtResource("2_de0hj")
 text = "  🗑️  "
 
-[node name="Tittle" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_de0hj")
 text = "
