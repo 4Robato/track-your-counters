@@ -20,6 +20,7 @@ var TRACKER = preload("res://UI/tracker.tscn")
 @onready var edit_default_panel: EditPanel = $EditDefaultPanel
 @onready var load_panel: LoadPanel = $LoadPanel
 @onready var save_panel: SavePanel = $SavePanel
+@onready var info_panel: PanelContainer = $InfoPanel
 
 const TEXT_THEME = preload("res://themes/text.tres")
 
@@ -59,6 +60,8 @@ func on_menu_item_selected(id: int) -> void:
 		6:# edit
 			edit_default_panel.visible = true
 			edit_default_panel.set_values(Global.default_tracker)
+		7:# info
+			info_panel.visible = true
 		_:
 			pass
 
@@ -120,6 +123,9 @@ func update_font_size(amount : int):
 	line_edit = edit_default_panel.p_2.get_line_edit()
 	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
 	
+	# info menu
+	info_panel.title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	info_panel.content.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 
 func _delete_all_trackers() -> void:
 	for item in v_box_container.get_children():

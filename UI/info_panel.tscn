@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://dick833futlmw"]
+
+[ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_4mpkv"]
+[ext_resource type="Script" uid="uid://ckckabxlus4rl" path="res://info_panel.gd" id="1_fhwa4"]
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_4mpkv"]
+
+[node name="InfoPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_4mpkv")
+script = ExtResource("1_fhwa4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_4mpkv")
+text = "ℹ️ Infomation"
+fit_content = true
+
+[node name="Close" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_4mpkv")
+text = "  X  "
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="content" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_4mpkv")
+text = "Thanks for downloading the app! If you are lost here is how everything works:
+
+All trackers are fully editable, you can change the name, color, the value by keybard, the numbers used to change the value and even the signs of the buttons to change the value (+, -, x, ÷). You can also add notes to each tracker.
+
+When you add a new tracker with the + button, the default tracker is used which you can also edit through the menu. This can be saved (on the save menu) so you don't lose it when you close the app.
+
+You can also change the text size and save that to your taste.
+
+There is also a dice you can show by pressing \"Show dice\". You can throw as many dice as you want by changing the first value. There's 6 different dice with values:
+  · D2: 0 or 1
+  · D4: 1 to 4
+  · D6: 1 to 6
+  · D10: 0 to 9
+  · D12: 1 to 12
+  · D20: 1 to 20
+
+You can also Save the current state of your trackers (as well as with the default tracker you currently have) and then recover them in the future using the Load menu. On the save menu you can also save the current UI size and the current default tracker, if you press the delete button the text goes back to the default (and is saved like that) and same for the default tracker.
+
+In the Load/Presets menu there's also some presets to give some ideas on how to use the trackers.
+
+And finally you can remove all the trackers by pressing \"Delete all\"."
+
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Close" to="." method="_on_close_pressed"]

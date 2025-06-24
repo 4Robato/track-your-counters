@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://co7rjdayna4x1"]
+[gd_scene load_steps=8 format=3 uid="uid://co7rjdayna4x1"]
 
 [ext_resource type="Script" uid="uid://co0d62csk3rkx" path="res://UI/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bw61xu1tesd0a" path="res://UI/tracker.tscn" id="1_ig7tw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0grwnfu5eswx" path="res://UI/edit_default.tscn" id="4_dyfb5"]
 [ext_resource type="PackedScene" uid="uid://dqcvyjs7cm0ag" path="res://UI/load.tscn" id="5_deq60"]
 [ext_resource type="PackedScene" uid="uid://saxa07e7imcq" path="res://UI/save.tscn" id="6_6sydh"]
+[ext_resource type="PackedScene" uid="uid://dick833futlmw" path="res://UI/info_panel.tscn" id="7_eto42"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -50,7 +51,7 @@ layout_mode = 2
 theme = ExtResource("3_h2yge")
 text = "  ☰  "
 alignment = 0
-item_count = 7
+item_count = 8
 popup/item_0/text = "⚃ Show dice"
 popup/item_0/id = 0
 popup/item_1/text = "⬆️ Increase UI size"
@@ -63,8 +64,10 @@ popup/item_4/text = "🗄️ Load/Presets"
 popup/item_4/id = 5
 popup/item_5/text = "✏️ Edit default"
 popup/item_5/id = 6
-popup/item_6/text = "🗑️ Delete all"
-popup/item_6/id = 3
+popup/item_6/text = "ℹ️ Information"
+popup/item_6/id = 7
+popup/item_7/text = "🗑️ Delete all"
+popup/item_7/id = 3
 
 [node name="Roll" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 visible = false
@@ -139,6 +142,10 @@ visible = false
 layout_mode = 1
 
 [node name="SavePanel" parent="." instance=ExtResource("6_6sydh")]
+visible = false
+layout_mode = 1
+
+[node name="InfoPanel" parent="." instance=ExtResource("7_eto42")]
 visible = false
 layout_mode = 1
 
