@@ -64,6 +64,8 @@ func _compare_trackers(info_tracker_1 : TrackerInfo, info_tracker_2 : TrackerInf
 		return false
 	if info_tracker_1.tracker_notes != info_tracker_2.tracker_notes:
 		return false
+	if info_tracker_1.tracker_color != info_tracker_2.tracker_color:
+		return false
 	if info_tracker_1.tracker_value != info_tracker_2.tracker_value:
 		return false
 	

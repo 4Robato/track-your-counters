@@ -43,6 +43,8 @@ func set_values(info : TrackerInfo) -> void:
 	tracker_name.text = info.tracker_name
 	tracker_value.text = str(info.tracker_value)
 	tracker_color.select(info.tracker_color)
+	_on_tracker_color_item_selected(info.tracker_color)
+	
 	notes.text = info.tracker_notes
 	
 	button_m_1.text = Global._get_button_text(m1_type)
