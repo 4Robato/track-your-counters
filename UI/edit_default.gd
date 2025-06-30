@@ -27,7 +27,7 @@ var p1_type : Global.BUTTON_TYPE
 var p2_type : Global.BUTTON_TYPE
 
 func _ready() -> void:
-	set_values(Global.default_tracker)
+	set_values(Global.current_default_tracker)
 	
 	update_color_size()
 
@@ -69,7 +69,7 @@ func update_color_size():
 
 func _on_cancel_pressed() -> void:
 	self.visible = false
-	set_values(Global.default_tracker)
+	set_values(Global.current_default_tracker)
 
 func _on_accept_pressed() -> void:
 	self.visible = false
@@ -87,7 +87,7 @@ func _on_accept_pressed() -> void:
 		tracker_color.get_selected_id(),
 		notes.text
 	)
-	Global.default_tracker = new_default
+	Global.current_default_tracker = new_default
 
 func _on_button_m_1_pressed() -> void:
 	match Global._get_button_type(button_m_1):

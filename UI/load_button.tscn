@@ -21,6 +21,7 @@ size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("1_gdejx")
 text = "save1"
+clip_text = true
 
 [node name="Delete" type="Button" parent="."]
 layout_mode = 2

@@ -9,6 +9,7 @@ func save_UI_size():
 	var saved_data : Dictionary[String, Variant] = Global.load_tracker.get_dict()
 	
 	saved_data["ui_size"] = Global.current_UI_size
+	Global.save_file_UI_size = Global.current_UI_size
 	
 	var json_string = JSON.stringify(saved_data)
 	file.store_line(json_string)
@@ -16,9 +17,12 @@ func save_UI_size():
 
 func save_default_tracker():
 	var file = FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
-	var saved_data : Dictionary[String, Variant] = Global.default_tracker.get_dict()
+	var saved_data : Dictionary[String, Variant] = Global.current_default_tracker.get_dict()
 	
 	saved_data["ui_size"] = Global.load_UI_size
+	
+	Global.load_tracker = Global.current_default_tracker
+	Global.save_file_default_ti = Global.current_default_tracker
 	
 	var json_string = JSON.stringify(saved_data)
 	file.store_line(json_string)
@@ -47,9 +51,9 @@ func load_settings():
 		# Get the data from the JSON object.
 		var node_data : Dictionary = json.data
 		
-		Global.saved_UI_size = node_data["ui_size"]
 		Global.current_UI_size = node_data["ui_size"]
 		Global.load_UI_size = node_data["ui_size"]
+		Global.save_file_UI_size = node_data["ui_size"]
 		
 		var default_tracker : TrackerInfo = TrackerInfo.new(
 			node_data["m1"],
@@ -67,8 +71,9 @@ func load_settings():
 			node_data["is_minimized"],
 			node_data["is_show_note"]
 		)
-		Global.default_tracker = default_tracker
+		Global.current_default_tracker = default_tracker
 		Global.load_tracker = default_tracker
+		Global.save_file_default_ti = default_tracker
 
 func save_current_trackers(file_name : String):
 	if file_name == "":
@@ -89,7 +94,7 @@ func save_current_trackers(file_name : String):
 		if item is Tracker:
 			all_trackers.append(item.get_tracker_info().get_dict())
 	
-	var default_dict : Dictionary[String, Variant] = Global.default_tracker.get_dict()
+	var default_dict : Dictionary[String, Variant] = Global.current_default_tracker.get_dict()
 	for key in default_dict:
 		saved_data[key + "_default"] = default_dict[key]
 	
@@ -145,7 +150,7 @@ func load_file(file_name : String) -> void:
 			node_data["is_minimized_default"],
 			node_data["is_show_note_default"]
 		)
-		Global.default_tracker = default_tracker
+		Global.current_default_tracker = default_tracker
 		Global.load_tracker = default_tracker
 		
 		var num_trackers : int = node_data["num_trackers"]

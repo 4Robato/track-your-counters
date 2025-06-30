@@ -29,6 +29,8 @@ func _ready():
 	
 	menu_button.get_popup().id_pressed.connect(on_menu_item_selected)
 	update_font_size(0)
+	
+	add_tracker(Global.save_file_default_ti)
 
 func on_menu_item_selected(id: int) -> void:
 	var popup = menu_button.get_popup()
@@ -59,7 +61,7 @@ func on_menu_item_selected(id: int) -> void:
 			load_panel.load_files()
 		6:# edit
 			edit_default_panel.visible = true
-			edit_default_panel.set_values(Global.default_tracker)
+			edit_default_panel.set_values(Global.current_default_tracker)
 		7:# info
 			info_panel.visible = true
 		_:

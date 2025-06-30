@@ -38,7 +38,7 @@ func _on_close_button_pressed() -> void:
 
 # PRESETS:
 func _add_preset(default : TrackerInfo, all_info : Array[TrackerInfo]) -> void:
-	Global.default_tracker = default
+	Global.current_default_tracker = default
 	main_menu.on_menu_item_selected(3)
 	for track : TrackerInfo in all_info:
 		main_menu.add_tracker(track)

@@ -37,7 +37,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_4mpkv")
-text = "ℹ️ Infomation"
+text = "? Help"
 fit_content = true
 
 [node name="Close" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
@@ -60,26 +60,47 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_4mpkv")
-text = "Thanks for downloading the app! If you are lost here is how everything works:
+text = "Here you can find information about how the app works.
 
-All trackers are fully editable, you can change the name, color, the value by keybard, the numbers used to change the value and even the signs of the buttons to change the value (+, -, x, ÷). You can also add notes to each tracker.
+All trackers are fully editable and even the default tracker that is added when pressing the + button can be changed.
 
-When you add a new tracker with the + button, the default tracker is used which you can also edit through the menu. This can be saved (on the save menu) so you don't lose it when you close the app.
+Tracker buttons:
 
-You can also change the text size and save that to your taste.
+🗒️ Notes: It shows the notes attached to that tracker. You can introduce any text there.
+— Minimize: It hides the tracker values showing only the name.
+◇ Maximize: It shows the tracker values.
+✏️ Edit: Enters the edit mode where you can edit the values of the trackers.
 
-There is also a dice you can show by pressing \"Show dice\". You can throw as many dice as you want by changing the first value. There's 6 different dice with values:
+Once on edit mode:
+
+✔️ Accept: It applies the changes you made to the tracker.
+X Cancel: Discards the changes done to the tracker.
+↕ Position: It shows the current position and is used to change the position of the tracker.
+O Color: To change the color of the tracker.
+🗑️ Delete: It removes the tracker.
+
++/-/x/÷: You can change the type of operator is used when clicking to change the value of a tracker. Simply press on the operator to change the type on edit mode.
+
++ Add tracker: This adds the default tracker. The default tracker can be changed using the main menu and then saved for future use in the save options.
+
+Main Menu:
+
+⚃ Show dice: It shows the dice menu. You can throw as many dice as you want by changing the first value. There's 6 different dice you can use (by clicking on the dice name you change the type) with values:
   · D2: 0 or 1
   · D4: 1 to 4
   · D6: 1 to 6
   · D10: 0 to 9
   · D12: 1 to 12
   · D20: 1 to 20
+    The result is shown on the right side. You can clean the value by pressing it.
+⬆️ Increase UI size: Increases the text size.
+⬇️ Decrease UI size: Decreses the text size.
+🖇️ Save: Opens the save menu which allows you to save the UI size, the default tracker or all the current trackers (When saving the trackers the default tracker is saved together with the rest of the trackers).
+🗄️ Load/Presets: You can use some presets from here or load your previously saved trackers.
+✏️ Edit default: Allows you to change the default tracker which is the one used when adding a new one.
+? Help: Shows the current menu.
+🗑️ Delete all: Deletes all trackers.
 
-You can also Save the current state of your trackers (as well as with the default tracker you currently have) and then recover them in the future using the Load menu. On the save menu you can also save the current UI size and the current default tracker, if you press the delete button the text goes back to the default (and is saved like that) and same for the default tracker.
-
-In the Load/Presets menu there's also some presets to give some ideas on how to use the trackers.
-
-And finally you can remove all the trackers by pressing \"Delete all\"."
+Thanks for downloading the app!"
 
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/Close" to="." method="_on_close_pressed"]

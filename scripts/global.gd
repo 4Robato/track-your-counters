@@ -3,6 +3,10 @@ extends Node
 const PATH_SAVE_DIRECTORY : String = "user://Saves/"
 const PATH_SETTINGS : String = "user://"
 
+# DEFAULT VALUES:
+var DEFAULT_UI_SIZE : int = 45
+var DEFAULT_TRACKER_INFO : TrackerInfo = TrackerInfo.new()
+
 var load_tracker : TrackerInfo = TrackerInfo.new()
 var load_UI_size : int = 45
 
@@ -28,14 +32,18 @@ enum COLORS {
 	ORANGE
 }
 
+# Values in the save file
+var save_file_default_ti : TrackerInfo = TrackerInfo.new()
+var save_file_UI_size : int = 45
+
 # Current defaults:
-var default_tracker : TrackerInfo = TrackerInfo.new()
-var saved_UI_size : int = 45
+var current_default_tracker : TrackerInfo = TrackerInfo.new()
 
 var current_UI_size : int
 
 func _ready() -> void:
-	Global.current_UI_size = saved_UI_size
+	current_UI_size = save_file_UI_size
+	current_default_tracker = save_file_default_ti
 	
 	for node in self.get_parent().get_children():
 		print("node", node)

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://co7rjdayna4x1"]
+[gd_scene load_steps=7 format=3 uid="uid://co7rjdayna4x1"]
 
 [ext_resource type="Script" uid="uid://co0d62csk3rkx" path="res://UI/main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bw61xu1tesd0a" path="res://UI/tracker.tscn" id="1_ig7tw"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b0grwnfu5eswx" path="res://UI/edit_default.tscn" id="4_dyfb5"]
 [ext_resource type="PackedScene" uid="uid://dqcvyjs7cm0ag" path="res://UI/load.tscn" id="5_deq60"]
@@ -64,7 +63,7 @@ popup/item_4/text = "🗄️ Load/Presets"
 popup/item_4/id = 5
 popup/item_5/text = "✏️ Edit default"
 popup/item_5/id = 6
-popup/item_6/text = "ℹ️ Information"
+popup/item_6/text = "? Help"
 popup/item_6/id = 7
 popup/item_7/text = "🗑️ Delete all"
 popup/item_7/id = 3
@@ -112,9 +111,6 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Tracker" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ig7tw")]
-layout_mode = 2
 
 [node name="AddButtonMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2

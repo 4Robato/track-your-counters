@@ -56,7 +56,7 @@ var color_selected : int = 0
 
 func _ready() -> void:
 	if t_info == null:
-		t_info = Global.default_tracker
+		t_info = Global.current_default_tracker
 	_set_tracker_info(t_info)
 	
 	line_editm_1.value = minus_1.value
