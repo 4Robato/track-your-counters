@@ -40,7 +40,7 @@ func _on_save_button_pressed() -> void:
 	_on_close_pressed()
 
 func _on_delete_ui_save_pressed() -> void:
-	Global.load_UI_size = 45
-	Global.current_UI_size = 45
+	Global.save_file_UI_size = Global.DEFAULT_UI_SIZE
+	Global.current_UI_size = Global.DEFAULT_UI_SIZE
 	Global.main_menu.update_font_size(0)
 	Global.saver_loader.save_UI_size()

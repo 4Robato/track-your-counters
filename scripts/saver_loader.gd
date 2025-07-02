@@ -19,7 +19,7 @@ func save_default_tracker():
 	var file = FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
 	var saved_data : Dictionary[String, Variant] = Global.current_default_tracker.get_dict()
 	
-	saved_data["ui_size"] = Global.load_UI_size
+	saved_data["ui_size"] = Global.save_file_UI_size
 	
 	Global.load_tracker = Global.current_default_tracker
 	Global.save_file_default_ti = Global.current_default_tracker
@@ -32,7 +32,7 @@ func save_custom_tracker_as_default(cust_tracker : TrackerInfo):
 	var file = FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
 	var saved_data : Dictionary[String, Variant] = cust_tracker.get_dict()
 	
-	saved_data["ui_size"] = Global.load_UI_size
+	saved_data["ui_size"] = Global.save_file_UI_size
 	
 	Global.load_tracker = cust_tracker
 	Global.save_file_default_ti = cust_tracker
@@ -65,7 +65,6 @@ func load_settings():
 		var node_data : Dictionary = json.data
 		
 		Global.current_UI_size = node_data["ui_size"]
-		Global.load_UI_size = node_data["ui_size"]
 		Global.save_file_UI_size = node_data["ui_size"]
 		
 		var default_tracker : TrackerInfo = TrackerInfo.new(
