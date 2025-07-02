@@ -52,20 +52,6 @@ layout_mode = 2
 theme = ExtResource("2_de0hj")
 text = "  🗑️  "
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="DefaultButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_de0hj")
-text = "Save default tracker"
-
-[node name="DeleteDefaultSave" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme = ExtResource("2_de0hj")
-text = "  🗑️  "
-
 [node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_de0hj")
@@ -105,6 +91,4 @@ text = "Save"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/UIButton" to="." method="_on_ui_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DeleteUISave" to="." method="_on_delete_ui_save_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DefaultButton" to="." method="_on_default_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DeleteDefaultSave" to="." method="_on_delete_default_save_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]

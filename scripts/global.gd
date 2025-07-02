@@ -82,3 +82,32 @@ func get_scaled_icon(icon: Texture2D, _size: int) -> Texture2D:
 	var img = icon.get_image()
 	img.resize(_size, _size, Image.INTERPOLATE_LANCZOS)
 	return ImageTexture.create_from_image(img)
+
+func _compare_trackers(info_tracker_1 : TrackerInfo, info_tracker_2 : TrackerInfo) -> bool:
+	if info_tracker_1.button_m1 != info_tracker_2.button_m1:
+		return false
+	if info_tracker_1.button_m1_type != info_tracker_2.button_m1_type:
+		return false
+	if info_tracker_1.button_m2 != info_tracker_2.button_m2:
+		return false
+	if info_tracker_1.button_m2_type != info_tracker_2.button_m2_type:
+		return false
+	if info_tracker_1.button_p1 != info_tracker_2.button_p1:
+		return false
+	if info_tracker_1.button_p1_type != info_tracker_2.button_p1_type:
+		return false
+	if info_tracker_1.button_p2 != info_tracker_2.button_p2:
+		return false
+	if info_tracker_1.button_p2_type != info_tracker_2.button_p2_type:
+		return false
+	
+	if info_tracker_1.tracker_name != info_tracker_2.tracker_name:
+		return false
+	if info_tracker_1.tracker_notes != info_tracker_2.tracker_notes:
+		return false
+	if info_tracker_1.tracker_color != info_tracker_2.tracker_color:
+		return false
+	if info_tracker_1.tracker_value != info_tracker_2.tracker_value:
+		return false
+	
+	return true

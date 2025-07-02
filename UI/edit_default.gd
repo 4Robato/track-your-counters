@@ -26,10 +26,26 @@ var m2_type : Global.BUTTON_TYPE
 var p1_type : Global.BUTTON_TYPE
 var p2_type : Global.BUTTON_TYPE
 
+@onready var save_button: Button = $MarginContainer/VBoxContainer/HBoxContainer2/SaveButton
+@onready var load_button: Button = $MarginContainer/VBoxContainer/HBoxContainer2/LoadButton
+@onready var delete_button: Button = $MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton
+
 func _ready() -> void:
 	set_values(Global.current_default_tracker)
 	
 	update_color_size()
+
+func _process(delta: float) -> void:
+	if Global._compare_trackers(Global.save_file_default_ti, _get_edit_tracker_info()):
+		save_button.disabled = true
+		load_button.disabled = true
+	else:
+		save_button.disabled = false
+		load_button.disabled = false
+	if Global._compare_trackers(Global.save_file_default_ti, Global.DEFAULT_TRACKER_INFO):
+		delete_button.disabled = true
+	else:
+		delete_button.disabled = false
 
 func set_values(info : TrackerInfo) -> void:
 	m_1.value = info.button_m1
@@ -51,7 +67,6 @@ func set_values(info : TrackerInfo) -> void:
 	button_m_2.text = Global._get_button_text(m2_type)
 	button_p_1.text = Global._get_button_text(p1_type)
 	button_p_2.text = Global._get_button_text(p2_type)
-	
 
 func update_color_size():
 		# First we change icon shown on the selected item
@@ -69,13 +84,8 @@ func update_color_size():
 		var scaled_icon = Global.get_scaled_icon(tracker_color.get_item_icon(id), Global.current_UI_size)
 		popup_color.set_item_icon(id, scaled_icon)
 
-func _on_cancel_pressed() -> void:
-	self.visible = false
-	set_values(Global.current_default_tracker)
-
-func _on_accept_pressed() -> void:
-	self.visible = false
-	var new_default : TrackerInfo = TrackerInfo.new(
+func _get_edit_tracker_info() -> TrackerInfo:
+	var tracker_info : TrackerInfo = TrackerInfo.new(
 		int(m_1.value),
 		m1_type,
 		int(m_2.value),
@@ -89,7 +99,7 @@ func _on_accept_pressed() -> void:
 		tracker_color.get_selected_id(),
 		notes.text
 	)
-	Global.current_default_tracker = new_default
+	return tracker_info
 
 func _on_button_m_1_pressed() -> void:
 	match Global._get_button_type(button_m_1):
@@ -192,3 +202,25 @@ func _on_tracker_color_item_selected(index: int) -> void:
 	panel_container.add_theme_stylebox_override("panel", style_box)
 	tracker_value.add_theme_stylebox_override("normal", style_box)
 	notes.add_theme_stylebox_override("normal", style_box)
+
+func _on_save_button_pressed() -> void:
+	_on_accept_button_pressed()
+	Global.saver_loader.save_default_tracker()
+
+func _on_load_button_pressed() -> void:
+	set_values(Global.load_tracker)
+
+func _on_delete_button_pressed() -> void:
+	Global.current_default_tracker = TrackerInfo.new()
+	Global.load_tracker = Global.current_default_tracker
+	Global.saver_loader.save_default_tracker()
+	set_values(Global.current_default_tracker)
+
+func _on_accept_button_pressed() -> void:
+	self.visible = false
+	var new_default : TrackerInfo = _get_edit_tracker_info()
+	Global.current_default_tracker = new_default
+
+func _on_cancel_button_pressed() -> void:
+	self.visible = false
+	set_values(Global.current_default_tracker)

@@ -28,6 +28,19 @@ func save_default_tracker():
 	file.store_line(json_string)
 	file.close()
 
+func save_custom_tracker_as_default(cust_tracker : TrackerInfo):
+	var file = FileAccess.open(SETTINGS_PATH, FileAccess.WRITE)
+	var saved_data : Dictionary[String, Variant] = cust_tracker.get_dict()
+	
+	saved_data["ui_size"] = Global.load_UI_size
+	
+	Global.load_tracker = cust_tracker
+	Global.save_file_default_ti = cust_tracker
+	
+	var json_string = JSON.stringify(saved_data)
+	file.store_line(json_string)
+	file.close()
+
 func load_settings():
 	if not FileAccess.file_exists(SETTINGS_PATH):
 		return # Error! We don't have a save to load.
@@ -54,6 +67,49 @@ func load_settings():
 		Global.current_UI_size = node_data["ui_size"]
 		Global.load_UI_size = node_data["ui_size"]
 		Global.save_file_UI_size = node_data["ui_size"]
+		
+		var default_tracker : TrackerInfo = TrackerInfo.new(
+			node_data["m1"],
+			node_data["m1_type"],
+			node_data["m2"],
+			node_data["m2_type"],
+			node_data["p1"],
+			node_data["p1_type"],
+			node_data["p2"],
+			node_data["p2_type"],
+			node_data["name"],
+			node_data["value"],
+			node_data["color"],
+			node_data["notes"],
+			node_data["is_minimized"],
+			node_data["is_show_note"]
+		)
+		Global.current_default_tracker = default_tracker
+		Global.load_tracker = default_tracker
+		Global.save_file_default_ti = default_tracker
+
+func load_def_tracker() -> void:
+	if not FileAccess.file_exists(SETTINGS_PATH):
+		return # Error! We don't have a save to load.
+	
+	var save_file = FileAccess.open(SETTINGS_PATH, FileAccess.READ)
+	
+	# Load the file line by line and process that dictionary to restore
+	# the object it represents.
+	while save_file.get_position() < save_file.get_length():
+		var json_string = save_file.get_line()
+		
+		# Creates the helper class to interact with JSON.
+		var json = JSON.new()
+		
+		# Check if there is any error while parsing the JSON string, skip in case of failure.
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+			
+		# Get the data from the JSON object.
+		var node_data : Dictionary = json.data
 		
 		var default_tracker : TrackerInfo = TrackerInfo.new(
 			node_data["m1"],

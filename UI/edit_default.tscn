@@ -25,6 +25,47 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_fy0k7")
+text = "🖇️ Save"
+
+[node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_fy0k7")
+text = "🗄️ Load"
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_fy0k7")
+text = "🗑️ Delete"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AcceptButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_fy0k7")
+text = "✔️ Accept"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("1_fy0k7")
+text = "X Cancel"
+
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -55,16 +96,6 @@ scroll_fit_content_height = true
 
 [node name="TrackerColor" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle" instance=ExtResource("3_fo2c7")]
 layout_mode = 2
-
-[node name="Accept" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle"]
-layout_mode = 2
-theme = ExtResource("1_fy0k7")
-text = "  ✔️  "
-
-[node name="Cancel" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle"]
-layout_mode = 2
-theme = ExtResource("1_fy0k7")
-text = "  X  "
 
 [node name="Body" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -149,9 +180,12 @@ placeholder_text = "Notes"
 wrap_mode = 1
 scroll_fit_content_height = true
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor" to="." method="_on_tracker_color_item_selected"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/Accept" to="." method="_on_accept_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1" to="." method="_on_button_m_1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2" to="." method="_on_button_m_2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1" to="." method="_on_button_p_1_pressed"]

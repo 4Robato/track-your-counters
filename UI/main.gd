@@ -16,7 +16,7 @@ var TRACKER = preload("res://UI/tracker.tscn")
 
 @onready var menu_button: MenuButton = $MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/MenuButton
 
-# edit
+# Menu Panels
 @onready var edit_default_panel: EditPanel = $EditDefaultPanel
 @onready var load_panel: LoadPanel = $LoadPanel
 @onready var save_panel: SavePanel = $SavePanel
