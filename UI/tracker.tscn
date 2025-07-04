@@ -167,16 +167,17 @@ layout_mode = 2
 value = 10
 type = 1
 
-[node name="TrackerValue" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="TrackerValue" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-text = "50"
-placeholder_text = "value"
+max_value = 9999.0
+rounded = true
+allow_greater = true
+allow_lesser = true
 alignment = 1
-emoji_menu_enabled = false
 select_all_on_focus = true
 
 [node name="plus" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
@@ -235,7 +236,6 @@ value = 10
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2/ButtonLineEditm2" to="." method="_on_button_line_editm_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus1" to="." method="_on_minus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus2" to="." method="_on_minus_2_pressed"]
-[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/TrackerValue" to="." method="_on_tracker_value_text_submitted"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1/ButtonLineEditp1" to="." method="_on_button_line_editp_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2/ButtonLineEditp2" to="." method="_on_button_line_editp_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus1" to="." method="_on_plus_1_pressed"]

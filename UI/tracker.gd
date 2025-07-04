@@ -16,7 +16,7 @@ extends MarginContainer
 @onready var close: Button = $VBoxContainer/PanelContainer/HBoxContainer/close
 
 @onready var h_box_container: HBoxContainer = $VBoxContainer/HBoxContainer
-@onready var tracker_value: LineEdit = $VBoxContainer/HBoxContainer/TrackerValue
+@onready var tracker_value: SpinBox = $VBoxContainer/HBoxContainer/TrackerValue
 
 @onready var h_box_line_editm_1: HBoxContainer = $VBoxContainer/HBoxContainer/minus/HBoxLineEditm1
 @onready var h_box_line_editm_2: HBoxContainer = $VBoxContainer/HBoxContainer/minus/HBoxLineEditm2
@@ -65,64 +65,56 @@ func _ready() -> void:
 	line_editp_2.value = plus_2.value
 
 func _on_minus_1_pressed() -> void:
-	var tracker_value_int : int = int(tracker_value.text)
 	match minus_1.type:
 		Global.BUTTON_TYPE.MINUS:
-			tracker_value_int -= minus_1.value
+			tracker_value.value -= minus_1.value
 		Global.BUTTON_TYPE.PLUS:
-			tracker_value_int += minus_1.value
+			tracker_value.value += minus_1.value
 		Global.BUTTON_TYPE.MULTIPLY:
-			tracker_value_int *= minus_1.value
+			tracker_value.value *= minus_1.value
 		Global.BUTTON_TYPE.DIVIDE:
-			tracker_value_int /= minus_1.value
+			tracker_value.value /= minus_1.value
 		_:
 			pass
-	tracker_value.text = str(tracker_value_int)
 
 func _on_minus_2_pressed() -> void:
-	var tracker_value_int : int = int(tracker_value.text)
 	match minus_2.type:
 		Global.BUTTON_TYPE.MINUS:
-			tracker_value_int -= minus_2.value
+			tracker_value.value -= minus_2.value
 		Global.BUTTON_TYPE.PLUS:
-			tracker_value_int += minus_2.value
+			tracker_value.value += minus_2.value
 		Global.BUTTON_TYPE.MULTIPLY:
-			tracker_value_int *= minus_2.value
+			tracker_value.value *= minus_2.value
 		Global.BUTTON_TYPE.DIVIDE:
-			tracker_value_int /= minus_2.value
+			tracker_value.value /= minus_2.value
 		_:
 			pass
-	tracker_value.text = str(tracker_value_int)
 
 func _on_plus_1_pressed() -> void:
-	var tracker_value_int : int = int(tracker_value.text)
 	match plus_1.type:
 		Global.BUTTON_TYPE.MINUS:
-			tracker_value_int -= plus_1.value
+			tracker_value.value -= plus_1.value
 		Global.BUTTON_TYPE.PLUS:
-			tracker_value_int += plus_1.value
+			tracker_value.value += plus_1.value
 		Global.BUTTON_TYPE.MULTIPLY:
-			tracker_value_int *= plus_1.value
+			tracker_value.value *= plus_1.value
 		Global.BUTTON_TYPE.DIVIDE:
-			tracker_value_int /= plus_1.value
+			tracker_value.value /= plus_1.value
 		_:
 			pass
-	tracker_value.text = str(tracker_value_int)
 
 func _on_plus_2_pressed() -> void:
-	var tracker_value_int : int = int(tracker_value.text)
 	match plus_2.type:
 		Global.BUTTON_TYPE.MINUS:
-			tracker_value_int -= plus_2.value
+			tracker_value.value -= plus_2.value
 		Global.BUTTON_TYPE.PLUS:
-			tracker_value_int += plus_2.value
+			tracker_value.value += plus_2.value
 		Global.BUTTON_TYPE.MULTIPLY:
-			tracker_value_int *= plus_2.value
+			tracker_value.value *= plus_2.value
 		Global.BUTTON_TYPE.DIVIDE:
-			tracker_value_int /= plus_2.value
+			tracker_value.value /= plus_2.value
 		_:
 			pass
-	tracker_value.text = str(tracker_value_int)
 
 func _on_close_pressed() -> void:
 	self.queue_free()
@@ -154,9 +146,6 @@ func _on_minimize_pressed() -> void:
 		self.size_flags_vertical = !self.size_flags_vertical
 	
 		is_minimized = !is_minimized
-
-func _on_tracker_value_text_submitted(new_text: String) -> void:
-	tracker_value.text = str(int(new_text))
 
 func _reverse_visible():
 	edit_mode = !edit_mode
@@ -260,7 +249,7 @@ func _on_color_button_item_selected(index: int) -> void:
 	minus_2.add_theme_stylebox_override("normal", style_box)
 	plus_1.add_theme_stylebox_override("normal", style_box)
 	plus_2.add_theme_stylebox_override("normal", style_box)
-	tracker_value.add_theme_stylebox_override("normal", style_box)
+	#tracker_value.add_theme_stylebox_override("normal", style_box)
 	#tracker_name.add_theme_stylebox_override("normal", style_box)
 	notes.add_theme_stylebox_override("normal", style_box)
 	
@@ -269,10 +258,27 @@ func _on_color_button_item_selected(index: int) -> void:
 	line_editp_1.add_theme_stylebox_override("field_and_buttons_separator", style_box)
 	line_editp_2.add_theme_stylebox_override("field_and_buttons_separator", style_box)
 	
+	# For SpinBox we target the internal LineEdit:
+	var line_edit_tv : LineEdit = tracker_value.get_line_edit()
+	line_edit_tv.add_theme_stylebox_override("normal", style_box)
+	
+	var line_edit : LineEdit = line_editm_1.get_line_edit()
+	line_edit.add_theme_stylebox_override("normal", style_box)
+	var line_edit_2 : LineEdit = line_editm_2.get_line_edit()
+	line_edit_2.add_theme_stylebox_override("normal", style_box)
+	var line_edit_3 : LineEdit = line_editp_1.get_line_edit()
+	line_edit_3.add_theme_stylebox_override("normal", style_box)
+	var line_edit_4 : LineEdit = line_editp_2.get_line_edit()
+	line_edit_4.add_theme_stylebox_override("normal", style_box)
+	
+	# operators edit buttons:
+	button_line_editm_1.add_theme_stylebox_override("normal", style_box)
+	button_line_editm_2.add_theme_stylebox_override("normal", style_box)
+	button_line_editp_1.add_theme_stylebox_override("normal", style_box)
+	button_line_editp_2.add_theme_stylebox_override("normal", style_box)
 
 func update_font_size(text_size : int):
 	tracker_name.add_theme_font_size_override("font_size", text_size)
-	tracker_value.add_theme_font_size_override("font_size", text_size)
 	notes.add_theme_font_size_override("font_size", int(text_size/1.3))
 	
 	minus_1.add_theme_font_size_override("font_size", text_size)
@@ -281,6 +287,9 @@ func update_font_size(text_size : int):
 	plus_2.add_theme_font_size_override("font_size", text_size)
 	
 	# For SpinBox we target the internal LineEdit:
+	var line_edit_tv : LineEdit = tracker_value.get_line_edit()
+	line_edit_tv.add_theme_font_size_override("font_size", text_size)
+	
 	var line_edit : LineEdit = line_editm_1.get_line_edit()
 	line_edit.add_theme_font_size_override("font_size", text_size)
 	var line_edit_2 : LineEdit = line_editm_2.get_line_edit()
@@ -424,7 +433,7 @@ func _set_tracker_info(info : TrackerInfo) -> void:
 	plus_2.value = info.button_p2
 	plus_2.type = info.button_p2_type
 	tracker_name.text = info.tracker_name
-	tracker_value.text = str(info.tracker_value)
+	tracker_value.value = info.tracker_value
 	current_color = info.tracker_color# this is so when we cancel the selected is known
 	color_button.select(info.tracker_color)# change the selection on the dropdown
 	_on_color_button_item_selected(info.tracker_color)# change the actual color

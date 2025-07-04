@@ -116,6 +116,8 @@ text = "  +  "
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
+rounded = true
+allow_greater = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -129,17 +131,20 @@ text = "  +  "
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
+rounded = true
+allow_greater = true
 
-[node name="TrackerValue" type="LineEdit" parent="MarginContainer/VBoxContainer/Body"]
+[node name="TrackerValue" type="SpinBox" parent="MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 mouse_filter = 1
 theme = ExtResource("1_fy0k7")
-text = "50"
-placeholder_text = "value"
+max_value = 9999.0
+rounded = true
+allow_greater = true
+allow_lesser = true
 alignment = 1
-emoji_menu_enabled = false
 select_all_on_focus = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
@@ -158,6 +163,8 @@ text = "  +  "
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
+rounded = true
+allow_greater = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2"]
 layout_mode = 2
@@ -171,6 +178,8 @@ text = "  +  "
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
+rounded = true
+allow_greater = true
 
 [node name="Notes" type="TextEdit" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -14,7 +14,7 @@ class_name EditPanel
 @onready var button_p_2: Button = $MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2
 
 @onready var tracker_name: TextEdit = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerName
-@onready var tracker_value: LineEdit = $MarginContainer/VBoxContainer/Body/TrackerValue
+@onready var tracker_value: SpinBox = $MarginContainer/VBoxContainer/Body/TrackerValue
 @onready var tracker_color: OptionButton = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor
 @onready var notes: TextEdit = $MarginContainer/VBoxContainer/Notes
 
@@ -57,7 +57,7 @@ func set_values(info : TrackerInfo) -> void:
 	p1_type = info.button_p1_type
 	p2_type = info.button_p2_type
 	tracker_name.text = info.tracker_name
-	tracker_value.text = str(info.tracker_value)
+	tracker_value.value = info.tracker_value
 	tracker_color.select(info.tracker_color)
 	_on_tracker_color_item_selected(info.tracker_color)
 	
@@ -69,7 +69,7 @@ func set_values(info : TrackerInfo) -> void:
 	button_p_2.text = Global._get_button_text(p2_type)
 
 func update_color_size():
-		# First we change icon shown on the selected item
+	# First we change icon shown on the selected item
 	var displayed_icon = tracker_color.get_item_icon(tracker_color.get_selected_id())
 	tracker_color.add_theme_font_size_override("font_size", Global.current_UI_size)
 	tracker_color.set_item_icon(
@@ -95,7 +95,7 @@ func _get_edit_tracker_info() -> TrackerInfo:
 		int(p_2.value),
 		p2_type,
 		tracker_name.text,
-		int(tracker_value.text),
+		tracker_value.value,
 		tracker_color.get_selected_id(),
 		notes.text
 	)
@@ -200,8 +200,26 @@ func _on_tracker_color_item_selected(index: int) -> void:
 	
 	style_box.bg_color = color_sel
 	panel_container.add_theme_stylebox_override("panel", style_box)
-	tracker_value.add_theme_stylebox_override("normal", style_box)
 	notes.add_theme_stylebox_override("normal", style_box)
+	
+	# For SpinBox we target the internal LineEdit:
+	var line_edit_tv : LineEdit = tracker_value.get_line_edit()
+	line_edit_tv.add_theme_stylebox_override("normal", style_box)
+	line_edit_tv.add_theme_font_size_override("font_size", Global.current_UI_size)
+	
+	var line_edit_m1 : LineEdit = m_1.get_line_edit()
+	line_edit_m1.add_theme_stylebox_override("normal", style_box)
+	var line_edit_m2 : LineEdit = m_2.get_line_edit()
+	line_edit_m2.add_theme_stylebox_override("normal", style_box)
+	var line_edit_p1 : LineEdit = p_1.get_line_edit()
+	line_edit_p1.add_theme_stylebox_override("normal", style_box)
+	var line_edit_p2 : LineEdit = p_2.get_line_edit()
+	line_edit_p2.add_theme_stylebox_override("normal", style_box)
+	
+	button_m_1.add_theme_stylebox_override("normal", style_box)
+	button_m_2.add_theme_stylebox_override("normal", style_box)
+	button_p_1.add_theme_stylebox_override("normal", style_box)
+	button_p_2.add_theme_stylebox_override("normal", style_box)
 
 func _on_save_button_pressed() -> void:
 	_on_accept_button_pressed()
