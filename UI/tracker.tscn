@@ -48,12 +48,14 @@ scroll_fit_content_height = true
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
+mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = "  ✏️  "
 
 [node name="NotesButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = "  🗒️  "
 
@@ -62,17 +64,20 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
+mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = "  X  "
 
 [node name="ColorButton" parent="VBoxContainer/PanelContainer/HBoxContainer" instance=ExtResource("3_76b1b")]
 visible = false
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Location" type="SpinBox" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 8
+mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 min_value = 1.0
 max_value = 9.0
@@ -170,8 +175,6 @@ type = 1
 [node name="TrackerValue" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 1
-mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 max_value = 9999.0
 rounded = true

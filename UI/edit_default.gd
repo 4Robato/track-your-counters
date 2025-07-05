@@ -1,34 +1,36 @@
 extends PanelContainer
 class_name EditPanel
 
-@onready var default_title: RichTextLabel = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/DefaultTitle
+@onready var default_title: RichTextLabel = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/DefaultTitle
 
-@onready var m_1: SpinBox = $MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/m1
-@onready var m_2: SpinBox = $MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/m2
-@onready var p_1: SpinBox = $MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/p1
-@onready var p_2: SpinBox = $MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/p2
+@onready var m_1: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/m1
+@onready var m_2: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/m2
+@onready var p_1: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/p1
+@onready var p_2: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/p2
 
-@onready var button_m_1: Button = $MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1
-@onready var button_m_2: Button = $MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2
-@onready var button_p_1: Button = $MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1
-@onready var button_p_2: Button = $MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2
+@onready var button_m_1: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1
+@onready var button_m_2: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2
+@onready var button_p_1: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1
+@onready var button_p_2: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2
 
-@onready var tracker_name: TextEdit = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerName
-@onready var tracker_value: SpinBox = $MarginContainer/VBoxContainer/Body/TrackerValue
-@onready var tracker_color: OptionButton = $MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor
-@onready var notes: TextEdit = $MarginContainer/VBoxContainer/Notes
+@onready var tracker_name: TextEdit = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerName
+@onready var tracker_value: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/TrackerValue
+@onready var tracker_color: OptionButton = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor
+@onready var notes: TextEdit = $MarginContainer/ScrollContainer/VBoxContainer/Notes
 
 var style_box = StyleBoxFlat.new()
-@onready var panel_container: PanelContainer = $MarginContainer/VBoxContainer/PanelContainer
+@onready var panel_container: PanelContainer = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer
 
 var m1_type : Global.BUTTON_TYPE
 var m2_type : Global.BUTTON_TYPE
 var p1_type : Global.BUTTON_TYPE
 var p2_type : Global.BUTTON_TYPE
 
-@onready var save_button: Button = $MarginContainer/VBoxContainer/HBoxContainer2/SaveButton
-@onready var load_button: Button = $MarginContainer/VBoxContainer/HBoxContainer2/LoadButton
-@onready var delete_button: Button = $MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton
+@onready var save_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SaveButton
+@onready var load_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/LoadButton
+@onready var delete_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/DeleteButton
+
+@onready var scroll_container: ScrollContainer = $MarginContainer/ScrollContainer
 
 func _ready() -> void:
 	set_values(Global.current_default_tracker)
@@ -69,6 +71,7 @@ func set_values(info : TrackerInfo) -> void:
 	button_p_2.text = Global._get_button_text(p2_type)
 
 func update_color_size():
+	notes.add_theme_font_size_override("font_size", int(Global.current_UI_size/1.3))
 	# First we change icon shown on the selected item
 	var displayed_icon = tracker_color.get_item_icon(tracker_color.get_selected_id())
 	tracker_color.add_theme_font_size_override("font_size", Global.current_UI_size)
@@ -95,7 +98,7 @@ func _get_edit_tracker_info() -> TrackerInfo:
 		int(p_2.value),
 		p2_type,
 		tracker_name.text,
-		tracker_value.value,
+		int(tracker_value.value),
 		tracker_color.get_selected_id(),
 		notes.text
 	)
@@ -242,3 +245,6 @@ func _on_accept_button_pressed() -> void:
 func _on_cancel_button_pressed() -> void:
 	self.visible = false
 	set_values(Global.current_default_tracker)
+
+func _on_notes_text_changed() -> void:
+	scroll_container.scroll_vertical = 9999

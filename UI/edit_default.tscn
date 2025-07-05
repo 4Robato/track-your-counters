@@ -11,81 +11,100 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("1_7oygb")
 script = ExtResource("1_o8ew8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-size_flags_vertical = 0
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("1_fy0k7")
-text = "🖇️ Save"
-
-[node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("1_fy0k7")
-text = "🗄️ Load"
-
-[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("1_fy0k7")
-text = "🗑️ Delete"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="AcceptButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("1_fy0k7")
-text = "✔️ Accept"
-
-[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("1_fy0k7")
-text = "X Cancel"
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="DefaultTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "🖇️ Save"
+
+[node name="LoadButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "🗄️ Load"
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "🗑️ Delete"
+
+[node name="Separator" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fy0k7")
+text = "
+"
+fit_content = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AcceptButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "✔️ Accept"
+
+[node name="CancelButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "X Cancel"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="DefaultTitle" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("1_fy0k7")
 text = "Default Tracker"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Tittle" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="Tittle" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TrackerName" type="TextEdit" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle"]
+[node name="TrackerName" type="TextEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
@@ -94,51 +113,53 @@ theme = ExtResource("1_fy0k7")
 placeholder_text = "Tracker name"
 scroll_fit_content_height = true
 
-[node name="TrackerColor" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle" instance=ExtResource("3_fo2c7")]
+[node name="TrackerColor" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle" instance=ExtResource("3_fo2c7")]
 layout_mode = 2
 
-[node name="Body" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Body" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonM1" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+[node name="ButtonM1" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_fy0k7")
-text = "  +  "
-
-[node name="m1" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_fy0k7")
-rounded = true
-allow_greater = true
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
-layout_mode = 2
-
-[node name="ButtonM2" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme = ExtResource("1_fy0k7")
-text = "  +  "
-
-[node name="m2" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_fy0k7")
-rounded = true
-allow_greater = true
-
-[node name="TrackerValue" type="SpinBox" parent="MarginContainer/VBoxContainer/Body"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 1
+focus_mode = 0
 mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "  +  "
+
+[node name="m1" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fy0k7")
+rounded = true
+allow_greater = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonM2" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_fy0k7")
+text = "  +  "
+
+[node name="m2" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_fy0k7")
+rounded = true
+allow_greater = true
+
+[node name="TrackerValue" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 max_value = 9999.0
 rounded = true
@@ -147,41 +168,45 @@ allow_lesser = true
 alignment = 1
 select_all_on_focus = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2"]
 layout_mode = 2
 
-[node name="ButtonP1" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
+[node name="ButtonP1" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
 theme = ExtResource("1_fy0k7")
 text = "  +  "
 
-[node name="p1" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
+[node name="p1" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2"]
 layout_mode = 2
 
-[node name="ButtonP2" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
+[node name="ButtonP2" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
 theme = ExtResource("1_fy0k7")
 text = "  +  "
 
-[node name="p2" type="SpinBox" parent="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
+[node name="p2" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
 
-[node name="Notes" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+[node name="Notes" type="TextEdit" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("1_fy0k7")
@@ -189,13 +214,14 @@ placeholder_text = "Notes"
 wrap_mode = 1
 scroll_fit_content_height = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/LoadButton" to="." method="_on_load_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton" to="." method="_on_delete_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/AcceptButton" to="." method="_on_accept_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor" to="." method="_on_tracker_color_item_selected"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1" to="." method="_on_button_m_1_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2" to="." method="_on_button_m_2_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1" to="." method="_on_button_p_1_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2" to="." method="_on_button_p_2_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor" to="." method="_on_tracker_color_item_selected"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1" to="." method="_on_button_m_1_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2" to="." method="_on_button_m_2_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1" to="." method="_on_button_p_1_pressed"]
+[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2" to="." method="_on_button_p_2_pressed"]
+[connection signal="text_changed" from="MarginContainer/ScrollContainer/VBoxContainer/Notes" to="." method="_on_notes_text_changed"]
