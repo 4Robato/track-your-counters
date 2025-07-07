@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dick833futlmw"]
+[gd_scene load_steps=5 format=3 uid="uid://dick833futlmw"]
 
 [ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_4mpkv"]
 [ext_resource type="Script" uid="uid://ckckabxlus4rl" path="res://info_panel.gd" id="1_fhwa4"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_4mpkv"]
+[ext_resource type="FontFile" uid="uid://b7b22c7x1x2mj" path="res://fonts/OpenMoji-color-sbix.ttf" id="4_48w55"]
 
 [node name="InfoPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -33,17 +34,31 @@ size_flags_vertical = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="emoji" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_4mpkv")
+theme_override_fonts/normal_font = ExtResource("4_48w55")
+theme_override_fonts/mono_font = ExtResource("4_48w55")
+theme_override_fonts/italics_font = ExtResource("4_48w55")
+theme_override_fonts/bold_italics_font = ExtResource("4_48w55")
+theme_override_fonts/bold_font = ExtResource("4_48w55")
+text = "❓"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
 [node name="Title" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_4mpkv")
-text = "? Help"
+text = "Help"
 fit_content = true
 
 [node name="Close" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_4mpkv")
-text = "  X  "
+text = " ❌ "
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -66,7 +81,7 @@ All trackers are fully editable and even the default tracker that is added when 
 
 Tracker buttons:
 
-🗒️ Notes: It shows the notes attached to that tracker. You can introduce any text there.
+📝 Notes: It shows the notes attached to that tracker. You can introduce any text there.
 — Minimize: It hides the tracker values showing only the name.
 ◇ Maximize: It shows the tracker values.
 ✏️ Edit: Enters the edit mode where you can edit the values of the trackers.
@@ -74,7 +89,7 @@ Tracker buttons:
 Once on edit mode:
 
 ✔️ Accept: It applies the changes you made to the tracker.
-X Cancel: Discards the changes done to the tracker.
+❌ Cancel: Discards the changes done to the tracker.
 ↕ Position: It shows the current position and is used to change the position of the tracker.
 O Color: To change the color of the tracker.
 🗑️ Delete: It removes the tracker.
@@ -85,7 +100,7 @@ O Color: To change the color of the tracker.
 
 Main Menu:
 
-⚃ Show dice: It shows the dice menu. You can throw as many dice as you want by changing the first value. There's 6 different dice you can use (by clicking on the dice name you change the type) with values:
+🎲 Show dice: It shows the dice menu. You can throw as many dice as you want by changing the first value. There's 6 different dice you can use (by clicking on the dice name you change the type) with values:
   · D2: 0 or 1
   · D4: 1 to 4
   · D6: 1 to 6
@@ -95,16 +110,18 @@ Main Menu:
     The result is shown on the right side. You can clean the value by pressing it.
 ⬆️ Increase UI size: Increases the text size.
 ⬇️ Decrease UI size: Decreses the text size.
-🖇️ Save: Opens the save menu which allows you to save the UI size or all the current trackers (When saving the trackers the default tracker is saved together with the rest of the trackers).
-🗄️ Load/Presets: You can use some presets from here or load your previously saved trackers.
+📎 Save: Opens the save menu which allows you to save the UI size or all the current trackers (When saving the trackers the default tracker is saved together with the rest of the trackers).
+📂 Load/Presets: You can use some presets from here or load your previously saved trackers.
 ✏️ Edit default: Allows you to change the default tracker which is the one used when adding a new one. We have several button there:
-  · 🖇️ Save: Saves the tracker to the settings file for future use.
-  · 🗄️ Load: Load the default tracker from the settings file that has been previously saved.
+  · 📎 Save: Saves the tracker to the settings file for future use.
+  · 📂 Load: Load the default tracker from the settings file that has been previously saved.
   · 🗑️ Delete: Deletes the default tracker from the saved settings to the predefined value (like a factory reset).
   · ✔️ Accept: Accepts the default tracker but doesn't save it to the settings file for future use.
-  · X Cancel: Closes the panel without saving the changes.
-? Help: Shows the current menu.
+  · ❌ Cancel: Closes the panel without saving the changes.
+❓ Help: Shows the current menu.
 🗑️ Delete all: Deletes all trackers.
+
+All emojis used in this app are from OpenMoji. Check out their github: https://github.com/hfg-gmuend/openmoji
 
 Thanks for downloading the app!"
 

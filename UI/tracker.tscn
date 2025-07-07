@@ -50,14 +50,14 @@ size_flags_horizontal = 8
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-text = "  ✏️  "
+text = " ✏️ "
 
 [node name="NotesButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-text = "  🗒️  "
+text = " 📝 "
 
 [node name="Cancel" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 visible = false
@@ -66,7 +66,7 @@ size_flags_horizontal = 8
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-text = "  X  "
+text = " ❌ "
 
 [node name="ColorButton" parent="VBoxContainer/PanelContainer/HBoxContainer" instance=ExtResource("3_76b1b")]
 visible = false
@@ -75,6 +75,7 @@ mouse_filter = 1
 
 [node name="Location" type="SpinBox" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 visible = false
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 8
 mouse_filter = 1
@@ -93,7 +94,7 @@ size_flags_horizontal = 8
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-text = "  —  "
+text = " — "
 
 [node name="close" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 visible = false
@@ -102,7 +103,7 @@ size_flags_horizontal = 8
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-text = "  🗑️  "
+text = " 🗑️ "
 
 [node name="Notes" type="TextEdit" parent="VBoxContainer"]
 visible = false

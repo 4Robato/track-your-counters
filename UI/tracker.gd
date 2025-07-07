@@ -121,9 +121,9 @@ func _on_close_pressed() -> void:
 
 func _on_minimize_pressed() -> void:
 	if !is_minimized:
-		minimize.text = "  ◇  "
+		minimize.text = " ◇ "
 	else:
-		minimize.text = "  —  "
+		minimize.text = " — "
 	
 	if notes_mode and !is_minimized:
 		notes.visible = false
@@ -149,10 +149,10 @@ func _on_minimize_pressed() -> void:
 
 func _reverse_visible():
 	edit_mode = !edit_mode
-	if edit.text == "  ✔️  ":
-		edit.text = "  ✏️  "
+	if edit.text == " ✔️ ":
+		edit.text = " ✏️ "
 	else:
-		edit.text = "  ✔️  "
+		edit.text = " ✔️ "
 	
 	cancel.visible = !cancel.visible
 	location.visible = !location.visible
@@ -236,9 +236,9 @@ func _on_color_button_item_selected(index: int) -> void:
 		6:#green
 			color_sel = Color(0, 1, 0, 0.39)
 		7:#brown
-			color_sel = Color(0.647, 0.165, 0.165, 0.39)
+			color_sel = Color(0.55, 0.165, 0.165, 0.39)
 		8:#orange
-			color_sel = Color(1, 0.647, 0, 0.39)
+			color_sel = Color(1, 0.55, 0, 0.39)
 		_:#default = Black
 			color_sel = Color(0, 0, 0, 0.39)
 	
@@ -249,8 +249,6 @@ func _on_color_button_item_selected(index: int) -> void:
 	minus_2.add_theme_stylebox_override("normal", style_box)
 	plus_1.add_theme_stylebox_override("normal", style_box)
 	plus_2.add_theme_stylebox_override("normal", style_box)
-	#tracker_value.add_theme_stylebox_override("normal", style_box)
-	#tracker_name.add_theme_stylebox_override("normal", style_box)
 	notes.add_theme_stylebox_override("normal", style_box)
 	
 	line_editm_1.add_theme_stylebox_override("field_and_buttons_separator", style_box)
@@ -289,18 +287,24 @@ func update_font_size(text_size : int):
 	# For SpinBox we target the internal LineEdit:
 	var line_edit_tv : LineEdit = tracker_value.get_line_edit()
 	line_edit_tv.add_theme_font_size_override("font_size", text_size)
+	line_edit_tv.add_theme_constant_override("minimum_character_width", 1)
 	
 	var line_edit : LineEdit = line_editm_1.get_line_edit()
 	line_edit.add_theme_font_size_override("font_size", text_size)
+	line_edit.add_theme_constant_override("minimum_character_width", 1)
 	var line_edit_2 : LineEdit = line_editm_2.get_line_edit()
 	line_edit_2.add_theme_font_size_override("font_size", text_size)
+	line_edit_2.add_theme_constant_override("minimum_character_width", 1)
 	var line_edit_3 : LineEdit = line_editp_1.get_line_edit()
 	line_edit_3.add_theme_font_size_override("font_size", text_size)
+	line_edit_3.add_theme_constant_override("minimum_character_width", 1)
 	var line_edit_4 : LineEdit = line_editp_2.get_line_edit()
 	line_edit_4.add_theme_font_size_override("font_size", text_size)
+	line_edit_4.add_theme_constant_override("minimum_character_width", 1)
 	
 	var location_line_edit : LineEdit = location.get_line_edit()
 	location_line_edit.add_theme_font_size_override("font_size", text_size)
+	location_line_edit.add_theme_constant_override("minimum_character_width", 3)
 	
 	# First we change icon shown on the selected item
 	var displayed_icon = color_button.get_item_icon(color_button.get_selected_id())

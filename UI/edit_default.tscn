@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0grwnfu5eswx"]
+[gd_scene load_steps=10 format=3 uid="uid://b0grwnfu5eswx"]
 
 [ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_7oygb"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="1_fy0k7"]
 [ext_resource type="Script" uid="uid://b1agb7qm60g8w" path="res://UI/edit_default.gd" id="1_o8ew8"]
 [ext_resource type="PackedScene" uid="uid://dg6tns8ttve4i" path="res://UI/color_button.tscn" id="3_fo2c7"]
+[ext_resource type="Texture2D" uid="uid://xpaecgeeo52y" path="res://assets/icons/1F4CE.svg" id="4_t4tqh"]
+[ext_resource type="Texture2D" uid="uid://dtx5ywlhyeolt" path="res://assets/icons/1F4C2.svg" id="5_o814q"]
+[ext_resource type="Texture2D" uid="uid://ciwck123ijc35" path="res://assets/icons/E262.svg" id="6_ang1q"]
+[ext_resource type="Texture2D" uid="uid://ddux74gjhw1a1" path="res://assets/icons/2714.svg" id="7_vrggt"]
+[ext_resource type="Texture2D" uid="uid://d24e4ndjyw467" path="res://assets/icons/274C.svg" id="8_elsae"]
 
 [node name="EditDefaultPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -12,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 theme_override_styles/panel = ExtResource("1_7oygb")
 script = ExtResource("1_o8ew8")
 
@@ -29,7 +34,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -40,7 +44,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_fy0k7")
-text = "🖇️ Save"
+text = "Save"
+icon = ExtResource("4_t4tqh")
+expand_icon = true
 
 [node name="LoadButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -48,7 +54,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_fy0k7")
-text = "🗄️ Load"
+text = "Load"
+icon = ExtResource("5_o814q")
+expand_icon = true
 
 [node name="DeleteButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -56,7 +64,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_fy0k7")
-text = "🗑️ Delete"
+text = "Delete"
+icon = ExtResource("6_ang1q")
+expand_icon = true
 
 [node name="Separator" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -74,7 +84,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_fy0k7")
-text = "✔️ Accept"
+text = "Accept"
+icon = ExtResource("7_vrggt")
+expand_icon = true
 
 [node name="CancelButton" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -82,7 +94,9 @@ size_flags_horizontal = 3
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("1_fy0k7")
-text = "X Cancel"
+text = "Cancel"
+icon = ExtResource("8_elsae")
+expand_icon = true
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -139,6 +153,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+select_all_on_focus = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -156,6 +171,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+select_all_on_focus = true
 
 [node name="TrackerValue" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body"]
 layout_mode = 2
@@ -188,6 +204,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+select_all_on_focus = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2"]
 layout_mode = 2
@@ -205,6 +222,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+select_all_on_focus = true
 
 [node name="Notes" type="TextEdit" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
