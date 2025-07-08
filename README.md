@@ -17,7 +17,7 @@ The app is available on:
 - fonts: folder with fonts used.
 - android: android build template.
 
-## Here it works
+## Here is how it works
 
 All trackers are fully editable and even the default tracker that is added when pressing the + button can be changed.
 
