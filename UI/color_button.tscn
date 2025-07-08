@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://dg6tns8ttve4i"]
 
-[ext_resource type="Texture2D" uid="uid://cp2w4oqcjcogn" path="res://assets/black_color.svg" id="1_u8pds"]
-[ext_resource type="Texture2D" uid="uid://dkqxt47dorgh8" path="res://assets/white_color.svg" id="2_qmgqq"]
-[ext_resource type="Texture2D" uid="uid://bdsauclhxr50v" path="res://assets/yellow_color.svg" id="3_0djsn"]
-[ext_resource type="Texture2D" uid="uid://bboh3xhwmph05" path="res://assets/red_color.svg" id="4_tyrkb"]
-[ext_resource type="Texture2D" uid="uid://c723vvmfw3rri" path="res://assets/blue_color.svg" id="5_2i3uc"]
-[ext_resource type="Texture2D" uid="uid://cnb25xlvn7wo3" path="res://assets/cyan_color.svg" id="6_71u4y"]
-[ext_resource type="Texture2D" uid="uid://hvhuhqjj0j62" path="res://assets/green_color.svg" id="7_ulvdo"]
-[ext_resource type="Texture2D" uid="uid://dnerf08qy2u0u" path="res://assets/brown_color.svg" id="8_15ctl"]
-[ext_resource type="Texture2D" uid="uid://dv7hnufx0pkg1" path="res://assets/orange_color.svg" id="9_mp72j"]
+[ext_resource type="Texture2D" uid="uid://cp2w4oqcjcogn" path="res://assets/color selector/black_color.svg" id="1_u8pds"]
+[ext_resource type="Texture2D" uid="uid://dkqxt47dorgh8" path="res://assets/color selector/white_color.svg" id="2_qmgqq"]
+[ext_resource type="Texture2D" uid="uid://bdsauclhxr50v" path="res://assets/color selector/yellow_color.svg" id="3_0djsn"]
+[ext_resource type="Texture2D" uid="uid://bboh3xhwmph05" path="res://assets/color selector/red_color.svg" id="4_tyrkb"]
+[ext_resource type="Texture2D" uid="uid://c723vvmfw3rri" path="res://assets/color selector/blue_color.svg" id="5_2i3uc"]
+[ext_resource type="Texture2D" uid="uid://cnb25xlvn7wo3" path="res://assets/color selector/cyan_color.svg" id="6_71u4y"]
+[ext_resource type="Texture2D" uid="uid://hvhuhqjj0j62" path="res://assets/color selector/green_color.svg" id="7_ulvdo"]
+[ext_resource type="Texture2D" uid="uid://dnerf08qy2u0u" path="res://assets/color selector/brown_color.svg" id="8_15ctl"]
+[ext_resource type="Texture2D" uid="uid://dv7hnufx0pkg1" path="res://assets/color selector/orange_color.svg" id="9_mp72j"]
 
 [node name="ColorButton" type="OptionButton"]
 selected = 0

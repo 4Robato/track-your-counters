@@ -1,4 +1,4 @@
-# Track your counters (v1.1.0)
+# Track your counters (v1.1.1)
 This app allows to create trackers and customize them as you like. You can save the current state as well as change the default tracker so when you open the app you get the default you want.
 
 The size of the UI can also be saved and there are some presets to give you some ideas.
@@ -7,7 +7,7 @@ The app UI is thought for smartphones but it adapts to whatever window size you 
 
 The app is available on:
 - Android: https://play.google.com/store/apps/details?id=com.ForeignTreeGames.TrackYourCounters
-- Linux: https://foreigntreegames.itch.io/track-your-counters
+- Linux and Windows: https://foreigntreegames.itch.io/track-your-counters
 
 ## Folder structure
 - scripts: You can see scripts that don't relate to the UI, basically things for saving. tracker info and a global script.

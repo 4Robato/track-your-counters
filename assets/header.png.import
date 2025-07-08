@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnb25xlvn7wo3"
-path="res://.godot/imported/cyan_color.svg-5c661296de51f613509d6e062d2e0a09.ctex"
+uid="uid://cjgcnaacwkuvh"
+path="res://.godot/imported/header.png-475fa8b9382a0bf2e9ddfb4f7a120a61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cyan_color.svg"
-dest_files=["res://.godot/imported/cyan_color.svg-5c661296de51f613509d6e062d2e0a09.ctex"]
+source_file="res://assets/header.png"
+dest_files=["res://.godot/imported/header.png-475fa8b9382a0bf2e9ddfb4f7a120a61.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
