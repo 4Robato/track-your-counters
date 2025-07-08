@@ -17,7 +17,7 @@ The app is available on:
 - fonts: folder with fonts used.
 - android: android build template.
 
-## Here is how it works
+## How it works
 
 All trackers are fully editable and even the default tracker that is added when pressing the + button can be changed.
 
@@ -79,3 +79,7 @@ Main Menu:
 ❓ Help: Shows the current menu.
 
 🗑️ Delete all: Deletes all trackers.
+
+## Credits
+
+All emojis are by [OpenMoji](https://openmoji.org/) – Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
