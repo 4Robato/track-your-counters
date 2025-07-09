@@ -50,7 +50,7 @@ func _ready() -> void:
 		if node is MainMenu:
 			main_menu = node
 
-func _get_button_type(button : Button) -> Global.BUTTON_TYPE:
+func get_button_type(button : Button) -> Global.BUTTON_TYPE:
 	match button.text:
 		"  -  ":
 			return Global.BUTTON_TYPE.MINUS
@@ -63,7 +63,7 @@ func _get_button_type(button : Button) -> Global.BUTTON_TYPE:
 		_:
 			return Global.BUTTON_TYPE.PLUS
 
-func _get_button_text(type : Global.BUTTON_TYPE) -> String:
+func get_button_text(type : Global.BUTTON_TYPE) -> String:
 	match type:
 		Global.BUTTON_TYPE.PLUS:
 			return "  +  "
@@ -83,7 +83,7 @@ func get_scaled_icon(icon: Texture2D, _size: int) -> Texture2D:
 	img.resize(_size, _size, Image.INTERPOLATE_LANCZOS)
 	return ImageTexture.create_from_image(img)
 
-func _compare_trackers(info_tracker_1 : TrackerInfo, info_tracker_2 : TrackerInfo) -> bool:
+func compare_trackers(info_tracker_1 : TrackerInfo, info_tracker_2 : TrackerInfo) -> bool:
 	if info_tracker_1.button_m1 != info_tracker_2.button_m1:
 		return false
 	if info_tracker_1.button_m1_type != info_tracker_2.button_m1_type:

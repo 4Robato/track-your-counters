@@ -192,6 +192,11 @@ func _on_edit_pressed() -> void:
 	
 	if edit_mode:
 		location.value = get_index() + 1
+		
+		button_line_editm_1.text = Global.get_button_text(minus_1.type)
+		button_line_editm_2.text = Global.get_button_text(minus_2.type)
+		button_line_editp_1.text = Global.get_button_text(plus_1.type)
+		button_line_editp_2.text = Global.get_button_text(plus_2.type)
 	
 	# This activates when you exit edit mode and you pressed the button
 	if !edit_mode:
@@ -225,10 +230,10 @@ func _on_cancel_pressed() -> void:
 	line_editp_1.value = plus_1.value
 	line_editp_2.value = plus_2.value
 	
-	button_line_editm_1.text = Global._get_button_text(minus_1.type)
-	button_line_editm_2.text = Global._get_button_text(minus_2.type)
-	button_line_editp_1.text = Global._get_button_text(plus_1.type)
-	button_line_editp_2.text = Global._get_button_text(plus_2.type)
+	button_line_editm_1.text = Global.get_button_text(minus_1.type)
+	button_line_editm_2.text = Global.get_button_text(minus_2.type)
+	button_line_editp_1.text = Global.get_button_text(plus_1.type)
+	button_line_editp_2.text = Global.get_button_text(plus_2.type)
 
 func _on_color_button_item_selected(index: int) -> void:
 	var color_sel : Color
@@ -350,75 +355,75 @@ func _on_notes_button_pressed() -> void:
 	notes_mode = !notes_mode
 
 func _on_button_line_editm_1_pressed() -> void:
-	match Global._get_button_type(button_line_editm_1):
+	match Global.get_button_type(button_line_editm_1):
 		Global.BUTTON_TYPE.MINUS:
-			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editm_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			minus_1.type_edit = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_line_editm_1.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			minus_1.type_edit = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_line_editm_1.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			minus_1.type_edit = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_line_editm_1.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			minus_1.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editm_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editm_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			minus_1.type_edit = Global.BUTTON_TYPE.PLUS
 
 func _on_button_line_editm_2_pressed() -> void:
-	match Global._get_button_type(button_line_editm_2):
+	match Global.get_button_type(button_line_editm_2):
 		Global.BUTTON_TYPE.MINUS:
-			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editm_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			minus_2.type_edit = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_line_editm_2.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			minus_2.type_edit = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_line_editm_2.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			minus_2.type_edit = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_line_editm_2.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			minus_2.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editm_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editm_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			minus_2.type_edit = Global.BUTTON_TYPE.PLUS
 
 func _on_button_line_editp_1_pressed() -> void:
-	match Global._get_button_type(button_line_editp_1):
+	match Global.get_button_type(button_line_editp_1):
 		Global.BUTTON_TYPE.MINUS:
-			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editp_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			plus_1.type_edit = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_line_editp_1.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			plus_1.type_edit = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_line_editp_1.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			plus_1.type_edit = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_line_editp_1.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			plus_1.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editp_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editp_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			plus_1.type_edit = Global.BUTTON_TYPE.PLUS
 
 func _on_button_line_editp_2_pressed() -> void:
-	match Global._get_button_type(button_line_editp_2):
+	match Global.get_button_type(button_line_editp_2):
 		Global.BUTTON_TYPE.MINUS:
-			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editp_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			plus_2.type_edit = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_line_editp_2.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			plus_2.type_edit = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_line_editp_2.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			plus_2.type_edit = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_line_editp_2.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			plus_2.type_edit = Global.BUTTON_TYPE.MINUS
 		_:
-			button_line_editp_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_line_editp_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			plus_2.type_edit = Global.BUTTON_TYPE.PLUS
 
 func get_tracker_info() -> TrackerInfo:

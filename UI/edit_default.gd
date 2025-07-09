@@ -47,13 +47,13 @@ func _ready() -> void:
 	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 
 func _process(delta: float) -> void:
-	if Global._compare_trackers(Global.save_file_default_ti, _get_edit_tracker_info()):
+	if Global.compare_trackers(Global.save_file_default_ti, _get_edit_tracker_info()):
 		save_button.disabled = true
 		load_button.disabled = true
 	else:
 		save_button.disabled = false
 		load_button.disabled = false
-	if Global._compare_trackers(Global.save_file_default_ti, Global.DEFAULT_TRACKER_INFO):
+	if Global.compare_trackers(Global.save_file_default_ti, Global.DEFAULT_TRACKER_INFO):
 		delete_button.disabled = true
 	else:
 		delete_button.disabled = false
@@ -74,10 +74,10 @@ func set_values(info : TrackerInfo) -> void:
 	
 	notes.text = info.tracker_notes
 	
-	button_m_1.text = Global._get_button_text(m1_type)
-	button_m_2.text = Global._get_button_text(m2_type)
-	button_p_1.text = Global._get_button_text(p1_type)
-	button_p_2.text = Global._get_button_text(p2_type)
+	button_m_1.text = Global.get_button_text(m1_type)
+	button_m_2.text = Global.get_button_text(m2_type)
+	button_p_1.text = Global.get_button_text(p1_type)
+	button_p_2.text = Global.get_button_text(p2_type)
 
 func update_color_size():
 	notes.add_theme_font_size_override("font_size", int(Global.current_UI_size/1.3))
@@ -114,76 +114,76 @@ func _get_edit_tracker_info() -> TrackerInfo:
 	return tracker_info
 
 func _on_button_m_1_pressed() -> void:
-	match Global._get_button_type(button_m_1):
+	match Global.get_button_type(button_m_1):
 		Global.BUTTON_TYPE.MINUS:
-			button_m_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			m1_type = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_m_1.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			m1_type = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_m_1.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			m1_type = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_m_1.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			m1_type = Global.BUTTON_TYPE.MINUS
 		_:
-			button_m_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			m1_type = Global.BUTTON_TYPE.PLUS
 
 
 func _on_button_m_2_pressed() -> void:
-	match Global._get_button_type(button_m_2):
+	match Global.get_button_type(button_m_2):
 		Global.BUTTON_TYPE.MINUS:
-			button_m_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			m2_type = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_m_2.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			m2_type = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_m_2.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			m2_type = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_m_2.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			m2_type = Global.BUTTON_TYPE.MINUS
 		_:
-			button_m_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			m2_type = Global.BUTTON_TYPE.PLUS
 
 func _on_button_p_1_pressed() -> void:
-	match Global._get_button_type(button_p_1):
+	match Global.get_button_type(button_p_1):
 		Global.BUTTON_TYPE.MINUS:
-			button_p_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			p1_type = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_p_1.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			p1_type = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_p_1.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			p1_type = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_p_1.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			p1_type = Global.BUTTON_TYPE.MINUS
 		_:
-			button_p_1.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			p1_type = Global.BUTTON_TYPE.PLUS
 
 func _on_button_p_2_pressed() -> void:
-	match Global._get_button_type(button_p_2):
+	match Global.get_button_type(button_p_2):
 		Global.BUTTON_TYPE.MINUS:
-			button_p_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			p2_type = Global.BUTTON_TYPE.PLUS
 		Global.BUTTON_TYPE.PLUS:
-			button_p_2.text = Global._get_button_text(Global.BUTTON_TYPE.MULTIPLY)
+			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
 			p2_type = Global.BUTTON_TYPE.MULTIPLY
 		Global.BUTTON_TYPE.MULTIPLY:
-			button_p_2.text = Global._get_button_text(Global.BUTTON_TYPE.DIVIDE)
+			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
 			p2_type = Global.BUTTON_TYPE.DIVIDE
 		Global.BUTTON_TYPE.DIVIDE:
-			button_p_2.text = Global._get_button_text(Global.BUTTON_TYPE.MINUS)
+			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
 			p2_type = Global.BUTTON_TYPE.MINUS
 		_:
-			button_p_2.text = Global._get_button_text(Global.BUTTON_TYPE.PLUS)
+			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
 			p2_type = Global.BUTTON_TYPE.PLUS
 
 func _on_tracker_color_item_selected(index: int) -> void:
