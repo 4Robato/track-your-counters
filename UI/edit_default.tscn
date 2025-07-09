@@ -184,6 +184,7 @@ rounded = true
 allow_greater = true
 allow_lesser = true
 alignment = 1
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body"]
