@@ -27,6 +27,9 @@ const TEXT_THEME = preload("res://themes/text.tres")
 func _ready():
 	Global.saver_loader.load_settings()
 	
+	var line_edit : LineEdit = dice_amount.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	
 	var dice_popup := dice_type.get_popup()
 	dice_popup.id_pressed.connect(on_dice_selected)
 	

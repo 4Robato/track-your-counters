@@ -130,6 +130,7 @@ alignment = 1
 
 [node name="ButtonLineEditm1" type="Button" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1"]
 layout_mode = 2
+focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = "  -  "
@@ -141,6 +142,7 @@ size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="HBoxLineEditm2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus"]
@@ -150,6 +152,7 @@ alignment = 1
 
 [node name="ButtonLineEditm2" type="Button" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2"]
 layout_mode = 2
+focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = "  -  "
@@ -161,6 +164,7 @@ size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="minus1" parent="VBoxContainer/HBoxContainer/minus" instance=ExtResource("12_kmwt8")]
@@ -194,6 +198,7 @@ layout_mode = 2
 
 [node name="ButtonLineEditp1" type="Button" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1"]
 layout_mode = 2
+focus_mode = 0
 text = "  +  "
 
 [node name="LineEditp1" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1"]
@@ -203,6 +208,7 @@ size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="HBoxLineEditp2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus"]
@@ -211,6 +217,7 @@ layout_mode = 2
 
 [node name="ButtonLineEditp2" type="Button" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2"]
 layout_mode = 2
+focus_mode = 0
 text = "  +  "
 
 [node name="LineEditp2" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2"]
@@ -220,6 +227,7 @@ size_flags_vertical = 3
 theme = ExtResource("2_oxxdj")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="plus1" parent="VBoxContainer/HBoxContainer/plus" instance=ExtResource("12_kmwt8")]

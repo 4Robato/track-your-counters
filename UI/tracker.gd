@@ -63,6 +63,19 @@ func _ready() -> void:
 	line_editm_2.value = minus_2.value
 	line_editp_1.value = plus_1.value
 	line_editp_2.value = plus_2.value
+	
+	var line_edit : LineEdit = location.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	
+	line_edit = line_editm_1.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	line_edit = line_editm_2.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	line_edit = line_editp_1.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	line_edit = line_editp_2.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+
 
 func _on_minus_1_pressed() -> void:
 	match minus_1.type:

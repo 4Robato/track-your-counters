@@ -153,6 +153,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
@@ -171,6 +172,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="TrackerValue" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body"]
@@ -204,6 +206,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2"]
@@ -222,6 +225,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fy0k7")
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="Notes" type="TextEdit" parent="MarginContainer/ScrollContainer/VBoxContainer"]

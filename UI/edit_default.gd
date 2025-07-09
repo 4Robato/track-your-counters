@@ -36,6 +36,15 @@ func _ready() -> void:
 	set_values(Global.current_default_tracker)
 	
 	update_color_size()
+	
+	var line_edit : LineEdit = m_1.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	line_edit = m_2.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	line_edit = p_1.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	line_edit = p_2.get_line_edit()
+	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 
 func _process(delta: float) -> void:
 	if Global._compare_trackers(Global.save_file_default_ti, _get_edit_tracker_info()):

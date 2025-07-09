@@ -107,6 +107,7 @@ value = 1.0
 rounded = true
 allow_greater = true
 alignment = 1
+update_on_text_changed = true
 select_all_on_focus = true
 
 [node name="dice_type" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
