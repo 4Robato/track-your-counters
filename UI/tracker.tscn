@@ -85,6 +85,7 @@ max_value = 9.0
 value = 1.0
 rounded = true
 allow_greater = true
+update_on_text_changed = true
 prefix = "↕"
 select_all_on_focus = true
 
