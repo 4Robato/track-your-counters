@@ -57,7 +57,7 @@ layout_mode = 2
 [node name="MenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 theme = ExtResource("3_h2yge")
-text = "  ☰  "
+text = "    "
 alignment = 0
 item_count = 9
 popup/item_0/text = "Show dice"

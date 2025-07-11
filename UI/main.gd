@@ -34,7 +34,7 @@ func _ready():
 	dice_popup.id_pressed.connect(on_dice_selected)
 	
 	var menu_popup := menu_button.get_popup()
-	if OS.get_name() == "Android":
+	if OS.get_name() in ["Android", "Web"]:
 		menu_popup.remove_item(8)
 	menu_popup.id_pressed.connect(on_menu_item_selected)
 	
