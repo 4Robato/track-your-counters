@@ -7,7 +7,7 @@ The app UI is thought for smartphones but it adapts to whatever window size you 
 
 The app is available on:
 - Android: https://play.google.com/store/apps/details?id=com.ForeignTreeGames.TrackYourCounters
-- Linux and Windows: https://foreigntreegames.itch.io/track-your-counters
+- Linux, Windows and Browser: https://foreigntreegames.itch.io/track-your-counters
 
 ## Folder structure
 - scripts: You can see scripts that don't relate to the UI, basically things for saving. tracker info and a global script.
