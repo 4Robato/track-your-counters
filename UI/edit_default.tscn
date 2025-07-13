@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0grwnfu5eswx"]
+[gd_scene load_steps=11 format=3 uid="uid://b0grwnfu5eswx"]
 
 [ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_7oygb"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="1_fy0k7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ciwck123ijc35" path="res://assets/icons/E262.svg" id="6_ang1q"]
 [ext_resource type="Texture2D" uid="uid://ddux74gjhw1a1" path="res://assets/icons/2714.svg" id="7_vrggt"]
 [ext_resource type="Texture2D" uid="uid://d24e4ndjyw467" path="res://assets/icons/274C.svg" id="8_elsae"]
+[ext_resource type="PackedScene" uid="uid://l75pi0x4kpo0" path="res://UI/operator_change.tscn" id="10_o814q"]
 
 [node name="EditDefaultPanel" type="PanelContainer"]
 anchors_preset = 15
@@ -140,12 +141,8 @@ size_flags_horizontal = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonM1" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
+[node name="ButtonM1" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer" instance=ExtResource("10_o814q")]
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("1_fy0k7")
-text = "  +  "
 
 [node name="m1" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -159,12 +156,8 @@ select_all_on_focus = true
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer"]
 layout_mode = 2
 
-[node name="ButtonM2" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
+[node name="ButtonM2" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2" instance=ExtResource("10_o814q")]
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("1_fy0k7")
-text = "  +  "
 
 [node name="m2" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -194,12 +187,9 @@ size_flags_horizontal = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2"]
 layout_mode = 2
 
-[node name="ButtonP1" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
+[node name="ButtonP1" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer" instance=ExtResource("10_o814q")]
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("1_fy0k7")
-text = "  +  "
+operator_type = 1
 
 [node name="p1" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
@@ -213,12 +203,9 @@ select_all_on_focus = true
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2"]
 layout_mode = 2
 
-[node name="ButtonP2" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
+[node name="ButtonP2" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2" instance=ExtResource("10_o814q")]
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("1_fy0k7")
-text = "  +  "
+operator_type = 1
 
 [node name="p2" type="SpinBox" parent="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
@@ -243,8 +230,4 @@ scroll_fit_content_height = true
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3/AcceptButton" to="." method="_on_accept_button_pressed"]
 [connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="item_selected" from="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor" to="." method="_on_tracker_color_item_selected"]
-[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1" to="." method="_on_button_m_1_pressed"]
-[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2" to="." method="_on_button_m_2_pressed"]
-[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1" to="." method="_on_button_p_1_pressed"]
-[connection signal="pressed" from="MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2" to="." method="_on_button_p_2_pressed"]
 [connection signal="text_changed" from="MarginContainer/ScrollContainer/VBoxContainer/Notes" to="." method="_on_notes_text_changed"]

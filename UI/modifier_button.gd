@@ -8,32 +8,27 @@ extends Button
 	set(val):
 		value = val
 		_change_text()
-		
-@export var type : Global.BUTTON_TYPE :
+
+@export var type : OperatorButton.BUTTON_TYPE :
 	get:
 		return type
 	set(val):
 		type = val
 		_ready()
 
-# used when editing so if you cancel it doesn't populate the true value
-var type_edit : Global.BUTTON_TYPE
-
 func _ready() -> void:
 	_change_text()
-	#to aboid initialization issues:
-	type_edit = type
 
 func _change_text():
 	match type:
-		Global.BUTTON_TYPE.PLUS:
-			text = "+ "
-		Global.BUTTON_TYPE.MINUS:
-			text = "- "
-		Global.BUTTON_TYPE.MULTIPLY:
-			text = "x "
-		Global.BUTTON_TYPE.DIVIDE:
-			text = "÷ "
+		OperatorButton.BUTTON_TYPE.PLUS:
+			text = "➕ "
+		OperatorButton.BUTTON_TYPE.MINUS:
+			text = "➖ "
+		OperatorButton.BUTTON_TYPE.MULTIPLY:
+			text = "✖ "
+		OperatorButton.BUTTON_TYPE.DIVIDE:
+			text = "➗ "
 		_:
-			text = "+ "
+			text = "➕ "
 	text += str(value)

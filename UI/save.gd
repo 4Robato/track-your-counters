@@ -12,7 +12,7 @@ class_name SavePanel
 
 var file_name : String
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if self.visible == true:
 		file_name = line_edit.text.replace(" ", "_").replace(".", "").left(50)
 		actual_save_name.text = file_name + ".save"

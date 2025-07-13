@@ -4,13 +4,13 @@ extends Node
 var TRACKER = preload("res://UI/tracker.tscn")
 
 var button_m1 : int
-var button_m1_type : Global.BUTTON_TYPE
+var button_m1_type : OperatorButton.BUTTON_TYPE
 var button_m2 : int
-var button_m2_type : Global.BUTTON_TYPE
+var button_m2_type : OperatorButton.BUTTON_TYPE
 var button_p1 : int
-var button_p1_type : Global.BUTTON_TYPE
+var button_p1_type : OperatorButton.BUTTON_TYPE
 var button_p2 : int
-var button_p2_type : Global.BUTTON_TYPE
+var button_p2_type : OperatorButton.BUTTON_TYPE
 
 var tracker_name : String
 var tracker_value : int
@@ -21,13 +21,13 @@ var is_show_note : bool = false
 
 func _init(
 	m1 : int = 1,
-	m1_type : Global.BUTTON_TYPE = Global.BUTTON_TYPE.MINUS,
+	m1_type : OperatorButton.BUTTON_TYPE = OperatorButton.BUTTON_TYPE.MINUS,
 	m2 : int = 5,
-	m2_type : Global.BUTTON_TYPE = Global.BUTTON_TYPE.MINUS,
+	m2_type : OperatorButton.BUTTON_TYPE = OperatorButton.BUTTON_TYPE.MINUS,
 	p1 : int = 1,
-	p1_type : Global.BUTTON_TYPE = Global.BUTTON_TYPE.PLUS,
+	p1_type : OperatorButton.BUTTON_TYPE = OperatorButton.BUTTON_TYPE.PLUS,
 	p2 : int = 5,
-	p2_type : Global.BUTTON_TYPE = Global.BUTTON_TYPE.PLUS,
+	p2_type : OperatorButton.BUTTON_TYPE = OperatorButton.BUTTON_TYPE.PLUS,
 	_name : String = "",
 	value : int = 20,
 	color : Global.COLORS = Global.COLORS.BLACK,

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw61xu1tesd0a"]
+[gd_scene load_steps=6 format=3 uid="uid://bw61xu1tesd0a"]
 
 [ext_resource type="Script" uid="uid://8pxcqcw5nato" path="res://UI/tracker.gd" id="1_hcafx"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_oxxdj"]
 [ext_resource type="PackedScene" uid="uid://dg6tns8ttve4i" path="res://UI/color_button.tscn" id="3_76b1b"]
+[ext_resource type="PackedScene" uid="uid://l75pi0x4kpo0" path="res://UI/operator_change.tscn" id="4_2cybp"]
 [ext_resource type="PackedScene" uid="uid://e2x30fu47nye" path="res://UI/modifier_button.tscn" id="12_kmwt8"]
 
 [node name="tracker" type="MarginContainer"]
@@ -95,7 +96,7 @@ size_flags_horizontal = 8
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-text = " — "
+text = " ➖ "
 
 [node name="close" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 visible = false
@@ -129,12 +130,9 @@ visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonLineEditm1" type="Button" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1"]
+[node name="ButtonLineEditm1" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1" instance=ExtResource("4_2cybp")]
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("2_oxxdj")
-text = "  -  "
+operator_type = 1
 
 [node name="LineEditm1" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1"]
 layout_mode = 2
@@ -151,12 +149,9 @@ visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonLineEditm2" type="Button" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2"]
+[node name="ButtonLineEditm2" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2" instance=ExtResource("4_2cybp")]
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme = ExtResource("2_oxxdj")
-text = "  -  "
+operator_type = 1
 
 [node name="LineEditm2" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2"]
 layout_mode = 2
@@ -198,10 +193,9 @@ size_flags_horizontal = 3
 visible = false
 layout_mode = 2
 
-[node name="ButtonLineEditp1" type="Button" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1"]
+[node name="ButtonLineEditp1" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1" instance=ExtResource("4_2cybp")]
 layout_mode = 2
-focus_mode = 0
-text = "  +  "
+operator_type = 1
 
 [node name="LineEditp1" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1"]
 layout_mode = 2
@@ -217,10 +211,9 @@ select_all_on_focus = true
 visible = false
 layout_mode = 2
 
-[node name="ButtonLineEditp2" type="Button" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2"]
+[node name="ButtonLineEditp2" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2" instance=ExtResource("4_2cybp")]
 layout_mode = 2
-focus_mode = 0
-text = "  +  "
+operator_type = 1
 
 [node name="LineEditp2" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2"]
 layout_mode = 2
@@ -246,11 +239,7 @@ value = 10
 [connection signal="item_selected" from="VBoxContainer/PanelContainer/HBoxContainer/ColorButton" to="." method="_on_color_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/minimize" to="." method="_on_minimize_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/close" to="." method="_on_close_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1/ButtonLineEditm1" to="." method="_on_button_line_editm_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2/ButtonLineEditm2" to="." method="_on_button_line_editm_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus1" to="." method="_on_minus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus2" to="." method="_on_minus_2_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1/ButtonLineEditp1" to="." method="_on_button_line_editp_1_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2/ButtonLineEditp2" to="." method="_on_button_line_editp_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus1" to="." method="_on_plus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus2" to="." method="_on_plus_2_pressed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://l75pi0x4kpo0"]
+
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="1_v0pjq"]
+[ext_resource type="Script" uid="uid://cqi1bfqxprfjs" path="res://UI/operator_change.gd" id="2_gb5l2"]
+
+[node name="ButtonLineEditm1" type="Button"]
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_v0pjq")
+text = "  ?  "
+script = ExtResource("2_gb5l2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

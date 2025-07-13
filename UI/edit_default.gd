@@ -8,10 +8,10 @@ class_name EditPanel
 @onready var p_1: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/p1
 @onready var p_2: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/p2
 
-@onready var button_m_1: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1
-@onready var button_m_2: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2
-@onready var button_p_1: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1
-@onready var button_p_2: Button = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2
+@onready var button_m_1: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1
+@onready var button_m_2: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2
+@onready var button_p_1: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1
+@onready var button_p_2: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2
 
 @onready var tracker_name: TextEdit = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerName
 @onready var tracker_value: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/TrackerValue
@@ -20,11 +20,6 @@ class_name EditPanel
 
 var style_box = StyleBoxFlat.new()
 @onready var panel_container: PanelContainer = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer
-
-var m1_type : Global.BUTTON_TYPE
-var m2_type : Global.BUTTON_TYPE
-var p1_type : Global.BUTTON_TYPE
-var p2_type : Global.BUTTON_TYPE
 
 @onready var save_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SaveButton
 @onready var load_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/LoadButton
@@ -46,7 +41,7 @@ func _ready() -> void:
 	line_edit = p_2.get_line_edit()
 	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Global.compare_trackers(Global.save_file_default_ti, _get_edit_tracker_info()):
 		save_button.disabled = true
 		load_button.disabled = true
@@ -63,21 +58,16 @@ func set_values(info : TrackerInfo) -> void:
 	m_2.value = info.button_m2
 	p_1.value = info.button_p1
 	p_2.value = info.button_p2
-	m1_type = info.button_m1_type
-	m2_type = info.button_m2_type
-	p1_type = info.button_p1_type
-	p2_type = info.button_p2_type
+	button_m_1.operator_type = info.button_m1_type
+	button_m_2.operator_type = info.button_m2_type
+	button_p_1.operator_type = info.button_p1_type
+	button_p_2.operator_type = info.button_p2_type
 	tracker_name.text = info.tracker_name
 	tracker_value.value = info.tracker_value
 	tracker_color.select(info.tracker_color)
 	_on_tracker_color_item_selected(info.tracker_color)
 	
 	notes.text = info.tracker_notes
-	
-	button_m_1.text = Global.get_button_text(m1_type)
-	button_m_2.text = Global.get_button_text(m2_type)
-	button_p_1.text = Global.get_button_text(p1_type)
-	button_p_2.text = Global.get_button_text(p2_type)
 
 func update_color_size():
 	notes.add_theme_font_size_override("font_size", int(Global.current_UI_size/1.3))
@@ -99,92 +89,19 @@ func update_color_size():
 func _get_edit_tracker_info() -> TrackerInfo:
 	var tracker_info : TrackerInfo = TrackerInfo.new(
 		int(m_1.value),
-		m1_type,
+		button_m_1.operator_type,
 		int(m_2.value),
-		m2_type,
+		button_m_2.operator_type,
 		int(p_1.value),
-		p1_type,
+		button_p_1.operator_type,
 		int(p_2.value),
-		p2_type,
+		button_p_2.operator_type,
 		tracker_name.text,
 		int(tracker_value.value),
 		tracker_color.get_selected_id(),
 		notes.text
 	)
 	return tracker_info
-
-func _on_button_m_1_pressed() -> void:
-	match Global.get_button_type(button_m_1):
-		Global.BUTTON_TYPE.MINUS:
-			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			m1_type = Global.BUTTON_TYPE.PLUS
-		Global.BUTTON_TYPE.PLUS:
-			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
-			m1_type = Global.BUTTON_TYPE.MULTIPLY
-		Global.BUTTON_TYPE.MULTIPLY:
-			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
-			m1_type = Global.BUTTON_TYPE.DIVIDE
-		Global.BUTTON_TYPE.DIVIDE:
-			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
-			m1_type = Global.BUTTON_TYPE.MINUS
-		_:
-			button_m_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			m1_type = Global.BUTTON_TYPE.PLUS
-
-
-func _on_button_m_2_pressed() -> void:
-	match Global.get_button_type(button_m_2):
-		Global.BUTTON_TYPE.MINUS:
-			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			m2_type = Global.BUTTON_TYPE.PLUS
-		Global.BUTTON_TYPE.PLUS:
-			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
-			m2_type = Global.BUTTON_TYPE.MULTIPLY
-		Global.BUTTON_TYPE.MULTIPLY:
-			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
-			m2_type = Global.BUTTON_TYPE.DIVIDE
-		Global.BUTTON_TYPE.DIVIDE:
-			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
-			m2_type = Global.BUTTON_TYPE.MINUS
-		_:
-			button_m_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			m2_type = Global.BUTTON_TYPE.PLUS
-
-func _on_button_p_1_pressed() -> void:
-	match Global.get_button_type(button_p_1):
-		Global.BUTTON_TYPE.MINUS:
-			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			p1_type = Global.BUTTON_TYPE.PLUS
-		Global.BUTTON_TYPE.PLUS:
-			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
-			p1_type = Global.BUTTON_TYPE.MULTIPLY
-		Global.BUTTON_TYPE.MULTIPLY:
-			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
-			p1_type = Global.BUTTON_TYPE.DIVIDE
-		Global.BUTTON_TYPE.DIVIDE:
-			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
-			p1_type = Global.BUTTON_TYPE.MINUS
-		_:
-			button_p_1.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			p1_type = Global.BUTTON_TYPE.PLUS
-
-func _on_button_p_2_pressed() -> void:
-	match Global.get_button_type(button_p_2):
-		Global.BUTTON_TYPE.MINUS:
-			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			p2_type = Global.BUTTON_TYPE.PLUS
-		Global.BUTTON_TYPE.PLUS:
-			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.MULTIPLY)
-			p2_type = Global.BUTTON_TYPE.MULTIPLY
-		Global.BUTTON_TYPE.MULTIPLY:
-			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.DIVIDE)
-			p2_type = Global.BUTTON_TYPE.DIVIDE
-		Global.BUTTON_TYPE.DIVIDE:
-			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.MINUS)
-			p2_type = Global.BUTTON_TYPE.MINUS
-		_:
-			button_p_2.text = Global.get_button_text(Global.BUTTON_TYPE.PLUS)
-			p2_type = Global.BUTTON_TYPE.PLUS
 
 func _on_tracker_color_item_selected(index: int) -> void:
 	var color_sel : Color
@@ -227,11 +144,6 @@ func _on_tracker_color_item_selected(index: int) -> void:
 	line_edit_p1.add_theme_stylebox_override("normal", style_box)
 	var line_edit_p2 : LineEdit = p_2.get_line_edit()
 	line_edit_p2.add_theme_stylebox_override("normal", style_box)
-	
-	button_m_1.add_theme_stylebox_override("normal", style_box)
-	button_m_2.add_theme_stylebox_override("normal", style_box)
-	button_p_1.add_theme_stylebox_override("normal", style_box)
-	button_p_2.add_theme_stylebox_override("normal", style_box)
 
 func _on_save_button_pressed() -> void:
 	_on_accept_button_pressed()
