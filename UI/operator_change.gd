@@ -33,19 +33,6 @@ func _on_pressed() -> void:
 		_:
 			operator_type = BUTTON_TYPE.PLUS
 
-func _get_button_type(button : Button) -> BUTTON_TYPE:
-	match button.text:
-		"  ➖  ":
-			return BUTTON_TYPE.MINUS
-		"  ➕  ":
-			return BUTTON_TYPE.PLUS
-		"  ✖  ":
-			return BUTTON_TYPE.MULTIPLY
-		"  ➗  ":
-			return BUTTON_TYPE.DIVIDE
-		_:
-			return operator_type
-
 func _set_button_text() -> void:
 	match operator_type:
 		BUTTON_TYPE.PLUS:
