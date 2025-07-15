@@ -13,6 +13,9 @@ var load_UI_size : int = 45
 @onready var saver_loader : SaverLoader = SaverLoader.new()
 var main_menu : MainMenu
 
+@warning_ignore("unused_signal")
+signal load_file_request(file_name : String)
+
 enum COLORS {
 	BLACK,
 	WHITE,

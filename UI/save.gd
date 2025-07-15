@@ -12,6 +12,9 @@ class_name SavePanel
 
 var file_name : String
 
+func _ready() -> void:
+	Global.load_file_request.connect(_on_load_file_request)
+
 func _process(_delta: float) -> void:
 	if self.visible == true:
 		file_name = line_edit.text.replace(" ", "_").replace(".", "").left(50)
@@ -44,3 +47,6 @@ func _on_delete_ui_save_pressed() -> void:
 	Global.current_UI_size = Global.DEFAULT_UI_SIZE
 	Global.main_menu.update_font_size(0)
 	Global.saver_loader.save_UI_size()
+
+func _on_load_file_request(_file_name : String):
+	line_edit.text = _file_name

@@ -355,7 +355,7 @@ func get_tracker_info() -> TrackerInfo:
 		plus_2.value,
 		plus_2.type,
 		tracker_name.text,
-		int(tracker_value.text),
+		int(tracker_value.value),
 		current_color,
 		notes.text,
 		is_minimized,
