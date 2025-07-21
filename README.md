@@ -1,5 +1,7 @@
-# Track your counters (v1.1.9)
-This app allows to create trackers and customize them as you like. You can save the current state as well as change the default tracker so when you open the app you get the default you want.
+# Track your counters (v1.2.0)
+This app allows to create as many trackers as you need and customize them as you like. You can save the current state as well as change the default tracker so when you open the app you get the default you want.
+
+When pressing the buttons in the trackers logs are generated which are also saved if you want to.
 
 The size of the UI can also be saved and there are some presets to give you some ideas.
 
@@ -13,6 +15,7 @@ The app is available on:
 - scripts: You can see scripts that don't relate to the UI, basically things for saving. tracker info and a global script.
 - UI: All scenes and scripts related to the UI which contains most of the code.
 - theme: Themes used for this project. They are primarily used to change font size.
+- translations: All translations available. When a new language is added to the .csv it will be added in the game without the need of changing code.
 - assets: Some assets I created to select the color.
 - fonts: folder with fonts used.
 - android: android build template.

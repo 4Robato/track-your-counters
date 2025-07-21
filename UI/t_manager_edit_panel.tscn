@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6cb8gast6vq1"]
+
+[ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_c3sgo"]
+[ext_resource type="Script" uid="uid://bcdeh15uq3jka" path="res://UI/t_manager_edit_panel.gd" id="2_5jxwm"]
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_xwqx2"]
+[ext_resource type="Texture2D" uid="uid://ddux74gjhw1a1" path="res://assets/icons/2714.svg" id="3_5jxwm"]
+[ext_resource type="Texture2D" uid="uid://d24e4ndjyw467" path="res://assets/icons/274C.svg" id="4_jsvto"]
+[ext_resource type="PackedScene" uid="uid://cd0d4agqi2wyq" path="res://UI/edit_tracker.tscn" id="6_xwqx2"]
+
+[node name="TManagerEditPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_c3sgo")
+script = ExtResource("2_5jxwm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AcceptButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_xwqx2")
+text = "ACCEPT"
+icon = ExtResource("3_5jxwm")
+expand_icon = true
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("2_xwqx2")
+text = "CANCEL"
+icon = ExtResource("4_jsvto")
+expand_icon = true
+
+[node name="EditTracker" parent="VBoxContainer" instance=ExtResource("6_xwqx2")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]

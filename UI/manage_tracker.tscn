@@ -1,0 +1,158 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw33k58lt26fk"]
+
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="1_frnjy"]
+[ext_resource type="Script" uid="uid://b6c4r6804nauj" path="res://UI/manage_tracker.gd" id="1_xqj4s"]
+
+[node name="ManageTracker" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 776.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_xqj4s")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Accept" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 3
+theme = ExtResource("1_frnjy")
+text = "  "
+
+[node name="Edit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 3
+theme = ExtResource("1_frnjy")
+text = " ✏ "
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Up" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 3
+theme = ExtResource("1_frnjy")
+text = " 🔺 "
+
+[node name="Down" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 3
+theme = ExtResource("1_frnjy")
+text = " 🔻 "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="background" type="PanelContainer" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+
+[node name="TrackerName" type="RichTextLabel" parent="VBoxContainer/TitleContainer/background"]
+layout_mode = 2
+theme = ExtResource("1_frnjy")
+text = "TRACKER_NAME"
+fit_content = true
+scroll_active = false
+
+[node name="ValuesContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ValuesContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="M" type="VBoxContainer" parent="VBoxContainer/ValuesContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="M1" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/M"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_frnjy")
+text = "M1"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="M2" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/M"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_frnjy")
+text = "M2"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_frnjy")
+text = "VALUE"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P" type="VBoxContainer" parent="VBoxContainer/ValuesContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="P1" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/P"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_frnjy")
+text = "P1"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/P"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_frnjy")
+text = "P2"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NotesContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Notes" type="RichTextLabel" parent="VBoxContainer/NotesContainer"]
+layout_mode = 2
+theme = ExtResource("1_frnjy")
+fit_content = true
+scroll_active = false
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 3
+theme = ExtResource("1_frnjy")
+text = " 🗑 "
+
+[connection signal="pressed" from="HBoxContainer/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="HBoxContainer/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="Delete" to="." method="_on_delete_pressed"]

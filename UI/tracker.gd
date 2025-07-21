@@ -54,6 +54,8 @@ var style_box = StyleBoxFlat.new()
 var current_color : int = 0
 var color_selected : int = 0
 
+var log_tracker : LogTracker = LogTracker.new()
+
 func _ready() -> void:
 	if t_info == null:
 		t_info = Global.current_default_tracker
@@ -75,9 +77,12 @@ func _ready() -> void:
 	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	line_edit = line_editp_2.get_line_edit()
 	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
-
+	
+	current_color = color_button.get_selected_id()
+	color_selected = color_button.get_selected_id()
 
 func _on_minus_1_pressed() -> void:
+	log_tracker.value_pre = int(tracker_value.value)
 	match minus_1.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
 			tracker_value.value -= minus_1.value
@@ -89,8 +94,14 @@ func _on_minus_1_pressed() -> void:
 			tracker_value.value /= minus_1.value
 		_:
 			pass
+	
+	log_tracker.operator_type = minus_1.type
+	log_tracker.operator_value = minus_1.value
+	log_tracker.value_post = int(tracker_value.value)
+	_text_to_log()
 
 func _on_minus_2_pressed() -> void:
+	log_tracker.value_pre = int(tracker_value.value)
 	match minus_2.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
 			tracker_value.value -= minus_2.value
@@ -102,8 +113,13 @@ func _on_minus_2_pressed() -> void:
 			tracker_value.value /= minus_2.value
 		_:
 			pass
+	log_tracker.operator_type = minus_2.type
+	log_tracker.operator_value = minus_2.value
+	log_tracker.value_post = int(tracker_value.value)
+	_text_to_log()
 
 func _on_plus_1_pressed() -> void:
+	log_tracker.value_pre = int(tracker_value.value)
 	match plus_1.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
 			tracker_value.value -= plus_1.value
@@ -115,8 +131,13 @@ func _on_plus_1_pressed() -> void:
 			tracker_value.value /= plus_1.value
 		_:
 			pass
+	log_tracker.operator_type = plus_1.type
+	log_tracker.operator_value = plus_1.value
+	log_tracker.value_post = int(tracker_value.value)
+	_text_to_log()
 
 func _on_plus_2_pressed() -> void:
+	log_tracker.value_pre = int(tracker_value.value)
 	match plus_2.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
 			tracker_value.value -= plus_2.value
@@ -128,6 +149,10 @@ func _on_plus_2_pressed() -> void:
 			tracker_value.value /= plus_2.value
 		_:
 			pass
+	log_tracker.operator_type = plus_2.type
+	log_tracker.operator_value = plus_2.value
+	log_tracker.value_post = int(tracker_value.value)
+	_text_to_log()
 
 func _on_close_pressed() -> void:
 	self.queue_free()
@@ -220,7 +245,7 @@ func _on_edit_pressed() -> void:
 		current_color = color_selected
 
 func _on_cancel_pressed() -> void:
-	_on_color_button_item_selected(current_color)
+	_on_color_button_item_selected(current_color as Global.COLORS)
 	color_button.select(current_color)
 	
 	_reverse_visible()
@@ -231,30 +256,8 @@ func _on_cancel_pressed() -> void:
 	line_editp_2.value = plus_2.value
 	
 
-func _on_color_button_item_selected(index: int) -> void:
-	var color_sel : Color
-	color_selected = index
-	match index:
-		0:#black
-			color_sel = Color(0, 0, 0, 0.39)
-		1:#white
-			color_sel = Color(1, 1, 1, 0.39)
-		2:#yellow
-			color_sel = Color(1, 1, 0, 0.39)
-		3:#red
-			color_sel = Color(1, 0, 0, 0.39)
-		4:#blue
-			color_sel = Color(0, 0, 1, 0.39)
-		5:#light blue
-			color_sel = Color(0.678, 0.847, 0.902, 0.39)
-		6:#green
-			color_sel = Color(0, 1, 0, 0.39)
-		7:#brown
-			color_sel = Color(0.55, 0.165, 0.165, 0.39)
-		8:#orange
-			color_sel = Color(1, 0.55, 0, 0.39)
-		_:#default = Black
-			color_sel = Color(0, 0, 0, 0.39)
+func _on_color_button_item_selected(color: Global.COLORS) -> void:
+	var color_sel : Color = Global.convert_to_color(color)
 	
 	style_box.bg_color = color_sel
 	
@@ -378,3 +381,10 @@ func _set_tracker_info(info : TrackerInfo) -> void:
 	color_button.select(info.tracker_color)# change the selection on the dropdown
 	_on_color_button_item_selected(info.tracker_color)# change the actual color
 	notes.text = info.tracker_notes
+
+func _text_to_log() -> void:
+	log_tracker.tracker_name = tracker_name.text
+	log_tracker.location = get_index() + 1
+	log_tracker.tracker_color = current_color as Global.COLORS
+	
+	Global.add_log_tacker.emit(log_tracker)

@@ -28,11 +28,19 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Emoji1" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_iamte")
+text = "📂 "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
 [node name="LoadTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_iamte")
-text = "Load"
+text = "LOAD"
 fit_content = true
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -53,11 +61,22 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PresetsTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Emoji2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_iamte")
+text = "🗃 "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PresetsTitle" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_iamte")
-text = "Presets"
+text = "PRESETS"
 fit_content = true
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
@@ -70,7 +89,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 theme = ExtResource("2_iamte")
-text = "4 Players"
+text = "4_PLAYERS"
 
 [node name="Preset2" type="Button" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2

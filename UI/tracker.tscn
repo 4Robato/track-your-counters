@@ -42,7 +42,7 @@ size_flags_horizontal = 3
 focus_mode = 1
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-placeholder_text = "Tracker name"
+placeholder_text = "TRACKER_NAME"
 scroll_fit_content_height = true
 
 [node name="Edit" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
@@ -112,7 +112,7 @@ visible = false
 layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
-placeholder_text = "Notes"
+placeholder_text = "NOTES"
 wrap_mode = 1
 scroll_fit_content_height = true
 

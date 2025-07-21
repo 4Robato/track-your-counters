@@ -1,31 +1,33 @@
 extends PanelContainer
 class_name EditPanel
 
-@onready var default_title: RichTextLabel = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/DefaultTitle
+@onready var title: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer/Title
+@onready var emoji: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer/Emoji
+@onready var close_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/CloseButton
 
-@onready var m_1: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/m1
-@onready var m_2: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/m2
-@onready var p_1: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/p1
-@onready var p_2: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/p2
+@onready var m_1: SpinBox = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/m1
+@onready var m_2: SpinBox = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/m2
+@onready var p_1: SpinBox = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/p1
+@onready var p_2: SpinBox = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/p2
 
-@onready var button_m_1: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1
-@onready var button_m_2: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2
-@onready var button_p_1: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1
-@onready var button_p_2: OperatorButton = $MarginContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2
+@onready var button_m_1: OperatorButton = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer/ButtonM1
+@onready var button_m_2: OperatorButton = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer/HBoxContainer2/ButtonM2
+@onready var button_p_1: OperatorButton = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer/ButtonP1
+@onready var button_p_2: OperatorButton = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/VBoxContainer2/HBoxContainer2/ButtonP2
 
-@onready var tracker_name: TextEdit = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerName
-@onready var tracker_value: SpinBox = $MarginContainer/ScrollContainer/VBoxContainer/Body/TrackerValue
-@onready var tracker_color: OptionButton = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor
-@onready var notes: TextEdit = $MarginContainer/ScrollContainer/VBoxContainer/Notes
+@onready var tracker_name: TextEdit = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerName
+@onready var tracker_value: SpinBox = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Body/TrackerValue
+@onready var tracker_color: OptionButton = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/PanelContainer/VBoxContainer/Tittle/TrackerColor
+@onready var notes: TextEdit = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Notes
 
 var style_box = StyleBoxFlat.new()
-@onready var panel_container: PanelContainer = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer
+@onready var panel_container: PanelContainer = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/PanelContainer
 
-@onready var save_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SaveButton
-@onready var load_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/LoadButton
-@onready var delete_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/DeleteButton
+@onready var save_button: Button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/SaveButton
+@onready var load_button: Button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/LoadButton
+@onready var delete_button: Button = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/DeleteButton
 
-@onready var scroll_container: ScrollContainer = $MarginContainer/ScrollContainer
+@onready var scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
 
 func _ready() -> void:
 	set_values(Global.current_default_tracker)
@@ -65,7 +67,7 @@ func set_values(info : TrackerInfo) -> void:
 	tracker_name.text = info.tracker_name
 	tracker_value.value = info.tracker_value
 	tracker_color.select(info.tracker_color)
-	_on_tracker_color_item_selected(info.tracker_color)
+	_on_tracker_color_item_selected(info.tracker_color as Global.COLORS)
 	
 	notes.text = info.tracker_notes
 
@@ -103,29 +105,8 @@ func _get_edit_tracker_info() -> TrackerInfo:
 	)
 	return tracker_info
 
-func _on_tracker_color_item_selected(index: int) -> void:
-	var color_sel : Color
-	match index:
-		0:#black
-			color_sel = Color(0, 0, 0, 0.39)
-		1:#white
-			color_sel = Color(1, 1, 1, 0.39)
-		2:#yellow
-			color_sel = Color(1, 1, 0, 0.39)
-		3:#red
-			color_sel = Color(1, 0, 0, 0.39)
-		4:#blue
-			color_sel = Color(0, 0, 1, 0.39)
-		5:#light blue
-			color_sel = Color(0.678, 0.847, 0.902, 0.39)
-		6:#green
-			color_sel = Color(0, 1, 0, 0.39)
-		7:#brown
-			color_sel = Color(0.647, 0.165, 0.165, 0.39)
-		8:#orange
-			color_sel = Color(1, 0.647, 0, 0.39)
-		_:#default = Black
-			color_sel = Color(0, 0, 0, 0.39)
+func _on_tracker_color_item_selected(index: Global.COLORS) -> void:
+	var color_sel : Color = Global.convert_to_color(index)
 	
 	style_box.bg_color = color_sel
 	panel_container.add_theme_stylebox_override("panel", style_box)
@@ -168,4 +149,12 @@ func _on_cancel_button_pressed() -> void:
 	set_values(Global.current_default_tracker)
 
 func _on_notes_text_changed() -> void:
-	scroll_container.scroll_vertical = 9999
+	var num_lines : int = notes.get_line_count()
+	var cursor_line : int = notes.get_caret_line() + 1
+	var ratio_line : float = float(cursor_line)/num_lines
+	var ratio_scroll : float = scroll_container.get_v_scroll_bar().max_value*ratio_line
+	scroll_container.call_deferred("set", "scroll_vertical", ratio_scroll)
+
+func _on_close_button_pressed() -> void:
+	self.visible = false
+	set_values(Global.current_default_tracker)

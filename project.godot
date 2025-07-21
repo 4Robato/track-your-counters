@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Track your counters"
-config/version="1.1.9"
+config/version="1.2.0"
 run/main_scene="res://UI/main.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/low_processor_mode=true
@@ -51,6 +51,10 @@ font_data_dynamic={
 "script_support": {},
 "subpixel_positioning": 4
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/translation_sheet.ca.translation", "res://translations/translation_sheet.en.translation")
 
 [rendering]
 

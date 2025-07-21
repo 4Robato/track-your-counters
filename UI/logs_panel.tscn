@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://be01euvj63p6q"]
+
+[ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_5muqk"]
+[ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_uwxr6"]
+[ext_resource type="Script" uid="uid://2o583b1pspxs" path="res://UI/logs_panel.gd" id="2_weas2"]
+
+[node name="LogsPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_5muqk")
+script = ExtResource("2_weas2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Emoji" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_uwxr6")
+text = "📑 "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_uwxr6")
+text = "LOGS"
+fit_content = true
+
+[node name="ScrollUp" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 3
+theme = ExtResource("2_uwxr6")
+text = " 🔺 "
+
+[node name="ScrollDown" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 3
+theme = ExtResource("2_uwxr6")
+text = " 🔻 "
+
+[node name="Clean" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 3
+theme = ExtResource("2_uwxr6")
+text = " 🧹 "
+
+[node name="Close" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 3
+theme = ExtResource("2_uwxr6")
+text = " ❌ "
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="content" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_uwxr6")
+fit_content = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ScrollUp" to="." method="_on_scroll_up_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ScrollDown" to="." method="on_scroll_down_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Clean" to="." method="_on_clean_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Close" to="." method="_on_close_pressed"]

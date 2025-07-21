@@ -1,0 +1,144 @@
+keys;en;ca
+APP_NAME;Track your counters;Comptadors a ratlla
+TRACKER_NAME;Tracker name;Nom del comptador
+ROLL;Roll;Tirar
+INCREASE_UI;Increase UI size;Augmentar la mida
+DECREASE_UI;Decrease UI size;Reduir la mida
+SAVE;Save;Guardar
+LOAD_PRESET;Load/Preset;Carregar/Predefinits
+EDIT_DEFAULT;Edit default;Editar comptador per defecte
+HELP;Help;Ajuda
+DELETE_ALL;Delete all;Eliminar-ho tot
+QUIT;Quit;Tancar
+SAVE_CURR_TRCK;Save current trackers;Guardar els comptadors
+FILE_NAME;File name;Nom del fitxer
+LOAD;Load;Carregar
+PRESETS;Presets;Configuracions predefinides
+DELETE;Delete;Eliminar
+ACCEPT;Accept;Acceptar
+CANCEL;Cancel;Cancel·lar
+DEFAULT_TRACKER;Default tracker;Comptador per defecte
+NOTES;Notes;Notes
+HELP_TEXT;"Here you can find information about how the app works.
+
+All trackers are fully editable and even the default tracker that is added when pressing the + button can be changed.
+
+Tracker buttons:
+
+📝 Notes: It shows the notes attached to that tracker. You can introduce any text there.
+➖ Minimize: It hides the tracker values showing only the name.
+➕ Maximize: It shows the tracker values.
+✏️ Edit: Enters the edit mode where you can edit the values of the trackers.
+
+Once on edit mode:
+
+✔️ Accept: It applies the changes you made to the tracker.
+❌ Cancel: Discards the changes done to the tracker.
+↕ Position: It shows the current position and is used to change the position of the tracker.
+O Color: To change the color of the tracker.
+🗑️ Delete: It removes the tracker.
+
+➕/➖/✖/➗: You can change the type of operator is used when clicking to change the value of a tracker. Simply press on the operator to change the type on edit mode.
+
+
+Buttons on the main Screen:
+
+: Opens the main menú with options to save, load, change UI size and more.
+🌐: It allows you to change language.
+🎲: Adds a dice to the trackers. You can throw as many dice as you want by changing the first value. There's 6 different dice you can use (by clicking on the dice name you change the type) with values:
+  · D2: 0 or 1
+  · D4: 1 to 4
+  · D6: 1 to 6
+  · D10: 0 to 9
+  · D12: 1 to 12
+  · D20: 1 to 20
+    The result is shown on the right side. You can clean the value by pressing it.
+📑 Logs: You can see all the actions that happened here.
+ Add tracker: This adds the default tracker. The default tracker can be changed using the main menu and then saved for future use in the save options.
+
+Main Menu ():
+
+⬆️ Increase UI size: Increases the text size.
+⬇️ Decrease UI size: Decreses the text size.
+📎 Save: Opens the save menu which allows you to save the UI size or all the current trackers (When saving the trackers the default tracker is saved together with the rest of the trackers).
+📂 Load/Presets: You can use some presets from here or load your previously saved trackers.
+✏️ Edit default: Allows you to change the default tracker which is the one used when adding a new one. We have several button there:
+  · 📎 Save: Saves the tracker to the settings file for future use.
+  · 📂 Load: Load the default tracker from the settings file that has been previously saved.
+  · 🗑️ Delete: Deletes the default tracker from the saved settings to the predefined value (like a factory reset).
+  · ✔️ Accept: Accepts the default tracker but doesn't save it to the settings file for future use.
+  · ❌ Cancel: Closes the panel without saving the changes.
+📑 Tracker manager: Here you can add trackers and save them for later use. You can also add them to the main screen using the  or change positions pressing the arrows.
+❓ Help: Shows the current menu.
+🗑️ Delete all: Deletes all trackers, dice and cleans the Logs.
+
+All emojis used in this app are from OpenMoji. Check out their github: https://github.com/hfg-gmuend/openmoji
+
+This app is open source under CC-BY-SA-4.0 license. You can check the project here: https://github.com/4Robato/track-your-counters
+
+Thanks for downloading the app!";"Aquí pots trobar informació sobre com funciona l’aplicació.
+
+Tots els comptadors són completament editables, i fins i tot el comptador per defecte que s’afegeix en prémer el botó + es pot modificar.
+
+
+Botons del comptador:
+
+📝 Notes: Mostra les notes adjuntes a aquest comptador. Hi pots introduir qualsevol text.
+➖ Minimitza: Amaga els valors del comptador i només en mostra el nom.
+➕ Maximitza: Mostra els valors del comptador.
+✏️ Edita: Entra en el mode d’edició, on pots modificar els valors dels comptadors.
+
+
+Un cop al mode d’edició:
+
+✔️ Accepta: Aplica els canvis que has fet al comptador.
+❌ Cancel·la: Descarta els canvis fets al comptador.
+↕ Posició: Mostra la posició actual i serveix per canviar la posició del comptador.
+◯ Color: Serveix per canviar el color del comptador.
+🗑️ Elimina: Elimina el comptador.
+
+➕/➖/✖/➗: Pots canviar el tipus d’operador que es fa servir en clicar per modificar el valor d’un comptador. Simplement prem sobre l’operador per canviar-ne el tipus en mode d’edició.
+
+
+Botons a la pantalla principal:
+
+: Obre el menú principal on trobaràs opcions per guardar, carregar, canviar la mida del text i molt més.
+🌐: Et permet canviar l'idioma
+🎲: Afegeix un dau amb els comptadors. Pots llençar tants daus com vulguis canviant el primer valor. Tens 6 tipus diferents de daus disponibles (fent clic sobre el nom del dau en canvies la mena), amb els valors següents:
+  · D2: 0 o 1
+  · D4: de 1 a 4
+  · D6: de 1 a 6
+  · D10: de 0 a 9
+  · D12: de 1 a 12
+  · D20: de 1 a 20
+    El resultat apareix a la part de la dreta. Pots esborrar el valor prement-lo.
+📑 Registre: Aquí pots veure les accions que han passat.
+ Afegir comptador: Afegeix el comptador per defecte. El comptador per defecte es pot canviar des del menú principal > Editar comptador per defecte i desar-lo perquè quan tornis a orbir l'aplicació surti el que has guardat.
+
+
+Menú principal ():
+
+⬆️ Augmentar la mida: Augmenta la mida del text.
+⬇️ Reduir la mida: Redueix la mida del text.
+📎 Guardar: Obre el menú de desat, que et permet desar la mida de la interfície o tots els comptadors actuals. (En desar els comptadors, el comptador per defecte també es desa amb la resta).
+📂 Carregar / predefinits: Pots fer servir alguns predefinits des d’aquí o carregar comptadors desats anteriorment.
+✏️ Editar per defecte: Permet canviar el comptador per defecte, el que s’utilitza en afegir-ne un de nou. Aquí hi ha diversos botons:
+  · 📎 Guardar: Desa el comptador al fitxer de configuració per a usos futurs.
+  · 📂 Carregar: Carrega el comptador per defecte des del fitxer de configuració (prèviament desat).
+  · 🗑️ Eliminar: Esborra el comptador per defecte del fitxer de configuració i el retorna al valor predefinit (reset de fàbrica).
+  · ✔️ Acceptar: Accepta el comptador per defecte però no el desa en el fitxer de configuració.
+  · ❌ Cancel·lar: Tanca el panell sense desar els canvis.
+📑 Gestió de comptadors: Aquí pots crear comptadors i guardar-los per utilitzar-los més tard. També pots afegir-los a la pantalla principal apretant el botó  o canviar-los de posició amb les fletxes.
+❓ Ajuda: Mostra el menú actual.
+🗑️ Eliminar-ho tot: Elimina tots els comptadors, daus i neteja els registres.
+
+Tots els emojis utilitzats en aquesta aplicació són de OpenMoji que és un projecte Open Source. Aquí podeu trobar el seu repositori github: https://github.com/hfg-gmuend/openmoji
+
+Aquesta aplicació és open source sota la llicència CC-BY-SA-4.0. Pots veure el projecte aquí: https://github.com/4Robato/track-your-counters
+
+Gràcies per descarregar l'aplicació!"
+4_PLAYERS;4 Players;4 Jugadors
+PLAYER;Player;Jugador
+LOGS;Logs;Registre
+TRACKER_MANAGER;Tracker manager;Gestió de comptadors
+DISCARD;Discard changes;Descartar els canvis

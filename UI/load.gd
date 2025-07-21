@@ -8,8 +8,13 @@ const LOAD_BUTTON = preload("res://UI/load_button.tscn")
 @onready var load_container: VBoxContainer = $MarginContainer/VBoxContainer/PanelContainer/ScrollContainer/LoadContainer
 const TEXT = preload("res://themes/text.tres")
 
+@onready var logs_panel: LogsPanel = $"../LogsPanel"
+
 @onready var load_title: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer/LoadTitle
-@onready var presets_title: RichTextLabel = $MarginContainer/VBoxContainer/PresetsTitle
+@onready var presets_title: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer2/PresetsTitle
+
+@onready var emoji_1: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer/Emoji1
+@onready var emoji_2: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer2/Emoji2
 
 func load_files() -> void:
 	var saves_names : Array[String] = []
@@ -32,6 +37,8 @@ func load_files() -> void:
 		var load_button : LoadButton = LOAD_BUTTON.instantiate()
 		load_container.add_child(load_button)
 		load_button.load_button.text = file
+	
+	logs_panel._on_clean_pressed()
 
 func _on_close_button_pressed() -> void:
 	self.visible = false
@@ -45,6 +52,7 @@ func _add_preset(default : TrackerInfo, all_info : Array[TrackerInfo]) -> void:
 
 func _on_preset_pressed() -> void:
 	_on_close_button_pressed()
+	logs_panel._on_clean_pressed()
 	
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		1,
@@ -55,7 +63,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.PLUS,
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
-		"Player 1",
+		tr("PLAYER") + " 1",
 		0,
 		Global.COLORS.BLACK,
 		""
@@ -70,7 +78,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.PLUS,
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
-		"Player 2",
+		tr("PLAYER") + " 2",
 		0,
 		Global.COLORS.BLACK,
 		""
@@ -85,7 +93,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.PLUS,
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
-		"Player 3",
+		tr("PLAYER") + " 3",
 		0,
 		Global.COLORS.BLACK,
 		""
@@ -100,7 +108,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.PLUS,
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
-		"Player 4",
+		tr("PLAYER") + " 4",
 		0,
 		Global.COLORS.BLACK,
 		""
@@ -115,7 +123,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.PLUS,
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
-		"Player ",
+		tr("PLAYER") + " ",
 		0,
 		Global.COLORS.BLACK,
 		""
@@ -125,6 +133,7 @@ func _on_preset_pressed() -> void:
 
 func _on_preset_2_pressed() -> void:
 	_on_close_button_pressed()
+	logs_panel._on_clean_pressed()
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
@@ -175,6 +184,7 @@ func _on_preset_2_pressed() -> void:
 
 func _on_preset_3_pressed() -> void:
 	_on_close_button_pressed()
+	logs_panel._on_clean_pressed()
 	
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		1,
@@ -405,6 +415,7 @@ func _on_preset_3_pressed() -> void:
 
 func _on_preset_4_pressed() -> void:
 	_on_close_button_pressed()
+	logs_panel._on_clean_pressed()
 	
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		10,

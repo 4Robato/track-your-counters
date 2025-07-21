@@ -10,6 +10,11 @@ class_name SavePanel
 @onready var ui_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/UIButton
 @onready var delete_ui_save: Button = $MarginContainer/VBoxContainer/HBoxContainer/DeleteUISave
 
+@onready var save_button: Button = $MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SaveButton
+
+@onready var emoji: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer2/Emoji
+@onready var title_save: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer2/TitleSave
+
 var file_name : String
 
 func _ready() -> void:
@@ -30,7 +35,6 @@ func _process(_delta: float) -> void:
 			delete_ui_save.disabled = true
 		else:
 			delete_ui_save.disabled = false
-		
 
 func _on_close_pressed() -> void:
 	self.visible = false
@@ -50,3 +54,16 @@ func _on_delete_ui_save_pressed() -> void:
 
 func _on_load_file_request(_file_name : String):
 	line_edit.text = _file_name
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	_check_save_availability(new_text)
+
+func _on_visibility_changed() -> void:
+	if line_edit != null:
+		_check_save_availability(line_edit.text)
+
+func _check_save_availability(text_ : String):
+	if text_ == "":
+		save_button.disabled = true
+	else:
+		save_button.disabled = false

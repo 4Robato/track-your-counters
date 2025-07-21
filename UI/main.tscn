@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://co7rjdayna4x1"]
+[gd_scene load_steps=19 format=3 uid="uid://co7rjdayna4x1"]
 
 [ext_resource type="Script" uid="uid://co0d62csk3rkx" path="res://UI/main.gd" id="1_0xm2m"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://h1dswrrvmamt" path="res://assets/icons/2B06.svg" id="3_ih1d4"]
-[ext_resource type="Texture2D" uid="uid://dw6doofly5s0n" path="res://assets/icons/1F3B2.svg" id="3_nkf2w"]
 [ext_resource type="PackedScene" uid="uid://b0grwnfu5eswx" path="res://UI/edit_default.tscn" id="4_dyfb5"]
 [ext_resource type="Texture2D" uid="uid://c16nujgxaod31" path="res://assets/icons/2B07.svg" id="4_p2g6k"]
 [ext_resource type="PackedScene" uid="uid://dqcvyjs7cm0ag" path="res://UI/load.tscn" id="5_deq60"]
@@ -13,8 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dick833futlmw" path="res://UI/info_panel.tscn" id="7_eto42"]
 [ext_resource type="Texture2D" uid="uid://cndegju73vc01" path="res://assets/icons/270F.svg" id="7_p4xe3"]
 [ext_resource type="Texture2D" uid="uid://3fbaselx8quo" path="res://assets/icons/2753.svg" id="8_5n8ge"]
+[ext_resource type="Texture2D" uid="uid://dgg1vkgdhk1s2" path="res://assets/icons/1F4C7.svg" id="9_5n8ge"]
 [ext_resource type="Texture2D" uid="uid://ciwck123ijc35" path="res://assets/icons/E262.svg" id="9_m2ejq"]
 [ext_resource type="Texture2D" uid="uid://c8c2cd58iydhu" path="res://assets/icons/26A0.svg" id="10_p2g6k"]
+[ext_resource type="PackedScene" uid="uid://be01euvj63p6q" path="res://UI/logs_panel.tscn" id="16_vfltm"]
+[ext_resource type="PackedScene" uid="uid://dpb7iq8xorvje" path="res://UI/tracker_manager_panel.tscn" id="17_p4xe3"]
+[ext_resource type="PackedScene" uid="uid://b6cb8gast6vq1" path="res://UI/t_manager_edit_panel.tscn" id="18_5n8ge"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -60,84 +63,66 @@ theme = ExtResource("3_h2yge")
 text = "    "
 alignment = 0
 item_count = 9
-popup/item_0/text = "Show dice"
-popup/item_0/icon = ExtResource("3_nkf2w")
+popup/item_0/text = "INCREASE_UI"
+popup/item_0/icon = ExtResource("3_ih1d4")
 popup/item_0/id = 0
-popup/item_1/text = "Increase UI size"
-popup/item_1/icon = ExtResource("3_ih1d4")
+popup/item_1/text = "DECREASE_UI"
+popup/item_1/icon = ExtResource("4_p2g6k")
 popup/item_1/id = 1
-popup/item_2/text = "Decrease UI size"
-popup/item_2/icon = ExtResource("4_p2g6k")
+popup/item_2/text = "SAVE"
+popup/item_2/icon = ExtResource("5_nkf2w")
 popup/item_2/id = 2
-popup/item_3/text = "Save"
-popup/item_3/icon = ExtResource("5_nkf2w")
-popup/item_3/id = 4
-popup/item_4/text = "Load/Presets"
-popup/item_4/icon = ExtResource("6_vfltm")
-popup/item_4/id = 5
-popup/item_5/text = "Edit default"
-popup/item_5/icon = ExtResource("7_p4xe3")
-popup/item_5/id = 6
-popup/item_6/text = "Help"
+popup/item_3/text = "LOAD_PRESET"
+popup/item_3/icon = ExtResource("6_vfltm")
+popup/item_3/id = 3
+popup/item_4/text = "EDIT_DEFAULT"
+popup/item_4/icon = ExtResource("7_p4xe3")
+popup/item_4/id = 4
+popup/item_5/text = "TRACKER_MANAGER"
+popup/item_5/icon = ExtResource("9_5n8ge")
+popup/item_5/id = 5
+popup/item_6/text = "HELP"
 popup/item_6/icon = ExtResource("8_5n8ge")
-popup/item_6/id = 7
-popup/item_7/text = "Delete all"
+popup/item_6/id = 6
+popup/item_7/text = "DELETE_ALL"
 popup/item_7/icon = ExtResource("9_m2ejq")
-popup/item_7/id = 3
-popup/item_8/text = "Quit"
+popup/item_7/id = 7
+popup/item_8/text = "QUIT"
 popup/item_8/icon = ExtResource("10_p2g6k")
 popup/item_8/id = 8
 
-[node name="Roll" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-visible = false
+[node name="LanguageSelector" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme = ExtResource("3_h2yge")
-text = "  Roll  "
 
-[node name="DiceAmount" type="SpinBox" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-visible = false
+[node name="LangMenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LanguageSelector"]
 layout_mode = 2
-size_flags_horizontal = 3
 theme = ExtResource("3_h2yge")
-min_value = 1.0
-max_value = 10.0
-value = 1.0
-rounded = true
-allow_greater = true
-alignment = 1
-update_on_text_changed = true
-select_all_on_focus = true
-
-[node name="dice_type" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("3_h2yge")
-text = "D2"
-flat = false
-item_count = 6
-popup/item_0/text = "D2"
+text = "  🌐  "
+alignment = 0
+item_count = 1
+popup/item_0/text = "System"
 popup/item_0/id = 0
-popup/item_1/text = "D4"
-popup/item_1/id = 1
-popup/item_2/text = "D6"
-popup/item_2/id = 2
-popup/item_3/text = "D10"
-popup/item_3/id = 3
-popup/item_4/text = "D12"
-popup/item_4/id = 4
-popup/item_5/text = "D20"
-popup/item_5/id = 5
 
-[node name="result" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-visible = false
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 0
 theme = ExtResource("3_h2yge")
-text = "      "
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AddDice" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 3
+theme = ExtResource("3_h2yge")
+text = "🎲"
+
+[node name="LogsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 3
+theme = ExtResource("3_h2yge")
+text = "  📑  "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -146,21 +131,29 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="AddButtonMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="AllDice" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AllTrackers" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AddButtonMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AllTrackers"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AddButtonMargin"]
+[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AllTrackers/AddButtonMargin"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme = ExtResource("3_h2yge")
 text = "
-+
+
 
 "
 
@@ -180,6 +173,19 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Roll" to="." method="_on_roll_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/result" to="." method="_on_result_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AddButtonMargin/AddButton" to="." method="_on_add_button_pressed"]
+[node name="LogsPanel" parent="." instance=ExtResource("16_vfltm")]
+visible = false
+layout_mode = 1
+
+[node name="TrackerManagerPanel" parent="." instance=ExtResource("17_p4xe3")]
+visible = false
+layout_mode = 1
+
+[node name="TManagerEditPanel" parent="." instance=ExtResource("18_5n8ge")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/AddDice" to="." method="_on_add_dice_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LogsButton" to="." method="_on_logs_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AllTrackers/AddButtonMargin/AddButton" to="." method="_on_add_button_pressed"]

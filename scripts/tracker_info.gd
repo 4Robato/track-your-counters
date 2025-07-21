@@ -75,3 +75,22 @@ func get_dict() -> Dictionary[String, Variant]:
 	dict["is_show_note"] = is_show_note
 	
 	return dict
+
+func clone() -> TrackerInfo:
+	var info : TrackerInfo = TrackerInfo.new(
+		button_m1,
+		button_m1_type,
+		button_m2,
+		button_m2_type,
+		button_p1,
+		button_p1_type,
+		button_p2,
+		button_p2_type,
+		tracker_name,
+		tracker_value,
+		tracker_color,
+		tracker_notes,
+		is_minimized,
+		is_show_note
+	)
+	return info
