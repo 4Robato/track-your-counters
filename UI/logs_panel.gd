@@ -33,10 +33,11 @@ func _on_clean_pressed() -> void:
 func convert_to_text(log_tracker : LogTracker) -> String:
 	var op_text : String = Global.op_type_to_text(log_tracker.operator_type)
 	var text : String = ""
-
+	
 	if last_log == null or last_log.tracker_name != log_tracker.tracker_name\
 		or last_log.location != log_tracker.location or last_log.tracker_color != log_tracker.tracker_color:
 		text += _add_color(" " + log_tracker.tracker_name + " (↕" + str(log_tracker.location)+ "):\n", log_tracker.tracker_color)
+	
 	text += "\t  " + str(log_tracker.value_pre)
 	text += " (" + op_text + str(log_tracker.operator_value) + ")"
 	text += " 🟰 " + str(log_tracker.value_post) + "\n"
