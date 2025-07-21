@@ -18,7 +18,7 @@ class_name EditTracker
 @onready var panel_container: PanelContainer = $PanelContainer
 
 func _ready() -> void:
-	update_color_size()
+	update_color_size(Global.current_UI_size)
 
 func get_tracker_info() -> TrackerInfo:
 	var tracker_info : TrackerInfo = TrackerInfo.new(
@@ -37,23 +37,42 @@ func get_tracker_info() -> TrackerInfo:
 	)
 	return tracker_info
 
-func update_color_size():
-	notes.add_theme_font_size_override("font_size", int(Global.current_UI_size/1.3))
+func update_color_size(font_size : int):
 	# First we change icon shown on the selected item
 	var displayed_icon = tracker_color.get_item_icon(tracker_color.get_selected_id())
-	tracker_color.add_theme_font_size_override("font_size", Global.current_UI_size)
+	tracker_color.add_theme_font_size_override("font_size", font_size)
 	tracker_color.set_item_icon(
 		tracker_color.get_selected_id(),
-		Global.get_scaled_icon(displayed_icon, Global.current_UI_size)
+		Global.get_scaled_icon(displayed_icon, font_size)
 		)
 	# Now we change the popup items first the text then the icon
 	var popup_color : PopupMenu = tracker_color.get_popup()
-	popup_color.add_theme_font_size_override("font_size", Global.current_UI_size)
+	popup_color.add_theme_font_size_override("font_size", font_size)
 	for id in tracker_color.item_count:
-		popup_color.set_item_icon_max_width(id, Global.current_UI_size)
-		var scaled_icon = Global.get_scaled_icon(tracker_color.get_item_icon(id), Global.current_UI_size)
+		popup_color.set_item_icon_max_width(id, font_size)
+		var scaled_icon = Global.get_scaled_icon(tracker_color.get_item_icon(id), font_size)
 		popup_color.set_item_icon(id, scaled_icon)
-
+	
+	var line_edit : LineEdit = m_1.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", font_size)
+	line_edit.add_theme_constant_override("minimum_character_width", 1)
+	line_edit = m_2.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", font_size)
+	line_edit.add_theme_constant_override("minimum_character_width", 1)
+	line_edit = p_1.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", font_size)
+	line_edit.add_theme_constant_override("minimum_character_width", 1)
+	line_edit = p_2.get_line_edit()
+	line_edit.add_theme_font_size_override("font_size", font_size)
+	line_edit.add_theme_constant_override("minimum_character_width", 1)
+	
+	tracker_name.add_theme_font_size_override("font_size", font_size)
+	tracker_value.add_theme_font_size_override("font_size", font_size)
+	notes.add_theme_font_size_override("font_size", int(font_size/1.3))
+	
+	line_edit = tracker_value.get_line_edit()
+	line_edit.add_theme_constant_override("minimum_character_width", 1)
+	
 func set_values(info : TrackerInfo) -> void:
 	m_1.value = info.button_m1
 	m_2.value = info.button_m2

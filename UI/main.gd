@@ -20,6 +20,7 @@ const DICE_TRACKER = preload("uid://bf7t5evrdlojm")
 @onready var info_panel: PanelContainer = $InfoPanel
 @onready var logs_panel: LogsPanel = $LogsPanel
 @onready var tracker_manager_panel: PanelContainer = $TrackerManagerPanel
+@onready var t_manager_edit_panel: PanelContainer = %TManagerEditPanel
 
 const TEXT_THEME = preload("res://themes/text.tres")
 var list_lang : Array[String]
@@ -65,7 +66,7 @@ func on_menu_item_selected(id: int) -> void:
 			load_panel.load_files()
 		4:# edit
 			edit_default_panel.visible = true
-			edit_default_panel.set_values(Global.current_default_tracker)
+			edit_default_panel.edit_tracker.set_values(Global.current_default_tracker)
 		5:# tracker manager
 			tracker_manager_panel.visible = true
 		6:# info
@@ -123,16 +124,9 @@ func update_font_size(amount : int):
 			track.update_font_size(Global.current_UI_size)
 	
 	# update edit default screen
-	edit_default_panel.update_color_size()
-	
 	edit_default_panel.title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	edit_default_panel.emoji.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
-	edit_default_panel.tracker_name.add_theme_font_size_override("font_size", Global.current_UI_size)
-	edit_default_panel.tracker_value.add_theme_font_size_override("font_size", Global.current_UI_size)
-	edit_default_panel.notes.add_theme_font_size_override("font_size", Global.current_UI_size)
-	
-	var line_edit : LineEdit = edit_default_panel.tracker_value.get_line_edit()
-	line_edit.add_theme_constant_override("minimum_character_width", 1)
+	edit_default_panel.edit_tracker.update_color_size(Global.current_UI_size)
 	
 	# save menu
 	save_panel.title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
@@ -142,25 +136,14 @@ func update_font_size(amount : int):
 	save_panel.emoji.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	save_panel.title_save.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	
+	# tracker manager edit panel
+	t_manager_edit_panel.edit_tracker.update_color_size(Global.current_UI_size)
+	
 	# load menu
 	load_panel.load_title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	load_panel.presets_title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	load_panel.emoji_1.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	load_panel.emoji_2.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
-	
-	# For SpinBox we target the internal LineEdit:
-	line_edit = edit_default_panel.m_1.get_line_edit()
-	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
-	line_edit.add_theme_constant_override("minimum_character_width", 1)
-	line_edit = edit_default_panel.m_2.get_line_edit()
-	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
-	line_edit.add_theme_constant_override("minimum_character_width", 1)
-	line_edit = edit_default_panel.p_1.get_line_edit()
-	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
-	line_edit.add_theme_constant_override("minimum_character_width", 1)
-	line_edit = edit_default_panel.p_2.get_line_edit()
-	line_edit.add_theme_font_size_override("font_size", Global.current_UI_size)
-	line_edit.add_theme_constant_override("minimum_character_width", 1)
 	
 	# info menu
 	info_panel.title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)

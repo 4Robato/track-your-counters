@@ -1,6 +1,6 @@
 extends PanelContainer
 
-@onready var edit_tracker: EditTracker = $VBoxContainer/EditTracker
+@onready var edit_tracker: EditTracker = $MarginContainer/VBoxContainer/ScrollContainer/EditTracker
 
 var t_info : TrackerInfo :
 	get:

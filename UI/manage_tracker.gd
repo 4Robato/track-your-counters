@@ -2,7 +2,14 @@ extends HBoxContainer
 class_name PreviewTracker
 
 @onready var notes_container: PanelContainer = $VBoxContainer/NotesContainer
-@onready var notes: RichTextLabel = $VBoxContainer/NotesContainer/Notes
+var notes : String :
+	get:
+		return notes
+	set(value):
+		notes = value
+		var clean_text = value.replace("\n", " ")
+		notes_displayed.text = cut_line(clean_text)
+@onready var notes_displayed: RichTextLabel = $VBoxContainer/NotesContainer/NotesDisplayed
 
 @onready var tracker_name: RichTextLabel = $VBoxContainer/TitleContainer/background/TrackerName
 @onready var m_1: RichTextLabel = $VBoxContainer/ValuesContainer/HBoxContainer/M/M1
@@ -39,7 +46,7 @@ func set_values(tracker_info : TrackerInfo) -> void:
 	p_1.text = Global.op_type_to_text(t_info.button_p1_type) + str(t_info.button_p1)
 	p_2.text = Global.op_type_to_text(t_info.button_p2_type) + str(t_info.button_p2)
 	tracker_value.text = str(t_info.tracker_value)
-	notes.text = t_info.tracker_notes
+	notes = t_info.tracker_notes
 	
 	var color_sel : Color = Global.convert_to_color(t_info.tracker_color)
 	
@@ -68,4 +75,10 @@ func change_size(font_size : int) -> void:
 	p_1.add_theme_font_size_override("normal_font_size", font_size)
 	p_2.add_theme_font_size_override("normal_font_size", font_size)
 	tracker_value.add_theme_font_size_override("normal_font_size", font_size)
-	notes.add_theme_font_size_override("normal_font_size", int(font_size/1.3))
+	notes_displayed.add_theme_font_size_override("normal_font_size", int(font_size/1.3))
+
+func cut_line(text_ : String) -> String:
+	var cutoff : int = 25
+	if len(text_) > cutoff+3:
+			return text_.substr(0, cutoff) + "..."
+	return text_

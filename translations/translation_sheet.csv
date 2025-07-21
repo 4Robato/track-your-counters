@@ -21,7 +21,14 @@ DEFAULT_TRACKER;Default tracker;Comptador per defecte
 NOTES;Notes;Notes
 HELP_TEXT;"Here you can find information about how the app works.
 
-All trackers are fully editable and even the default tracker that is added when pressing the + button can be changed.
+All trackers are fully editable, you can save the current state as well as individual trackers to use later on.
+
+
+Tips:
+· You can multiply by 0 to have a reset button on the tracker values.
+· If you usually need the same set up, create the trackers and save the game state on the save menu
+· If you play games with characters, create them on the tracker manager and save them.
+
 
 Tracker buttons:
 
@@ -78,7 +85,12 @@ This app is open source under CC-BY-SA-4.0 license. You can check the project he
 
 Thanks for downloading the app!";"Aquí pots trobar informació sobre com funciona l’aplicació.
 
-Tots els comptadors són completament editables, i fins i tot el comptador per defecte que s’afegeix en prémer el botó + es pot modificar.
+Tots els comptadors són completament editables, pots guardar tant l'estat en el que estan com comptadors de forma individual per utilitzar més endavant.
+
+Consells:
+· Pots multiplicar per 0 per tenir un botó que et permet ressetejar el valor del comptador.
+· Si normalment necessites la mateixa configuració, prepara els comptadors adients i guarda l'estat per utilitar en el futur de forma fàcil!
+· Si jugues a un joc que té personatges, pots crear comptadors i guardar-los de forma individual per no perdre'ls.
 
 
 Botons del comptador:

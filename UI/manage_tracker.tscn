@@ -138,7 +138,7 @@ vertical_alignment = 1
 [node name="NotesContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Notes" type="RichTextLabel" parent="VBoxContainer/NotesContainer"]
+[node name="NotesDisplayed" type="RichTextLabel" parent="VBoxContainer/NotesContainer"]
 layout_mode = 2
 theme = ExtResource("1_frnjy")
 fit_content = true
