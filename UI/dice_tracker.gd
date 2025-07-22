@@ -14,6 +14,9 @@ func _ready() -> void:
 	# This is so the current dice is shown
 	var dice_popup := dice_type.get_popup()
 	dice_popup.id_pressed.connect(on_dice_selected)
+	
+	dice_popup.set_focused_item(2)
+	on_dice_selected(2)
 
 func _on_result_pressed() -> void:
 	result.text = ""

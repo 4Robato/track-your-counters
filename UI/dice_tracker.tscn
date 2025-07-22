@@ -17,6 +17,7 @@ layout_mode = 2
 
 [node name="Delete" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("1_gw23i")
 text = " 🗑️ "
 
@@ -24,12 +25,14 @@ text = " 🗑️ "
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+mouse_filter = 1
 theme = ExtResource("1_gw23i")
 text = "ROLL"
 
 [node name="DiceAmount" type="SpinBox" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme = ExtResource("1_gw23i")
 min_value = 1.0
 max_value = 10.0
@@ -43,8 +46,9 @@ select_all_on_focus = true
 [node name="dice_type" type="MenuButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme = ExtResource("1_gw23i")
-text = "D2"
+text = "D?"
 flat = false
 item_count = 6
 popup/item_0/text = "D2"
@@ -64,6 +68,7 @@ popup/item_5/id = 5
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+mouse_filter = 1
 theme = ExtResource("1_gw23i")
 text = "      "
 

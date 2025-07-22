@@ -1,4 +1,4 @@
-# Track your counters (v1.2.0)
+# Track your counters (v1.2.1)
 This app allows to create as many trackers as you need and customize them as you like. You can save the current state as well as change the default tracker so when you open the app you get the default you want.
 
 When pressing the buttons in the trackers logs are generated which are also saved if you want to.

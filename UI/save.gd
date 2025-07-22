@@ -21,7 +21,7 @@ func _ready() -> void:
 	Global.load_file_request.connect(_on_load_file_request)
 
 func _process(_delta: float) -> void:
-	if self.visible == true:
+	if self.visible:
 		file_name = line_edit.text.replace(" ", "_").replace(".", "").left(50)
 		actual_save_name.text = file_name + ".save"
 		

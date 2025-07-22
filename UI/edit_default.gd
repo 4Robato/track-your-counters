@@ -14,16 +14,17 @@ class_name EditPanel
 @onready var scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
 
 func _process(_delta: float) -> void:
-	if Global.compare_trackers(Global.save_file_default_ti, edit_tracker.get_tracker_info()):
-		save_button.disabled = true
-		load_button.disabled = true
-	else:
-		save_button.disabled = false
-		load_button.disabled = false
-	if Global.compare_trackers(Global.save_file_default_ti, Global.DEFAULT_TRACKER_INFO):
-		delete_button.disabled = true
-	else:
-		delete_button.disabled = false
+	if self.visible:
+		if Global.compare_trackers(Global.save_file_default_ti, edit_tracker.get_tracker_info()):
+			save_button.disabled = true
+			load_button.disabled = true
+		else:
+			save_button.disabled = false
+			load_button.disabled = false
+		if Global.compare_trackers(Global.save_file_default_ti, Global.DEFAULT_TRACKER_INFO):
+			delete_button.disabled = true
+		else:
+			delete_button.disabled = false
 
 func _on_save_button_pressed() -> void:
 	_on_accept_button_pressed()

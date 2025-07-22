@@ -243,7 +243,7 @@ func load_file(file_name : String) -> void:
 				node_data["p2_type_" + num_id],
 				node_data["name_" + num_id],
 				node_data["value_" + num_id],
-				node_data["color_" + num_id],
+				node_data["color_" + num_id] as Global.COLORS,
 				node_data["notes_" + num_id],
 				node_data["is_minimized_" + num_id],
 				node_data["is_show_note_" + num_id]
@@ -251,8 +251,8 @@ func load_file(file_name : String) -> void:
 			
 			Global.main_menu.add_tracker(tracker)
 	
+		Global.main_menu.logs_panel.content.clear()
 		if node_data.has("all_logs"):
-			Global.main_menu.logs_panel.content.clear()
 			Global.main_menu.logs_panel.content.append_text(node_data["all_logs"])
 	Global.main_menu.load_panel.visible = false
 

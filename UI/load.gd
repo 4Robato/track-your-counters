@@ -46,14 +46,14 @@ func _on_close_button_pressed() -> void:
 # PRESETS:
 func _add_preset(default : TrackerInfo, all_info : Array[TrackerInfo]) -> void:
 	Global.current_default_tracker = default
-	main_menu.on_menu_item_selected(3)
-	for track : TrackerInfo in all_info:
-		main_menu.add_tracker(track)
-
-func _on_preset_pressed() -> void:
-	_on_close_button_pressed()
+	main_menu._delete_all_trackers()
 	logs_panel._on_clean_pressed()
 	
+	for track : TrackerInfo in all_info:
+		main_menu.add_tracker(track)
+	self.visible = false
+
+func _on_preset_pressed() -> void:
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		1,
 		OperatorButton.BUTTON_TYPE.PLUS,
@@ -132,8 +132,6 @@ func _on_preset_pressed() -> void:
 	_add_preset(t_info_default, [t_info_1, t_info_2, t_info_3, t_info_4])
 
 func _on_preset_2_pressed() -> void:
-	_on_close_button_pressed()
-	logs_panel._on_clean_pressed()
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
@@ -183,9 +181,6 @@ func _on_preset_2_pressed() -> void:
 
 
 func _on_preset_3_pressed() -> void:
-	_on_close_button_pressed()
-	logs_panel._on_clean_pressed()
-	
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		1,
 		OperatorButton.BUTTON_TYPE.MINUS,
@@ -414,9 +409,6 @@ func _on_preset_3_pressed() -> void:
 
 
 func _on_preset_4_pressed() -> void:
-	_on_close_button_pressed()
-	logs_panel._on_clean_pressed()
-	
 	var t_info_1 : TrackerInfo = TrackerInfo.new(
 		10,
 		OperatorButton.BUTTON_TYPE.MINUS,

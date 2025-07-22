@@ -22,6 +22,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = "  "
 
@@ -30,6 +31,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = " ✏ "
 
@@ -41,6 +43,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = " 🔺 "
 
@@ -49,6 +52,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = " 🔻 "
 
@@ -58,12 +62,15 @@ size_flags_horizontal = 3
 
 [node name="TitleContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="background" type="PanelContainer" parent="VBoxContainer/TitleContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TrackerName" type="RichTextLabel" parent="VBoxContainer/TitleContainer/background"]
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = "TRACKER_NAME"
 fit_content = true
@@ -72,6 +79,7 @@ scroll_active = false
 [node name="ValuesContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ValuesContainer"]
 layout_mode = 2
@@ -84,6 +92,7 @@ size_flags_horizontal = 3
 [node name="M1" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/M"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = "M1"
 fit_content = true
@@ -94,6 +103,7 @@ vertical_alignment = 1
 [node name="M2" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/M"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = "M2"
 fit_content = true
@@ -104,6 +114,7 @@ vertical_alignment = 1
 [node name="Value" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = "VALUE"
 fit_content = true
@@ -118,6 +129,7 @@ size_flags_horizontal = 3
 [node name="P1" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/P"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = "P1"
 fit_content = true
@@ -128,6 +140,7 @@ vertical_alignment = 1
 [node name="P2" type="RichTextLabel" parent="VBoxContainer/ValuesContainer/HBoxContainer/P"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = "P2"
 fit_content = true
@@ -137,9 +150,11 @@ vertical_alignment = 1
 
 [node name="NotesContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="NotesDisplayed" type="RichTextLabel" parent="VBoxContainer/NotesContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 fit_content = true
 scroll_active = false
@@ -148,6 +163,7 @@ scroll_active = false
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 3
+mouse_filter = 1
 theme = ExtResource("1_frnjy")
 text = " 🗑 "
 

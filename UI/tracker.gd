@@ -51,8 +51,8 @@ var is_minimized : bool = false
 var notes_mode : bool = false
 
 var style_box = StyleBoxFlat.new()
-var current_color : int = 0
-var color_selected : int = 0
+var current_color :  Global.COLORS = Global.COLORS.BLACK
+var color_selected : Global.COLORS = Global.COLORS.BLACK
 
 var log_tracker : LogTracker = LogTracker.new()
 
@@ -78,8 +78,8 @@ func _ready() -> void:
 	line_edit = line_editp_2.get_line_edit()
 	line_edit.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	
-	current_color = color_button.get_selected_id()
-	color_selected = color_button.get_selected_id()
+	current_color = color_button.get_selected_id() as Global.COLORS
+	color_selected = color_button.get_selected_id() as Global.COLORS
 
 func _on_minus_1_pressed() -> void:
 	log_tracker.value_pre = int(tracker_value.value)
@@ -246,7 +246,7 @@ func _on_edit_pressed() -> void:
 
 func _on_cancel_pressed() -> void:
 	_on_color_button_item_selected(current_color as Global.COLORS)
-	color_button.select(current_color)
+	color_button.select(current_color as Global.COLORS)
 	
 	_reverse_visible()
 	
@@ -258,6 +258,7 @@ func _on_cancel_pressed() -> void:
 
 func _on_color_button_item_selected(color: Global.COLORS) -> void:
 	var color_sel : Color = Global.convert_to_color(color)
+	color_selected = color
 	
 	style_box.bg_color = color_sel
 	
