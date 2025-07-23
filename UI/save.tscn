@@ -70,7 +70,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_de0hj")
-text = "Save UI size"
+text = "SAVE_UI_SIZE"
 
 [node name="DeleteUISave" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -78,11 +78,17 @@ theme = ExtResource("2_de0hj")
 theme_override_fonts/font = ExtResource("4_vb6ht")
 text = " 🗑️ "
 
-[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="space2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_de0hj")
 text = "
-Save current trackers"
+"
+fit_content = true
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_de0hj")
+text = "SAVE_CURR_TRCK"
 fit_content = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -91,14 +97,14 @@ layout_mode = 2
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_de0hj")
-placeholder_text = "File Name"
+placeholder_text = "FILE_NAME"
 
 [node name="ActualSaveName" type="RichTextLabel" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_de0hj")
 theme_override_colors/default_color = Color(0.546875, 0.546875, 0.546875, 1)
-text = "file_name"
+text = "FILE_NAME"
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
@@ -112,7 +118,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_de0hj")
-text = "Save"
+text = "SAVE"
 icon = ExtResource("5_1rwqb")
 expand_icon = true
 

@@ -11,7 +11,7 @@ HELP;Help;Ajuda
 DELETE_ALL;Delete all;Eliminar-ho tot
 QUIT;Quit;Tancar
 SAVE_CURR_TRCK;Save current trackers;Guardar els comptadors
-FILE_NAME;File name;Nom del fitxer
+FILE_NAME;File name;Nom de l’arxiu
 LOAD;Load;Carregar
 PRESETS;Presets;Configuracions predefinides
 DELETE;Delete;Eliminar
@@ -154,3 +154,4 @@ PLAYER;Player;Jugador
 LOGS;Logs;Registre
 TRACKER_MANAGER;Tracker manager;Gestió de comptadors
 DISCARD;Discard changes;Descartar els canvis
+SAVE_UI_SIZE;Save UI size;Guardar la mida del text
