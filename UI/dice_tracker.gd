@@ -1,11 +1,14 @@
 extends MarginContainer
 class_name DiceTracker
 
-@onready var delete: Button = $HBoxContainer/Delete
-@onready var roll: Button = $HBoxContainer/Roll
-@onready var dice_amount: SpinBox = $HBoxContainer/DiceAmount
-@onready var dice_type: MenuButton = $HBoxContainer/dice_type
-@onready var result: Button = $HBoxContainer/result
+@onready var delete: Button = $VBoxContainer/HBoxContainer/Delete
+@onready var roll: Button = $VBoxContainer/HBoxContainer/Roll
+@onready var dice_amount: SpinBox = $VBoxContainer/HBoxContainer/DiceAmount
+@onready var dice_type: MenuButton = $VBoxContainer/HBoxContainer/dice_type
+@onready var result: Button = $VBoxContainer/HBoxContainer/result
+@onready var dice_results: Button = $VBoxContainer/DiceResults
+
+var dice_results_str : String = " "
 
 func _ready() -> void:
 	var line_edit : LineEdit = dice_amount.get_line_edit()
@@ -19,43 +22,78 @@ func _ready() -> void:
 	on_dice_selected(2)
 
 func _on_result_pressed() -> void:
-	result.text = ""
+	if result.text == "⤵":
+		result.text = "⤴"
+		dice_results.visible = true
+		dice_results_str = " "
+	elif result.text == "⤴" or dice_amount.value > 1:
+		result.text = "⤵"
+		dice_results.text = " "
+		dice_results.visible = false
+	else:
+		result.text = ""
 
 func _on_delete_pressed() -> void:
 	queue_free()
 
 func _on_roll_pressed() -> void:
 	var dice_res : int = 0
+	var sum_res : int = 0
 	
+	dice_results_str = "("
 	match dice_type.text:
 		"D2":# D2
 			for i in dice_amount.value:
-				dice_res += randi_range(0, 1)
+				dice_res = randi_range(0, 1)
+				sum_res += dice_res
+				dice_results_str += str(dice_res) + ", "
 		"D4":# D4
 			for i in dice_amount.value:
-				dice_res += randi_range(1, 4)
+				dice_res = randi_range(1, 4)
+				sum_res += dice_res
+				dice_results_str += str(dice_res) + ", "
 		"D6":# D6
 			for i in dice_amount.value:
-				dice_res += randi_range(1, 6)
+				dice_res = randi_range(1, 6)
+				sum_res += dice_res
+				dice_results_str += str(dice_res) + ", "
 		"D10":# D10
 			for i in dice_amount.value:
-				dice_res += randi_range(0, 9)
+				dice_res = randi_range(0, 9)
+				sum_res += dice_res
+				dice_results_str += str(dice_res) + ", "
 		"D12":# D12
 			for i in dice_amount.value:
-				dice_res += randi_range(1, 12)
+				dice_res = randi_range(1, 12)
+				sum_res += dice_res
+				dice_results_str += str(dice_res) + ", "
 		"D20":# D20
 			for i in dice_amount.value:
-				dice_res += randi_range(1, 20)
+				dice_res = randi_range(1, 20)
+				sum_res += dice_res
+				dice_results_str += str(dice_res) + ", "
 		_:
 			dice_res = -1
-	result.text = str(dice_res)
+			sum_res = -1
 	
-	var log_text : String = "🎲 " + dice_type.text + " (x" + str(int(dice_amount.value)) + ")"+ ": " + str(dice_res) + "\n"
+	dice_results_str = dice_results_str.left(dice_results_str.length() - 2) + ")"
+	
+	if dice_results.visible:
+		result.text = "⤴"
+	else:
+		result.text = str(sum_res)
+	dice_results.text = dice_results_str + " = " + str(sum_res)
+	
+	var log_text : String = "🎲 " + dice_type.text + " (x" + str(int(dice_amount.value)) + ")"
+	log_text += ": " + str(sum_res)
+	if dice_amount.value > 1:
+		log_text += "   ▶   " + dice_results_str
+	
+	log_text += "\n"
 	_log_dice(log_text)
 
 func on_dice_selected(id : int) -> void:
 	dice_type.text = dice_type.get_popup().get_item_text(id)
-	return
 
 func set_UI_size():
 	dice_type.add_theme_font_size_override("font_size", Global.current_UI_size)
@@ -69,3 +107,16 @@ func set_UI_size():
 
 func _log_dice(text : String) -> void:
 	Global.add_log_dice.emit(text)
+
+func _on_dice_results_pressed() -> void:
+	dice_results.text = " "
+
+func _on_dice_amount_value_changed(value: float) -> void:
+	if value == 1 and result.text == "⤵":
+		result.text = ""
+	elif dice_results.visible:
+		result.text = "⤴"
+	else:
+		result.text = "⤵"
+		dice_results.text = " "
+		

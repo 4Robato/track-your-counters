@@ -60,6 +60,7 @@ Buttons on the main Screen:
   · D12: 1 to 12
   · D20: 1 to 20
     The result is shown on the right side. You can clean the value by pressing it.
+    If more than one dice is selected, you can press ⤵ to see all results from the dice and then press ⤴ to hide them.
 📑 Logs: You can see all the actions that happened here.
  Add tracker: This adds the default tracker. The default tracker can be changed using the main menu and then saved for future use in the save options.
 
@@ -124,6 +125,7 @@ Botons a la pantalla principal:
   · D12: de 1 a 12
   · D20: de 1 a 20
     El resultat apareix a la part de la dreta. Pots esborrar el valor prement-lo.
+    Si has seleccionat més d'un dau, pots apretar ⤵ per veure el resultat de cada dau i ⤴ per amagar-los.
 📑 Registre: Aquí pots veure les accions que han passat.
  Afegir comptador: Afegeix el comptador per defecte. El comptador per defecte es pot canviar des del menú principal > Editar comptador per defecte i desar-lo perquè quan tornis a orbir l'aplicació surti el que has guardat.
 
