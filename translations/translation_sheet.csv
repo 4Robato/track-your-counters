@@ -1,24 +1,24 @@
-keys;en;ca
-APP_NAME;Track your counters;Comptadors a ratlla
-TRACKER_NAME;Tracker name;Nom del comptador
-ROLL;Roll;Tirar
-INCREASE_UI;Increase UI size;Augmentar la mida
-DECREASE_UI;Decrease UI size;Reduir la mida
-SAVE;Save;Guardar
-LOAD_PRESET;Load/Preset;Carregar/Predefinits
-EDIT_DEFAULT;Edit default;Editar comptador per defecte
-HELP;Help;Ajuda
-DELETE_ALL;Delete all;Eliminar-ho tot
-QUIT;Quit;Tancar
-SAVE_CURR_TRCK;Save current trackers;Guardar els comptadors
-FILE_NAME;File name;Nom de l’arxiu
-LOAD;Load;Carregar
-PRESETS;Presets;Configuracions predefinides
-DELETE;Delete;Eliminar
-ACCEPT;Accept;Acceptar
-CANCEL;Cancel;Cancel·lar
-DEFAULT_TRACKER;Default tracker;Comptador per defecte
-NOTES;Notes;Notes
+keys;en;ca;es
+APP_NAME;Track your counters;Comptadors a ratlla;Contadores a raya
+TRACKER_NAME;Tracker name;Nom del comptador;Nombre del contador
+ROLL;Roll;Tirar;Tirar
+INCREASE_UI;Increase UI size;Augmentar la mida;Aumentar tamaño de interfaz
+DECREASE_UI;Decrease UI size;Reduir la mida;Reducir tamaño de interfaz
+SAVE;Save;Guardar;Guardar
+LOAD_PRESET;Load/Preset;Carregar/Predefinits;Cargar/Preajustes
+EDIT_DEFAULT;Edit default;Editar comptador per defecte;Editar por defecto
+HELP;Help;Ajuda;Ayuda
+DELETE_ALL;Delete all;Eliminar-ho tot;Eliminar todo
+QUIT;Quit;Tancar;Salir
+SAVE_CURR_TRCK;Save current trackers;Guardar els comptadors;Guardar contadores actuales
+FILE_NAME;File name;Nom de l’arxiu;Nombre del archivo
+LOAD;Load;Carregar;Cargar
+PRESETS;Presets;Configuracions predefinides;Preajustes
+DELETE;Delete;Eliminar;Eliminar
+ACCEPT;Accept;Acceptar;Aceptar
+CANCEL;Cancel;Cancel·lar;Cancelar
+DEFAULT_TRACKER;Default tracker;Comptador per defecte;Contador por defecto
+NOTES;Notes;Notes;Notas
 HELP_TEXT;"Here you can find information about how the app works.
 
 All trackers are fully editable, you can save the current state as well as individual trackers to use later on.
@@ -150,10 +150,76 @@ Tots els emojis utilitzats en aquesta aplicació són de OpenMoji que és un pro
 
 Aquesta aplicació és open source sota la llicència CC-BY-SA-4.0. Pots veure el projecte aquí: https://github.com/4Robato/track-your-counters
 
-Gràcies per descarregar l'aplicació!"
-4_PLAYERS;4 Players;4 Jugadors
-PLAYER;Player;Jugador
-LOGS;Logs;Registre
-TRACKER_MANAGER;Tracker manager;Gestió de comptadors
-DISCARD;Discard changes;Descartar els canvis
-SAVE_UI_SIZE;Save UI size;Guardar la mida del text
+Gràcies per descarregar l'aplicació!";"Aquí puedes encontrar información sobre cómo funciona la aplicación.
+
+Todos los contadores son completamente editables, puedes guardar tanto el estado actual como contadores individuales para usar más adelante.
+
+
+Consejos:
+· Puedes multiplicar por 0 para tener un botón que te permite resetear el valor del contador.
+· Si normalmente necesitas la misma configuración, prepara los contadores adecuados y guarda el estado para usarlo en el futuro de forma fácil.
+· Si juegas a un juego que tiene personajes, puedes crear contadores y guardarlos de forma individual para no perderlos.
+Botones del contador:
+
+📝 Notas: Muestra las notas adjuntas a este contador. Puedes introducir cualquier texto aquí.
+➖ Minimizar: Oculta los valores del contador mostrando solo el nombre.
+➕ Maximizar: Muestra los valores del contador.
+✏️ Editar: Entra en el modo de edición donde puedes modificar los valores de los contadores.
+Una vez en modo edición:
+
+✔️ Aceptar: Aplica los cambios que has hecho al contador.
+❌ Cancelar: Descarta los cambios hechos al contador.
+↕ Posición: Muestra la posición actual y sirve para cambiar la posición del contador.
+◯ Color: Sirve para cambiar el color del contador.
+🗑️ Eliminar: Elimina el contador.
+➕/➖/✖/➗: Puedes cambiar el tipo de operador que se usa al hacer clic para modificar el valor de un contador.
+Simplemente presiona sobre el operador para cambiar el tipo en modo edición.
+Botones en la pantalla principal:
+
+: Abre el menú principal con opciones para guardar, cargar, cambiar el tamaño de la interfaz de usuario y mucho más.
+🌐: Te permite cambiar el idioma.
+🎲: Añade un dado a los contadores.
+Puedes lanzar tantos dados como quieras cambiando el primer valor.
+Hay 6 dados diferentes que puedes usar (haciendo clic en el nombre del dado cambias el tipo) con valores:
+  · D2: 0 o 1
+  · D4: 1 a 4
+  · D6: 1 a 6
+  · D10: 0 a 9
+  · D12: 1 a 12
+  · D20: 1 a 20
+    El resultado se muestra en el lado derecho.
+Puedes limpiar el valor presionándolo.
+    Si se selecciona más de un dado, puedes presionar ⤵ para ver todos los resultados de los dados y luego presionar ⤴ para ocultarlos.
+📑 Registros: Aquí puedes ver todas las acciones que han ocurrido.
+ Añadir contador: Esto añade el contador por defecto.
+El contador por defecto se puede cambiar usando el menú principal y luego guardarlo para uso futuro en las opciones de guardado.
+Menú principal ():
+
+⬆️ Aumentar tamaño de interfaz: Aumenta el tamaño del texto.
+⬇️ Disminuir tamaño de interfaz: Disminuye el tamaño del texto.
+📎 Guardar: Abre el menú de guardado que te permite guardar el tamaño de la interfaz de usuario o todos los contadores actuales (al guardar los contadores, el contador por defecto se guarda junto con el resto de los contadores).
+📂 Cargar/Preajustes: Puedes usar algunos preajustes desde aquí o cargar tus contadores previamente guardados.
+✏️ Editar por defecto: Te permite cambiar el contador por defecto, que es el que se usa al añadir uno nuevo.
+Tenemos varios botones aquí:
+  · 📎 Guardar: Guarda el contador en el archivo de configuración para uso futuro.
+  · 📂 Cargar: Carga el contador por defecto del archivo de configuración que ha sido guardado previamente.
+  · 🗑️ Eliminar: Elimina el contador por defecto de la configuración guardada al valor predefinido (como un restablecimiento de fábrica).
+  · ✔️ Aceptar: Acepta el contador por defecto pero no lo guarda en el archivo de configuración para uso futuro.
+  · ❌ Cancelar: Cierra el panel sin guardar los cambios.
+📑 Administrador de contadores: Aquí puedes añadir contadores y guardarlos para usarlos más tarde.
+También puedes añadirlos a la pantalla principal usando el botón  o cambiar posiciones presionando las flechas.
+❓ Ayuda: Muestra el menú actual.
+🗑️ Eliminar todo: Elimina todos los contadores, dados y limpia los registros.
+
+Todos los emojis usados en esta aplicación son de OpenMoji. Consulta su github: https://github.com/hfg-gmuend/openmoji
+
+Esta aplicación es de código abierto bajo licencia CC-BY-SA-4.0.
+Puedes consultar el proyecto aquí: https://github.com/4Robato/track-your-counters
+
+¡Gracias por descargar la aplicación!"
+4_PLAYERS;4 Players;4 Jugadors;4 Jugadores
+PLAYER;Player;Jugador;Jugador
+LOGS;Logs;Registre;Registros
+TRACKER_MANAGER;Tracker manager;Gestió de comptadors;Administrador de contadores
+DISCARD;Discard changes;Descartar els canvis;Descartar cambios
+SAVE_UI_SIZE;Save UI size;Guardar la mida del text;Guardar tamaño de interfaz

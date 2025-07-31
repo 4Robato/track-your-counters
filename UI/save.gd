@@ -1,19 +1,19 @@
 extends PanelContainer
 class_name SavePanel
 
-@onready var line_edit: LineEdit = $MarginContainer/VBoxContainer/VBoxContainer/LineEdit
-@onready var actual_save_name: RichTextLabel = $MarginContainer/VBoxContainer/VBoxContainer/ActualSaveName
+@onready var line_edit: LineEdit = $MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer/LineEdit
+@onready var actual_save_name: RichTextLabel = $MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer/ActualSaveName
 
-@onready var title: RichTextLabel = $MarginContainer/VBoxContainer/Title
-@onready var space: RichTextLabel = $MarginContainer/VBoxContainer/space
+@onready var title: RichTextLabel = $MarginContainer/ScrollContainer/VBoxContainer/Title
+@onready var space: RichTextLabel = $MarginContainer/ScrollContainer/VBoxContainer/space
 
-@onready var ui_button: Button = $MarginContainer/VBoxContainer/HBoxContainer/UIButton
-@onready var delete_ui_save: Button = $MarginContainer/VBoxContainer/HBoxContainer/DeleteUISave
+@onready var ui_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/UIButton
+@onready var delete_ui_save: Button = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/DeleteUISave
 
-@onready var save_button: Button = $MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/SaveButton
+@onready var save_button: Button = $MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer/HBoxContainer/SaveButton
 
-@onready var emoji: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer2/Emoji
-@onready var title_save: RichTextLabel = $MarginContainer/VBoxContainer/HBoxContainer2/TitleSave
+@onready var emoji: RichTextLabel = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/Emoji
+@onready var title_save: RichTextLabel = $MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2/TitleSave
 
 var file_name : String
 
