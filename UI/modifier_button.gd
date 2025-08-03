@@ -29,6 +29,8 @@ func _change_text():
 			text = "✖ "
 		OperatorButton.BUTTON_TYPE.DIVIDE:
 			text = "➗ "
+		OperatorButton.BUTTON_TYPE.HAND:
+			text = "✍ "
 		_:
 			text = "➕ "
 	text += str(value)

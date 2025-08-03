@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://e2x30fu47nye" path="res://UI/modifier_button.tscn" id="12_kmwt8"]
 
 [node name="tracker" type="MarginContainer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -1031.0
@@ -240,5 +240,6 @@ value = 10
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus1" to="." method="_on_minus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus2" to="." method="_on_minus_2_pressed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/TrackerValue" to="." method="_on_tracker_value_value_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus1" to="." method="_on_plus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus2" to="." method="_on_plus_2_pressed"]

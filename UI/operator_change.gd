@@ -5,7 +5,8 @@ enum BUTTON_TYPE {
 	PLUS,
 	MINUS,
 	MULTIPLY,
-	DIVIDE
+	DIVIDE,
+	HAND
 }
 
 @export var operator_type : BUTTON_TYPE = BUTTON_TYPE.PLUS :

@@ -110,6 +110,8 @@ func op_type_to_text(type : OperatorButton.BUTTON_TYPE) -> String:
 			return "✖"
 		OperatorButton.BUTTON_TYPE.DIVIDE:
 			return "➗"
+		OperatorButton.BUTTON_TYPE.HAND:
+			return "✍"
 		_:
 			return ""
 

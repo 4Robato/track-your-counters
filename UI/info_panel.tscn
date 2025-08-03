@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dick833futlmw"]
 
 [ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_4mpkv"]
-[ext_resource type="Script" uid="uid://ckckabxlus4rl" path="res://info_panel.gd" id="1_fhwa4"]
+[ext_resource type="Script" uid="uid://ckckabxlus4rl" path="res://UI/info_panel.gd" id="1_fhwa4"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_4mpkv"]
 
 [node name="InfoPanel" type="PanelContainer"]
@@ -47,6 +47,14 @@ size_flags_horizontal = 3
 theme = ExtResource("2_4mpkv")
 text = "HELP"
 fit_content = true
+
+[node name="version" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_4mpkv")
+text = "(version)"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Close" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

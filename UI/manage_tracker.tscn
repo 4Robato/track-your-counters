@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b6c4r6804nauj" path="res://UI/manage_tracker.gd" id="1_xqj4s"]
 
 [node name="ManageTracker" type="HBoxContainer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = 776.0

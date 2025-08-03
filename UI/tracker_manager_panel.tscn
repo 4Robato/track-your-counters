@@ -61,6 +61,7 @@ focus_mode = 3
 theme = ExtResource("2_j4txh")
 text = "SAVE"
 icon = ExtResource("4_h2r20")
+text_overrun_behavior = 1
 expand_icon = true
 
 [node name="DiscardButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -70,6 +71,7 @@ focus_mode = 3
 theme = ExtResource("2_j4txh")
 text = "DISCARD"
 icon = ExtResource("5_t0iuc")
+text_overrun_behavior = 1
 expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]

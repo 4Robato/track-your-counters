@@ -43,6 +43,7 @@ mouse_filter = 1
 theme = ExtResource("2_xwqx2")
 text = "ACCEPT"
 icon = ExtResource("3_5jxwm")
+text_overrun_behavior = 1
 expand_icon = true
 
 [node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
@@ -53,6 +54,7 @@ mouse_filter = 1
 theme = ExtResource("2_xwqx2")
 text = "CANCEL"
 icon = ExtResource("4_jsvto")
+text_overrun_behavior = 1
 expand_icon = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]

@@ -44,6 +44,8 @@ extends MarginContainer
 @export var plus_low: int
 @export var plus_high : int
 
+var last_tracker_value : int
+
 var t_info : TrackerInfo
 
 var edit_mode : bool = false
@@ -55,6 +57,10 @@ var current_color :  Global.COLORS = Global.COLORS.BLACK
 var color_selected : Global.COLORS = Global.COLORS.BLACK
 
 var log_tracker : LogTracker = LogTracker.new()
+
+# this value is used to not send a signal everytime the tracker_value changes
+# and only when the value is changed by hand
+var manual_change : bool = false
 
 func _ready() -> void:
 	if t_info == null:
@@ -80,8 +86,13 @@ func _ready() -> void:
 	
 	current_color = color_button.get_selected_id() as Global.COLORS
 	color_selected = color_button.get_selected_id() as Global.COLORS
+	
+	last_tracker_value = int(tracker_value.value)
 
 func _on_minus_1_pressed() -> void:
+	manual_change = false
+	last_tracker_value = int(tracker_value.value)
+	
 	log_tracker.value_pre = int(tracker_value.value)
 	match minus_1.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
@@ -101,6 +112,9 @@ func _on_minus_1_pressed() -> void:
 	_text_to_log()
 
 func _on_minus_2_pressed() -> void:
+	manual_change = false
+	last_tracker_value = int(tracker_value.value)
+	
 	log_tracker.value_pre = int(tracker_value.value)
 	match minus_2.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
@@ -119,6 +133,9 @@ func _on_minus_2_pressed() -> void:
 	_text_to_log()
 
 func _on_plus_1_pressed() -> void:
+	manual_change = false
+	last_tracker_value = int(tracker_value.value)
+	
 	log_tracker.value_pre = int(tracker_value.value)
 	match plus_1.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
@@ -137,6 +154,9 @@ func _on_plus_1_pressed() -> void:
 	_text_to_log()
 
 func _on_plus_2_pressed() -> void:
+	manual_change = false
+	last_tracker_value = int(tracker_value.value)
+	
 	log_tracker.value_pre = int(tracker_value.value)
 	match plus_2.type:
 		OperatorButton.BUTTON_TYPE.MINUS:
@@ -389,3 +409,14 @@ func _text_to_log() -> void:
 	log_tracker.tracker_color = current_color as Global.COLORS
 	
 	Global.add_log_tacker.emit(log_tracker)
+
+
+func _on_tracker_value_value_changed(value: float) -> void:
+	if manual_change:
+		log_tracker.value_pre = last_tracker_value
+		log_tracker.operator_type = OperatorButton.BUTTON_TYPE.HAND
+		log_tracker.value_post = int(value)
+		_text_to_log()
+		last_tracker_value = int(value)
+	else:
+		manual_change = true
