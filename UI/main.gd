@@ -149,6 +149,7 @@ func update_font_size(amount : int):
 	info_panel.title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	info_panel.emoji.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
 	info_panel.content.add_theme_font_size_override("normal_font_size", Global.current_UI_size)
+	info_panel.current_version.add_theme_font_size_override("normal_font_size", int(Global.current_UI_size/1.3))
 	
 	# logs menu
 	logs_panel.title.add_theme_font_size_override("normal_font_size", Global.current_UI_size)

@@ -65,7 +65,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.MINUS,
 		tr("PLAYER") + " 1",
 		0,
-		Global.COLORS.BLACK,
+		Global.COLORS.YELLOW,
 		""
 	)
 	
@@ -80,7 +80,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.MINUS,
 		tr("PLAYER") + " 2",
 		0,
-		Global.COLORS.BLACK,
+		Global.COLORS.RED,
 		""
 	)
 	
@@ -95,7 +95,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.MINUS,
 		tr("PLAYER") + " 3",
 		0,
-		Global.COLORS.BLACK,
+		Global.COLORS.BLUE,
 		""
 	)
 	
@@ -110,7 +110,7 @@ func _on_preset_pressed() -> void:
 		OperatorButton.BUTTON_TYPE.MINUS,
 		tr("PLAYER") + " 4",
 		0,
-		Global.COLORS.BLACK,
+		Global.COLORS.GREEN,
 		""
 	)
 	

@@ -60,7 +60,7 @@ var log_tracker : LogTracker = LogTracker.new()
 
 # this value is used to not send a signal everytime the tracker_value changes
 # and only when the value is changed by hand
-var manual_change : bool = false
+var manual_change : bool
 
 func _ready() -> void:
 	if t_info == null:
@@ -88,10 +88,11 @@ func _ready() -> void:
 	color_selected = color_button.get_selected_id() as Global.COLORS
 	
 	last_tracker_value = int(tracker_value.value)
+	
+	manual_change = true
 
 func _on_minus_1_pressed() -> void:
 	manual_change = false
-	last_tracker_value = int(tracker_value.value)
 	
 	log_tracker.value_pre = int(tracker_value.value)
 	match minus_1.type:
@@ -110,10 +111,11 @@ func _on_minus_1_pressed() -> void:
 	log_tracker.operator_value = minus_1.value
 	log_tracker.value_post = int(tracker_value.value)
 	_text_to_log()
+	
+	last_tracker_value = int(tracker_value.value)
 
 func _on_minus_2_pressed() -> void:
 	manual_change = false
-	last_tracker_value = int(tracker_value.value)
 	
 	log_tracker.value_pre = int(tracker_value.value)
 	match minus_2.type:
@@ -131,10 +133,11 @@ func _on_minus_2_pressed() -> void:
 	log_tracker.operator_value = minus_2.value
 	log_tracker.value_post = int(tracker_value.value)
 	_text_to_log()
+	
+	last_tracker_value = int(tracker_value.value)
 
 func _on_plus_1_pressed() -> void:
 	manual_change = false
-	last_tracker_value = int(tracker_value.value)
 	
 	log_tracker.value_pre = int(tracker_value.value)
 	match plus_1.type:
@@ -152,10 +155,11 @@ func _on_plus_1_pressed() -> void:
 	log_tracker.operator_value = plus_1.value
 	log_tracker.value_post = int(tracker_value.value)
 	_text_to_log()
+	
+	last_tracker_value = int(tracker_value.value)
 
 func _on_plus_2_pressed() -> void:
 	manual_change = false
-	last_tracker_value = int(tracker_value.value)
 	
 	log_tracker.value_pre = int(tracker_value.value)
 	match plus_2.type:
@@ -173,6 +177,8 @@ func _on_plus_2_pressed() -> void:
 	log_tracker.operator_value = plus_2.value
 	log_tracker.value_post = int(tracker_value.value)
 	_text_to_log()
+	
+	last_tracker_value = int(tracker_value.value)
 
 func _on_close_pressed() -> void:
 	self.queue_free()

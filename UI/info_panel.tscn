@@ -53,8 +53,9 @@ layout_mode = 2
 theme = ExtResource("2_4mpkv")
 text = "(version)"
 fit_content = true
-scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Close" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
