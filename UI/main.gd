@@ -22,8 +22,20 @@ const DICE_TRACKER = preload("uid://bf7t5evrdlojm")
 @onready var tracker_manager_panel: PanelContainer = $TrackerManagerPanel
 @onready var t_manager_edit_panel: PanelContainer = %TManagerEditPanel
 
+@onready var scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
+
 const TEXT_THEME = preload("res://themes/text.tres")
 var list_lang : Array[String]
+###
+
+func _process(_delta: float) -> void:
+	if DisplayServer.has_feature(DisplayServer.FEATURE_VIRTUAL_KEYBOARD):
+		var keyboard_height = DisplayServer.virtual_keyboard_get_height()
+		if keyboard_height > 0:
+			self.size.y = get_viewport_rect().size.y - keyboard_height
+		else:
+			self.size.y = get_viewport_rect().size.y
+###
 
 func _ready():
 	Global.add_custom_tracker.connect(add_tracker)
@@ -99,6 +111,12 @@ func add_tracker(tracker_info : TrackerInfo) -> void:
 	
 	add_button_margin.reparent(self)
 	add_button_margin.reparent(all_trackers)
+	
+	new_tracker.name_changed.connect(_scroll_to_text_edit)
+	new_tracker.notes_changed.connect(_scroll_to_text_edit)
+
+func _scroll_to_text_edit(text_edit : TextEdit) -> void:
+	scroll_container.ensure_control_visible(text_edit)
 
 func update_font_size(amount : int):
 	Global.current_UI_size += amount
@@ -184,6 +202,9 @@ func _on_add_button_pressed() -> void:
 	
 	add_button_margin.reparent(self)
 	add_button_margin.reparent(all_trackers)
+	
+	tracker.name_changed.connect(_scroll_to_text_edit)
+	tracker.notes_changed.connect(_scroll_to_text_edit)
 
 func _on_logs_button_pressed() -> void:
 	logs_panel.visible = true

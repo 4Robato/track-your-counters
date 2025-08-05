@@ -122,4 +122,6 @@ placeholder_text = "NOTES"
 wrap_mode = 1
 scroll_fit_content_height = true
 
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/Tittle/TrackerName" to="." method="_on_tracker_name_text_changed"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/Tittle/TrackerColor" to="." method="_on_tracker_color_item_selected"]
+[connection signal="text_changed" from="Notes" to="." method="_on_notes_text_changed"]

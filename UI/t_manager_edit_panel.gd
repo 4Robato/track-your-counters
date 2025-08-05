@@ -1,6 +1,7 @@
 extends PanelContainer
 
 @onready var edit_tracker: EditTracker = $MarginContainer/VBoxContainer/ScrollContainer/EditTracker
+@onready var scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
 
 var t_info : TrackerInfo :
 	get:
@@ -13,6 +14,12 @@ var prev_tracker : PreviewTracker
 
 func _ready() -> void:
 	Global.edit_custom_tracker.connect(_setup)
+	
+	edit_tracker.name_changed.connect(_scroll_to_text_edit)
+	edit_tracker.notes_changed.connect(_scroll_to_text_edit)
+
+func _scroll_to_text_edit(text_edit : TextEdit) -> void:
+	scroll_container.ensure_control_visible(text_edit)
 
 func _on_accept_button_pressed() -> void:
 	visible = false

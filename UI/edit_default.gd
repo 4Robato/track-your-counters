@@ -13,6 +13,10 @@ class_name EditPanel
 
 @onready var scroll_container: ScrollContainer = $MarginContainer/VBoxContainer/ScrollContainer
 
+func _ready() -> void:
+	edit_tracker.name_changed.connect(_scroll_to_text_edit)
+	edit_tracker.notes_changed.connect(_scroll_to_text_edit)
+
 func _process(_delta: float) -> void:
 	if self.visible:
 		if Global.compare_trackers(Global.save_file_default_ti, edit_tracker.get_tracker_info()):
@@ -25,6 +29,9 @@ func _process(_delta: float) -> void:
 			delete_button.disabled = true
 		else:
 			delete_button.disabled = false
+
+func _scroll_to_text_edit(text_edit : TextEdit) -> void:
+	scroll_container.ensure_control_visible(text_edit)
 
 func _on_save_button_pressed() -> void:
 	_on_accept_button_pressed()

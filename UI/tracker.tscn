@@ -232,12 +232,14 @@ value = 1
 layout_mode = 2
 value = 10
 
+[connection signal="text_changed" from="VBoxContainer/PanelContainer/HBoxContainer/TrackerName" to="." method="_on_tracker_name_text_changed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/NotesButton" to="." method="_on_notes_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="item_selected" from="VBoxContainer/PanelContainer/HBoxContainer/ColorButton" to="." method="_on_color_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/minimize" to="." method="_on_minimize_pressed"]
 [connection signal="pressed" from="VBoxContainer/PanelContainer/HBoxContainer/close" to="." method="_on_close_pressed"]
+[connection signal="text_changed" from="VBoxContainer/Notes" to="." method="_on_notes_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus1" to="." method="_on_minus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus2" to="." method="_on_minus_2_pressed"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/TrackerValue" to="." method="_on_tracker_value_value_changed"]

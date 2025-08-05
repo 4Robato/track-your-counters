@@ -17,6 +17,11 @@ class_name EditTracker
 
 @onready var panel_container: PanelContainer = $PanelContainer
 
+@warning_ignore("unused_signal")
+signal name_changed(text_edit : TextEdit)
+@warning_ignore("unused_signal")
+signal notes_changed(text_edit : TextEdit)
+
 func _ready() -> void:
 	update_color_size(Global.current_UI_size)
 
@@ -109,3 +114,9 @@ func _on_tracker_color_item_selected(index: Global.COLORS) -> void:
 	line_edit_p1.add_theme_stylebox_override("normal", style_box)
 	var line_edit_p2 : LineEdit = p_2.get_line_edit()
 	line_edit_p2.add_theme_stylebox_override("normal", style_box)
+
+func _on_tracker_name_text_changed() -> void:
+	name_changed.emit(tracker_name)
+
+func _on_notes_text_changed() -> void:
+	notes_changed.emit(notes)

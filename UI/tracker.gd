@@ -58,6 +58,11 @@ var color_selected : Global.COLORS = Global.COLORS.BLACK
 
 var log_tracker : LogTracker = LogTracker.new()
 
+@warning_ignore("unused_signal")
+signal name_changed(text_edit : TextEdit)
+@warning_ignore("unused_signal")
+signal notes_changed(text_edit : TextEdit)
+
 # this value is used to not send a signal everytime the tracker_value changes
 # and only when the value is changed by hand
 var manual_change : bool
@@ -426,3 +431,9 @@ func _on_tracker_value_value_changed(value: float) -> void:
 		last_tracker_value = int(value)
 	else:
 		manual_change = true
+
+func _on_tracker_name_text_changed() -> void:
+	name_changed.emit(tracker_name)
+
+func _on_notes_text_changed() -> void:
+	notes_changed.emit(notes)
