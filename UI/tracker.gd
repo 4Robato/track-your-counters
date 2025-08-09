@@ -432,8 +432,14 @@ func _on_tracker_value_value_changed(value: float) -> void:
 	else:
 		manual_change = true
 
+func _on_tracker_name_focus_entered() -> void:
+	name_changed.emit(tracker_name)
+
 func _on_tracker_name_text_changed() -> void:
 	name_changed.emit(tracker_name)
+
+func _on_notes_focus_entered() -> void:
+	notes_changed.emit(notes)
 
 func _on_notes_text_changed() -> void:
 	notes_changed.emit(notes)
