@@ -1,23 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd0d4agqi2wyq"]
+[gd_scene format=3 uid="uid://cd0d4agqi2wyq"]
 
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="1_01fbn"]
 [ext_resource type="Script" uid="uid://6mybw8ppviki" path="res://UI/edit_tracker.gd" id="1_i4nip"]
 [ext_resource type="PackedScene" uid="uid://dg6tns8ttve4i" path="res://UI/color_button.tscn" id="2_i4nip"]
 [ext_resource type="PackedScene" uid="uid://l75pi0x4kpo0" path="res://UI/operator_change.tscn" id="3_mfwli"]
 
-[node name="EditTracker" type="VBoxContainer"]
+[node name="EditTracker" type="VBoxContainer" unique_id=614843543]
 script = ExtResource("1_i4nip")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1146301555]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=352932316]
 layout_mode = 2
 
-[node name="Tittle" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="Tittle" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1544096606]
 layout_mode = 2
 
-[node name="TrackerName" type="TextEdit" parent="PanelContainer/VBoxContainer/Tittle"]
+[node name="TrackerName" type="TextEdit" parent="PanelContainer/VBoxContainer/Tittle" unique_id=459046471]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
@@ -26,38 +26,23 @@ theme = ExtResource("1_01fbn")
 placeholder_text = "TRACKER_NAME"
 scroll_fit_content_height = true
 
-[node name="TrackerColor" parent="PanelContainer/VBoxContainer/Tittle" instance=ExtResource("2_i4nip")]
+[node name="TrackerColor" parent="PanelContainer/VBoxContainer/Tittle" unique_id=2089907152 instance=ExtResource("2_i4nip")]
 layout_mode = 2
 
-[node name="Body" type="HBoxContainer" parent="."]
+[node name="Body" type="HBoxContainer" parent="." unique_id=507086845]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Body"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/VBoxContainer"]
-layout_mode = 2
-
-[node name="ButtonM1" parent="Body/VBoxContainer/HBoxContainer" instance=ExtResource("3_mfwli")]
-layout_mode = 2
-
-[node name="m1" type="SpinBox" parent="Body/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Body" unique_id=2092215464]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("1_01fbn")
-rounded = true
-allow_greater = true
-update_on_text_changed = true
-select_all_on_focus = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Body/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/VBoxContainer" unique_id=1304075480]
 layout_mode = 2
 
-[node name="ButtonM2" parent="Body/VBoxContainer/HBoxContainer2" instance=ExtResource("3_mfwli")]
+[node name="ButtonM1" parent="Body/VBoxContainer/HBoxContainer" unique_id=624425796 instance=ExtResource("3_mfwli")]
 layout_mode = 2
 
-[node name="m2" type="SpinBox" parent="Body/VBoxContainer/HBoxContainer2"]
+[node name="m1" type="SpinBox" parent="Body/VBoxContainer/HBoxContainer" unique_id=1878139195]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_01fbn")
@@ -66,7 +51,22 @@ allow_greater = true
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="TrackerValue" type="SpinBox" parent="Body"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Body/VBoxContainer" unique_id=99391433]
+layout_mode = 2
+
+[node name="ButtonM2" parent="Body/VBoxContainer/HBoxContainer2" unique_id=1251811455 instance=ExtResource("3_mfwli")]
+layout_mode = 2
+
+[node name="m2" type="SpinBox" parent="Body/VBoxContainer/HBoxContainer2" unique_id=2036995862]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_01fbn")
+rounded = true
+allow_greater = true
+update_on_text_changed = true
+select_all_on_focus = true
+
+[node name="TrackerValue" type="SpinBox" parent="Body" unique_id=892759503]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_01fbn")
@@ -78,18 +78,18 @@ alignment = 1
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Body"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Body" unique_id=1284963372]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/VBoxContainer2" unique_id=950145461]
 layout_mode = 2
 
-[node name="ButtonP1" parent="Body/VBoxContainer2/HBoxContainer" instance=ExtResource("3_mfwli")]
+[node name="ButtonP1" parent="Body/VBoxContainer2/HBoxContainer" unique_id=585168207 instance=ExtResource("3_mfwli")]
 layout_mode = 2
 operator_type = 1
 
-[node name="p1" type="SpinBox" parent="Body/VBoxContainer2/HBoxContainer"]
+[node name="p1" type="SpinBox" parent="Body/VBoxContainer2/HBoxContainer" unique_id=584908850]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_01fbn")
@@ -98,14 +98,14 @@ allow_greater = true
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Body/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Body/VBoxContainer2" unique_id=84324549]
 layout_mode = 2
 
-[node name="ButtonP2" parent="Body/VBoxContainer2/HBoxContainer2" instance=ExtResource("3_mfwli")]
+[node name="ButtonP2" parent="Body/VBoxContainer2/HBoxContainer2" unique_id=1091660726 instance=ExtResource("3_mfwli")]
 layout_mode = 2
 operator_type = 1
 
-[node name="p2" type="SpinBox" parent="Body/VBoxContainer2/HBoxContainer2"]
+[node name="p2" type="SpinBox" parent="Body/VBoxContainer2/HBoxContainer2" unique_id=1943769344]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_01fbn")
@@ -114,7 +114,7 @@ allow_greater = true
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="Notes" type="TextEdit" parent="."]
+[node name="Notes" type="TextEdit" parent="." unique_id=901163891]
 layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("1_01fbn")
@@ -125,5 +125,6 @@ scroll_fit_content_height = true
 [connection signal="focus_entered" from="PanelContainer/VBoxContainer/Tittle/TrackerName" to="." method="_on_tracker_name_focus_entered"]
 [connection signal="text_changed" from="PanelContainer/VBoxContainer/Tittle/TrackerName" to="." method="_on_tracker_name_text_changed"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/Tittle/TrackerColor" to="." method="_on_tracker_color_item_selected"]
+[connection signal="value_changed" from="Body/TrackerValue" to="." method="_on_tracker_value_value_changed"]
 [connection signal="focus_entered" from="Notes" to="." method="_on_notes_focus_entered"]
 [connection signal="text_changed" from="Notes" to="." method="_on_notes_text_changed"]

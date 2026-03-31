@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw61xu1tesd0a"]
+[gd_scene format=3 uid="uid://bw61xu1tesd0a"]
 
 [ext_resource type="Script" uid="uid://8pxcqcw5nato" path="res://UI/tracker.gd" id="1_hcafx"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_oxxdj"]
@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://l75pi0x4kpo0" path="res://UI/operator_change.tscn" id="4_2cybp"]
 [ext_resource type="PackedScene" uid="uid://e2x30fu47nye" path="res://UI/modifier_button.tscn" id="12_kmwt8"]
 
-[node name="tracker" type="MarginContainer"]
-anchors_preset = -1
+[node name="tracker" type="MarginContainer" unique_id=283593992]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -1031.0
@@ -25,18 +25,18 @@ minus_high = 10
 plus_low = 1
 plus_high = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1065491340]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1268590023]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer" unique_id=943713536]
 layout_mode = 2
 
-[node name="TrackerName" type="TextEdit" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="TrackerName" type="TextEdit" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=715911375]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
@@ -45,7 +45,7 @@ theme = ExtResource("2_oxxdj")
 placeholder_text = "TRACKER_NAME"
 scroll_fit_content_height = true
 
-[node name="Edit" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Edit" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=1858767100]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
@@ -53,14 +53,14 @@ mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = " ✏️ "
 
-[node name="NotesButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="NotesButton" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=2072607353]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = " 📝 "
 
-[node name="Cancel" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Cancel" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=1374264690]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 8
@@ -69,12 +69,12 @@ mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = " ❌ "
 
-[node name="ColorButton" parent="VBoxContainer/PanelContainer/HBoxContainer" instance=ExtResource("3_76b1b")]
+[node name="ColorButton" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=897940105 instance=ExtResource("3_76b1b")]
 visible = false
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Location" type="SpinBox" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Location" type="SpinBox" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=849441263]
 visible = false
 clip_contents = true
 layout_mode = 2
@@ -90,7 +90,7 @@ update_on_text_changed = true
 prefix = "↕"
 select_all_on_focus = true
 
-[node name="minimize" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="minimize" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=109435999]
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
@@ -98,7 +98,7 @@ mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = " ➖ "
 
-[node name="close" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="close" type="Button" parent="VBoxContainer/PanelContainer/HBoxContainer" unique_id=2066242240]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 8
@@ -107,7 +107,7 @@ mouse_filter = 1
 theme = ExtResource("2_oxxdj")
 text = " 🗑️ "
 
-[node name="Notes" type="TextEdit" parent="VBoxContainer"]
+[node name="Notes" type="TextEdit" parent="VBoxContainer" unique_id=406143715]
 visible = false
 layout_mode = 2
 mouse_filter = 1
@@ -116,25 +116,25 @@ placeholder_text = "NOTES"
 wrap_mode = 1
 scroll_fit_content_height = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1988972369]
 layout_mode = 2
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="minus" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="minus" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1443824478]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxLineEditm1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus"]
+[node name="HBoxLineEditm1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus" unique_id=966381351]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonLineEditm1" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1" instance=ExtResource("4_2cybp")]
+[node name="ButtonLineEditm1" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1" unique_id=192301831 instance=ExtResource("4_2cybp")]
 layout_mode = 2
 operator_type = 1
 
-[node name="LineEditm1" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1"]
+[node name="LineEditm1" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm1" unique_id=1747054666]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -144,16 +144,16 @@ allow_greater = true
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="HBoxLineEditm2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus"]
+[node name="HBoxLineEditm2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/minus" unique_id=990332851]
 visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonLineEditm2" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2" instance=ExtResource("4_2cybp")]
+[node name="ButtonLineEditm2" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2" unique_id=1787785586 instance=ExtResource("4_2cybp")]
 layout_mode = 2
 operator_type = 1
 
-[node name="LineEditm2" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2"]
+[node name="LineEditm2" type="SpinBox" parent="VBoxContainer/HBoxContainer/minus/HBoxLineEditm2" unique_id=1843149461]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -163,17 +163,17 @@ allow_greater = true
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="minus1" parent="VBoxContainer/HBoxContainer/minus" instance=ExtResource("12_kmwt8")]
+[node name="minus1" parent="VBoxContainer/HBoxContainer/minus" unique_id=13864224 instance=ExtResource("12_kmwt8")]
 layout_mode = 2
 value = 1
 type = 1
 
-[node name="minus2" parent="VBoxContainer/HBoxContainer/minus" instance=ExtResource("12_kmwt8")]
+[node name="minus2" parent="VBoxContainer/HBoxContainer/minus" unique_id=1478619430 instance=ExtResource("12_kmwt8")]
 layout_mode = 2
 value = 10
 type = 1
 
-[node name="TrackerValue" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+[node name="TrackerValue" type="SpinBox" parent="VBoxContainer/HBoxContainer" unique_id=779583054]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_oxxdj")
@@ -184,19 +184,19 @@ allow_lesser = true
 alignment = 1
 select_all_on_focus = true
 
-[node name="plus" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="plus" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=686447901]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxLineEditp1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus"]
+[node name="HBoxLineEditp1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus" unique_id=790644142]
 visible = false
 layout_mode = 2
 
-[node name="ButtonLineEditp1" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1" instance=ExtResource("4_2cybp")]
+[node name="ButtonLineEditp1" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1" unique_id=1482007658 instance=ExtResource("4_2cybp")]
 layout_mode = 2
 operator_type = 1
 
-[node name="LineEditp1" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1"]
+[node name="LineEditp1" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp1" unique_id=1894477625]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -206,15 +206,15 @@ allow_greater = true
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="HBoxLineEditp2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus"]
+[node name="HBoxLineEditp2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/plus" unique_id=1389388743]
 visible = false
 layout_mode = 2
 
-[node name="ButtonLineEditp2" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2" instance=ExtResource("4_2cybp")]
+[node name="ButtonLineEditp2" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2" unique_id=2078229134 instance=ExtResource("4_2cybp")]
 layout_mode = 2
 operator_type = 1
 
-[node name="LineEditp2" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2"]
+[node name="LineEditp2" type="SpinBox" parent="VBoxContainer/HBoxContainer/plus/HBoxLineEditp2" unique_id=1738019865]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -224,11 +224,11 @@ allow_greater = true
 update_on_text_changed = true
 select_all_on_focus = true
 
-[node name="plus1" parent="VBoxContainer/HBoxContainer/plus" instance=ExtResource("12_kmwt8")]
+[node name="plus1" parent="VBoxContainer/HBoxContainer/plus" unique_id=99349183 instance=ExtResource("12_kmwt8")]
 layout_mode = 2
 value = 1
 
-[node name="plus2" parent="VBoxContainer/HBoxContainer/plus" instance=ExtResource("12_kmwt8")]
+[node name="plus2" parent="VBoxContainer/HBoxContainer/plus" unique_id=895756573 instance=ExtResource("12_kmwt8")]
 layout_mode = 2
 value = 10
 
@@ -244,6 +244,7 @@ value = 10
 [connection signal="text_changed" from="VBoxContainer/Notes" to="." method="_on_notes_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus1" to="." method="_on_minus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/minus/minus2" to="." method="_on_minus_2_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/TrackerValue" to="." method="_on_tracker_value_focus_entered"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/TrackerValue" to="." method="_on_tracker_value_value_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus1" to="." method="_on_plus_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/plus/plus2" to="." method="_on_plus_2_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpb7iq8xorvje"]
+[gd_scene format=3 uid="uid://dpb7iq8xorvje"]
 
 [ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_8eauo"]
 [ext_resource type="Script" uid="uid://dodt514wa01q0" path="res://UI/tracker_manager_panel.gd" id="2_40bq2"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xpaecgeeo52y" path="res://assets/icons/1F4CE.svg" id="4_h2r20"]
 [ext_resource type="Texture2D" uid="uid://cnyn8bsbc5itj" path="res://assets/icons/2716.svg" id="5_t0iuc"]
 
-[node name="TrackerManagerPanel" type="PanelContainer"]
+[node name="TrackerManagerPanel" type="PanelContainer" unique_id=785918884]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,21 +17,21 @@ size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("1_8eauo")
 script = ExtResource("2_40bq2")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1556084381]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=691613690]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=108713609]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Emoji" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Emoji" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=866388515]
 layout_mode = 2
 theme = ExtResource("2_j4txh")
 text = "📇 "
@@ -39,22 +39,22 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=151615800]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_j4txh")
 text = "TRACKER_MANAGER"
 fit_content = true
 
-[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=662776784]
 layout_mode = 2
 theme = ExtResource("2_j4txh")
 text = " ❌ "
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2058642906]
 layout_mode = 2
 
-[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=547057688]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 3
@@ -64,7 +64,7 @@ icon = ExtResource("4_h2r20")
 text_overrun_behavior = 1
 expand_icon = true
 
-[node name="DiscardButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="DiscardButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=892777133]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 3
@@ -74,7 +74,7 @@ icon = ExtResource("5_t0iuc")
 text_overrun_behavior = 1
 expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=474004881]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -82,15 +82,15 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1716749813]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Trackers" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer"]
+[node name="Trackers" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer" unique_id=970878386]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/Trackers"]
+[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/Trackers" unique_id=1795125940]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
@@ -99,6 +99,7 @@ text = "
 
 
 "
+autowrap_trim_flags = 0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]

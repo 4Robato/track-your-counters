@@ -17,6 +17,7 @@ extends MarginContainer
 
 @onready var h_box_container: HBoxContainer = $VBoxContainer/HBoxContainer
 @onready var tracker_value: SpinBox = $VBoxContainer/HBoxContainer/TrackerValue
+var spin_box_line_edit : LineEdit
 
 @onready var h_box_line_editm_1: HBoxContainer = $VBoxContainer/HBoxContainer/minus/HBoxLineEditm1
 @onready var h_box_line_editm_2: HBoxContainer = $VBoxContainer/HBoxContainer/minus/HBoxLineEditm2
@@ -62,6 +63,8 @@ var log_tracker : LogTracker = LogTracker.new()
 signal name_changed(text_edit : TextEdit)
 @warning_ignore("unused_signal")
 signal notes_changed(text_edit : TextEdit)
+@warning_ignore("unused_signal")
+signal spinbox_changed(spin_box : SpinBox)
 
 # this value is used to not send a signal everytime the tracker_value changes
 # and only when the value is changed by hand
@@ -95,6 +98,9 @@ func _ready() -> void:
 	last_tracker_value = int(tracker_value.value)
 	
 	manual_change = true
+	
+	spin_box_line_edit = tracker_value.get_line_edit()
+	spin_box_line_edit.text_changed.connect(_on_tracker_value_changed)
 
 func _on_minus_1_pressed() -> void:
 	manual_change = false
@@ -421,8 +427,8 @@ func _text_to_log() -> void:
 	
 	Global.add_log_tacker.emit(log_tracker)
 
-
 func _on_tracker_value_value_changed(value: float) -> void:
+	spinbox_changed.emit(tracker_value)
 	if manual_change:
 		log_tracker.value_pre = last_tracker_value
 		log_tracker.operator_type = OperatorButton.BUTTON_TYPE.HAND
@@ -431,6 +437,9 @@ func _on_tracker_value_value_changed(value: float) -> void:
 		last_tracker_value = int(value)
 	else:
 		manual_change = true
+
+func _on_tracker_value_focus_entered() -> void:
+	spinbox_changed.emit(tracker_value)
 
 func _on_tracker_name_focus_entered() -> void:
 	name_changed.emit(tracker_name)
@@ -443,3 +452,6 @@ func _on_notes_focus_entered() -> void:
 
 func _on_notes_text_changed() -> void:
 	notes_changed.emit(notes)
+
+func _on_tracker_value_changed(_new_text: String) -> void:
+	spinbox_changed.emit(tracker_value)

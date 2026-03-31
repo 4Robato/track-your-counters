@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dick833futlmw"]
+[gd_scene format=3 uid="uid://dick833futlmw"]
 
 [ext_resource type="StyleBox" uid="uid://wuh217h37o8i" path="res://themes/panel_background.tres" id="1_4mpkv"]
 [ext_resource type="Script" uid="uid://ckckabxlus4rl" path="res://UI/info_panel.gd" id="1_fhwa4"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="2_4mpkv"]
 
-[node name="InfoPanel" type="PanelContainer"]
+[node name="InfoPanel" type="PanelContainer" unique_id=1498205939]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,25 +15,25 @@ size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("1_4mpkv")
 script = ExtResource("1_fhwa4")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=942201481]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 15
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1929662150]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=520072720]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer" unique_id=393657694]
 layout_mode = 2
 
-[node name="Emoji" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Emoji" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=434458259]
 layout_mode = 2
 theme = ExtResource("2_4mpkv")
 text = "❓ "
@@ -41,14 +41,14 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Title" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1236801520]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_4mpkv")
 text = "HELP"
 fit_content = true
 
-[node name="version" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="version" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1130607828]
 layout_mode = 2
 theme = ExtResource("2_4mpkv")
 text = "(version)"
@@ -57,24 +57,24 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Close" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Close" type="Button" parent="MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=965938215]
 layout_mode = 2
 focus_mode = 3
 theme = ExtResource("2_4mpkv")
 text = " ❌ "
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer" unique_id=886106852]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer" unique_id=1354088756]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="content" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="content" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1731800337]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_4mpkv")

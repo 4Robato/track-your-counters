@@ -114,9 +114,14 @@ func add_tracker(tracker_info : TrackerInfo) -> void:
 	
 	new_tracker.name_changed.connect(_scroll_to_text_edit)
 	new_tracker.notes_changed.connect(_scroll_to_text_edit)
+	new_tracker.spinbox_changed.connect(_scroll_to_spin_box)
+	
 
 func _scroll_to_text_edit(text_edit : TextEdit) -> void:
 	scroll_container.ensure_control_visible(text_edit)
+
+func _scroll_to_spin_box(spin_box : SpinBox) -> void:
+	scroll_container.ensure_control_visible(spin_box)
 
 func update_font_size(amount : int):
 	Global.current_UI_size += amount
@@ -205,6 +210,7 @@ func _on_add_button_pressed() -> void:
 	
 	tracker.name_changed.connect(_scroll_to_text_edit)
 	tracker.notes_changed.connect(_scroll_to_text_edit)
+	tracker.spinbox_changed.connect(_scroll_to_spin_box)
 
 func _on_logs_button_pressed() -> void:
 	logs_panel.visible = true

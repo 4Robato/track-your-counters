@@ -14,6 +14,7 @@ class_name EditTracker
 @onready var p_2: SpinBox = $Body/VBoxContainer2/HBoxContainer2/p2
 @onready var notes: TextEdit = $Notes
 @onready var tracker_value: SpinBox = $Body/TrackerValue
+var spin_box_line_edit: LineEdit
 
 @onready var panel_container: PanelContainer = $PanelContainer
 
@@ -21,9 +22,14 @@ class_name EditTracker
 signal name_changed(text_edit : TextEdit)
 @warning_ignore("unused_signal")
 signal notes_changed(text_edit : TextEdit)
+@warning_ignore("unused_signal")
+signal spinbox_changed(spin_box : SpinBox)
 
 func _ready() -> void:
 	update_color_size(Global.current_UI_size)
+	
+	spin_box_line_edit = tracker_value.get_line_edit()
+	spin_box_line_edit.text_changed.connect(_on_tracker_value_changed)
 
 func get_tracker_info() -> TrackerInfo:
 	var tracker_info : TrackerInfo = TrackerInfo.new(
@@ -126,3 +132,9 @@ func _on_notes_text_changed() -> void:
 
 func _on_notes_focus_entered() -> void:
 	notes_changed.emit(notes)
+
+func _on_tracker_value_value_changed(_value: float) -> void:
+	spinbox_changed.emit(tracker_value)
+
+func _on_tracker_value_changed(_value: String) -> void:
+	spinbox_changed.emit(tracker_value)

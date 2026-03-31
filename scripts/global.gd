@@ -15,7 +15,7 @@ var main_menu : MainMenu
 var tracker_manager : TrackerManager
 
 # language
-var language_selected : String
+var language_selected : String = OS.get_locale_language()
 
 @warning_ignore("unused_signal")
 signal load_file_request(file_name : String)

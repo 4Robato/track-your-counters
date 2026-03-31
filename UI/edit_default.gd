@@ -16,6 +16,7 @@ class_name EditPanel
 func _ready() -> void:
 	edit_tracker.name_changed.connect(_scroll_to_text_edit)
 	edit_tracker.notes_changed.connect(_scroll_to_text_edit)
+	edit_tracker.spinbox_changed.connect(_scroll_to_spin_box)
 
 func _process(_delta: float) -> void:
 	if self.visible:
@@ -32,6 +33,9 @@ func _process(_delta: float) -> void:
 
 func _scroll_to_text_edit(text_edit : TextEdit) -> void:
 	scroll_container.ensure_control_visible(text_edit)
+
+func _scroll_to_spin_box(spin_box : SpinBox) -> void:
+	scroll_container.ensure_control_visible(spin_box)
 
 func _on_save_button_pressed() -> void:
 	_on_accept_button_pressed()

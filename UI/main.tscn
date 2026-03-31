@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://co7rjdayna4x1"]
+[gd_scene format=3 uid="uid://co7rjdayna4x1"]
 
 [ext_resource type="Script" uid="uid://co0d62csk3rkx" path="res://UI/main.gd" id="1_0xm2m"]
 [ext_resource type="Theme" uid="uid://cbwkyl6gws1s2" path="res://themes/text.tres" id="3_h2yge"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dpb7iq8xorvje" path="res://UI/tracker_manager_panel.tscn" id="17_p4xe3"]
 [ext_resource type="PackedScene" uid="uid://b6cb8gast6vq1" path="res://UI/t_manager_edit_panel.tscn" id="18_5n8ge"]
 
-[node name="main" type="Control"]
+[node name="main" type="Control" unique_id=1654183506]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0xm2m")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1478953370]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,24 +40,24 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=380632369]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=885904726]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=695054879]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1932436840]
 layout_mode = 2
 
-[node name="MenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
+[node name="MenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1528193245]
 layout_mode = 2
 theme = ExtResource("3_h2yge")
 text = "    "
@@ -91,10 +91,10 @@ popup/item_8/text = "QUIT"
 popup/item_8/icon = ExtResource("10_p2g6k")
 popup/item_8/id = 8
 
-[node name="LanguageSelector" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="LanguageSelector" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=678788017]
 layout_mode = 2
 
-[node name="LangMenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LanguageSelector"]
+[node name="LangMenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/LanguageSelector" unique_id=905153232]
 layout_mode = 2
 theme = ExtResource("3_h2yge")
 text = "  🌐  "
@@ -103,7 +103,7 @@ item_count = 1
 popup/item_0/text = "System"
 popup/item_0/id = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1160361915]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_h2yge")
@@ -112,42 +112,42 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AddDice" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="AddDice" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=2097891432]
 layout_mode = 2
 focus_mode = 3
 theme = ExtResource("3_h2yge")
 text = "🎲"
 
-[node name="LogsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="LogsButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=624151024]
 layout_mode = 2
 focus_mode = 3
 theme = ExtResource("3_h2yge")
 text = "  📑  "
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=858601350]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=1894733820]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="AllDice" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="AllDice" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1973801496]
 layout_mode = 2
 
-[node name="AllTrackers" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="AllTrackers" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=836951064]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AddButtonMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AllTrackers"]
+[node name="AddButtonMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AllTrackers" unique_id=1785046280]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AllTrackers/AddButtonMargin"]
+[node name="AddButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/AllTrackers/AddButtonMargin" unique_id=650706284]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
@@ -156,32 +156,33 @@ text = "
 
 
 "
+autowrap_trim_flags = 0
 
-[node name="EditDefaultPanel" parent="." instance=ExtResource("4_dyfb5")]
+[node name="EditDefaultPanel" parent="." unique_id=176749356 instance=ExtResource("4_dyfb5")]
 visible = false
 layout_mode = 1
 
-[node name="LoadPanel" parent="." instance=ExtResource("5_deq60")]
+[node name="LoadPanel" parent="." unique_id=1338371836 instance=ExtResource("5_deq60")]
 visible = false
 layout_mode = 1
 
-[node name="SavePanel" parent="." instance=ExtResource("6_6sydh")]
+[node name="SavePanel" parent="." unique_id=273007510 instance=ExtResource("6_6sydh")]
 visible = false
 layout_mode = 1
 
-[node name="InfoPanel" parent="." instance=ExtResource("7_eto42")]
+[node name="InfoPanel" parent="." unique_id=1093306463 instance=ExtResource("7_eto42")]
 visible = false
 layout_mode = 1
 
-[node name="LogsPanel" parent="." instance=ExtResource("16_vfltm")]
+[node name="LogsPanel" parent="." unique_id=1210116356 instance=ExtResource("16_vfltm")]
 visible = false
 layout_mode = 1
 
-[node name="TrackerManagerPanel" parent="." instance=ExtResource("17_p4xe3")]
+[node name="TrackerManagerPanel" parent="." unique_id=1418510240 instance=ExtResource("17_p4xe3")]
 visible = false
 layout_mode = 1
 
-[node name="TManagerEditPanel" parent="." instance=ExtResource("18_5n8ge")]
+[node name="TManagerEditPanel" parent="." unique_id=126121937 instance=ExtResource("18_5n8ge")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
