@@ -24,7 +24,7 @@ The size of the UI can also be saved and there are some presets to give you some
 The app UI is thought for smartphones but it adapts to whatever window size you have."
 config/version="1.2.8"
 run/main_scene="res://UI/main.tscn"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 run/low_processor_mode=true
 config/icon="uid://dhgu5v8ppofg"
 config/windows_native_icon="res://assets/logo_small.ico"
